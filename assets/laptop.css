@@ -1,0 +1,66 @@
+/* Laptop presentation layout: 2560×1600 at 150% Windows scaling, browser zoom 100%. */
+@media(min-width:1400px) and (max-height:1100px){
+ header.site-topbar .shell,header.site-topbar .studio-head-inner{max-width:1530px}
+ .homepage-topbar+main{max-width:1440px;margin-top:24px}
+ .homepage-topbar+main .hero{padding:32px 42px}
+ .homepage-topbar+main .hero h1{font-size:clamp(48px,3.4vw,58px);margin:14px 0}
+ .homepage-topbar+main .section-intro{padding-top:22px}
+ .homepage-topbar+main .card{padding:25px;min-height:310px}
+ .homepage-topbar+main .walkthrough,.homepage-topbar+main .about{padding:30px}
+ body.home-fixed .shell{max-width:1500px}
+ body.home-fixed #home .cards{gap:14px}
+ body.home-fixed #home .module{padding:18px;gap:8px}
+ body.home-fixed #home .module h2{font-size:19px}
+ body.home-fixed #home .module p{font-size:14px;line-height:1.45}
+ body.home-fixed #home .module .num,body.home-fixed #home .module .status{font-size:12px}
+ body.home-fixed #home .module button{font-size:12px;min-height:42px}
+ body.home-fixed #home .intro p{font-size:14px}
+ body.lab-fixed main.content{max-width:1300px;padding:18px 24px}
+ body.lab-fixed #lab>.panel{padding:24px 30px}
+ body.lab-fixed #lab .scenario,body.lab-fixed #lab .option{font-size:15px;line-height:1.5}
+ body.lab-fixed #lab .options{gap:12px}
+ body.lab-fixed #lab .resource-tools button{font-size:12px;min-height:40px}
+ body.lab-fixed #lab .panel .subtle,body.lab-fixed #lab .panel .note{font-size:13px}
+ .app>.main{max-width:1530px;padding:22px 24px 48px}
+ #view-home,#view-game,#view-results,#view-admin{padding:20px}
+ #view-home h1{font-size:40px;max-width:1050px}
+ #view-home .lead{margin-bottom:16px}
+ .hero-grid{margin:18px 0;grid-template-columns:minmax(0,1.4fr) minmax(320px,1fr)}
+ .hero-grid>.hero{min-height:210px;padding:22px}
+ .hero-grid .metric{padding:16px}
+ .game-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+ .game-grid .game-card{min-height:205px;padding:16px}
+ .stage-layout{grid-template-columns:minmax(0,1fr) 270px;gap:16px}
+ #stageForm{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr);gap:16px;align-items:start}
+ #stageForm>.panel{margin:0!important;min-width:0;padding:20px}
+ #stageForm>#checkpoint,#stageForm>#formerror,#stageForm>.stage-footer{grid-column:1/-1}
+ #stageForm>.stage-footer{margin-top:0;gap:10px;padding:12px;background:#fffdf7;border-top:2px solid #d8dbcf}
+ .stage-layout>aside.panel{padding:18px}
+ .stage-layout>aside h2,#stageForm>.panel h2{font-size:20px;line-height:1.25}
+ .field{margin-bottom:14px}
+ #stageForm>.panel .instructions{padding:14px 16px;margin-bottom:14px}
+ #stageForm>.panel .question-note{padding:11px 13px;margin-bottom:12px}
+ #formerror:empty{display:none}
+ #stageForm>.stage-footer{padding:10px}
+ .communication-practice{border-top:1px solid #c6d3c6;margin-top:10px}
+ .communication-practice summary{font-size:14px;font-weight:800;cursor:pointer}
+ .field>label,.field>fieldset>legend{font-size:14px}
+ #stageForm .checkrow{margin:6px 0;min-height:28px}
+ .architecture-review summary{font-size:14px;font-weight:800;cursor:pointer}
+ .steps{margin:14px 0 18px}
+ .step-header{margin-bottom:14px}
+ .demo-banner{padding:14px 18px;margin-bottom:16px}
+ .demo-banner p{margin:7px 0}
+ .demo-banner .demo-phases{gap:8px}
+ .source-reference{margin:14px 0 20px;padding:0 12px 12px;border:1px solid #b7c7b8;border-radius:4px;background:#f5f8f3}
+ .source-reference summary{font-size:14px;font-weight:800;cursor:pointer}
+ .source-reference[open] summary{margin-bottom:10px}
+ body:has(#app)>main{max-width:1440px;padding-top:20px}
+ body:has(#app) .layout{grid-template-columns:minmax(0,1.8fr) minmax(340px,1fr)}
+ body:has(#app) .panel{padding:22px}
+ body:has(#app) textarea{min-height:190px}
+ body:has(#app) .project-backups{max-width:1400px;margin-top:18px}
+ body:has(#resources)>main{max-width:1440px;margin-top:24px}
+ body:has(#resources) .resources{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+ body:has(#resources) .intro,body:has(#resources) .tools{padding:22px}
+}
