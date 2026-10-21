@@ -28,3 +28,27 @@ header.site-topbar .studio-head-inner,header.site-topbar .shell{flex-wrap:wrap;g
  header.site-topbar nav{width:100%!important}
  header.site-topbar nav>a,header.site-topbar nav>button{font-size:11px!important;padding:8px 10px!important}
 }
+
+/* Foundations and Studio share one course-header layout. */
+header.course-topbar{padding:0!important}
+header.course-topbar .course-topbar-inner{
+ max-width:1200px;margin-inline:auto;padding:12px 16px;min-height:70px;
+ display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+header.course-topbar .brand{
+ display:block;padding:0;flex:0 0 auto;text-align:left;line-height:1.2;white-space:normal;
+}
+header.course-topbar .brand small{
+ display:block;margin-top:4px;font-size:10px;font-weight:700;line-height:1.5;letter-spacing:1.2px;
+}
+header.course-topbar nav{
+ margin:0 0 0 auto!important;justify-content:flex-end!important;flex:0 1 auto;
+}
+header.course-topbar nav>a.home-link{position:static!important;inset:auto!important;order:0;transform:none!important}
+@media(min-width:1400px) and (max-height:1100px){
+ header.course-topbar .course-topbar-inner{max-width:1500px}
+}
+@media(max-width:1100px){
+ header.course-topbar .course-topbar-inner{flex-wrap:wrap}
+ header.course-topbar nav{width:100%!important;flex-basis:100%}
+}
