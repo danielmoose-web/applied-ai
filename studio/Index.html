@@ -274,6 +274,8 @@ input,textarea,select,input[type=number],input[type=text]{border-radius:4px;colo
 @media(max-width:590px){#view-admin{padding:17px 12px}.admin-kpis{gap:7px}.admin-kpi{min-height:105px;padding:12px}.admin-kpi .big{font-size:29px}.admin-panel{padding:13px}.studio-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .demo-banner{background:#fff4ce;border:2px solid #383d37;border-top:7px solid #17acdf;padding:18px;margin-bottom:20px;color:#252b27}.demo-banner p{font-size:13px;margin:9px 0}.demo-phases{display:flex;flex-wrap:wrap;gap:7px}.demo-entry{margin:0 0 16px}.demo-banner details{margin-top:12px}.demo-banner summary{cursor:pointer;font-size:13px;font-weight:700}
+
+header a.home-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border:1px solid #a8e5e8;border-radius:4px;background:#383d37;color:#fff;font:700 12px/1.4 Arial,sans-serif;text-decoration:none;white-space:nowrap}header a.home-link:hover,header a.home-link:focus-visible{background:#a8e5e8;color:#252b27;outline:2px solid #ffe51c;outline-offset:2px}
 </style>
 </head>
 <body>
@@ -282,7 +284,7 @@ input,textarea,select,input[type=number],input[type=text]{border-radius:4px;colo
   <header class="studio-head">
     <div class="studio-head-inner">
       <div class="brand"><span>Applied AI Lab</span><small>LEVEL 02 · APPLIED AI STUDIO</small></div>
-      <nav class="studio-nav" aria-label="Applied AI Studio navigation">
+      <nav class="studio-nav" aria-label="Applied AI Studio navigation"><a class="home-link" href="../">Home</a>
         <button class="rail-item current" id="nav-home" onclick="showHome()">Studio overview</button>
         <button class="rail-item" id="nav-game" onclick="showGame()">Play Game 01</button>
         <button class="rail-item" id="nav-results" onclick="showResults()">My results</button>
