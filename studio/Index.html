@@ -285,8 +285,8 @@ header a.home-link{display:inline-flex;align-items:center;justify-content:center
     <div class="studio-head-inner">
       <div class="brand"><span>Applied AI Lab</span><small>LEVEL 02 · APPLIED AI STUDIO</small></div>
       <nav class="studio-nav" aria-label="Applied AI Studio navigation"><a class="home-link" href="../">Home</a>
-        <button class="rail-item current" id="nav-home" onclick="showHome()">Studio overview</button>
-        <button class="rail-item" id="nav-game" onclick="showGame()">Play Game 01</button>
+        <button class="rail-item current" id="nav-home" onclick="showHome()">Games/Projects</button>
+        <a class="rail-item" href="resources.html">Resource Library</a>
         <button class="rail-item" id="nav-results" onclick="showResults()">My results</button>
         <button class="rail-item" id="nav-admin" onclick="showAdmin()">Demo & my activity</button>
       </nav>
@@ -359,7 +359,7 @@ function selectInput(key,options,value='',placeholder='Choose an option'){return
 function fieldSelect(label,key,options,value='',hint=''){return `<div class="field"><label for="${key}">${label}</label>${hint?`<p class="hint">${hint}</p>`:''}${selectInput(key,options,value)}</div>`;}
 function fieldNumber(label,key,value='',hint=''){return `<div class="field"><label for="${key}">${label}</label>${hint?`<p class="hint">${hint}</p>`:''}<input name="${key}" id="${key}" type="number" step="1" min="-1000000" max="1000000" required value="${e(value)}"></div>`;}
 function dataTable(rows,cols){return '<div class="scroll-x"><table class="data-table"><thead><tr>'+cols.map(c=>'<th>'+e(c[1])+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>'<td class="'+(c[2]?'n':'')+'">'+e(c[2]?money(r[c[0]]):r[c[0]])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
-function navigate(view){if(currentView==='game' && view!=='game')captureDraft();currentView=view; ['home','game','results','admin'].forEach(x=>{ document.getElementById('view-'+x).classList.toggle('hidden',x!==view);document.getElementById('nav-'+x).classList.toggle('current',x===view);});window.scrollTo({top:0,behavior:'instant'});}
+function navigate(view){if(currentView==='game' && view!=='game')captureDraft();currentView=view; ['home','game','results','admin'].forEach(x=>{ document.getElementById('view-'+x).classList.toggle('hidden',x!==view);document.getElementById('nav-'+x)?.classList.toggle('current',x===view||(x==='home'&&view==='game'));});window.scrollTo({top:0,behavior:'instant'});}
 function openStudioProject(id){captureDraft();save();window.location.href='Projects.html?game='+encodeURIComponent(id);}
 function showHome(){renderHome();navigate('home');}
 function showGame(){renderGame();navigate('game');}
