@@ -38,11 +38,9 @@ body{margin:0}
 #portfolio-heading h2 a{text-decoration:none}
 #portfolio-heading h2 a:hover{text-decoration:underline}
 #portfolio-heading .project{position:relative}
-#portfolio-heading .lab>.action a::after{content:"";position:absolute;inset:0;border-radius:12px}
+#portfolio-heading .project>.action a::after{content:"";position:absolute;inset:0;border-radius:12px}
 #portfolio-heading .project a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-#portfolio-heading .lab>.action a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
-#portfolio-heading .league .action{display:flex;flex-wrap:wrap;gap:12px 24px}
-#portfolio-heading .league .action a{display:inline-block;padding:8px 0}
+#portfolio-heading .project>.action a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
 .skip{position:absolute;left:16px;top:-100px;background:light-dark(#fff,#171f34);color:light-dark(#192a4b,#edf2ff);padding:12px}
 .skip:focus{top:10px;z-index:1}
 @media(max-width:550px){#portfolio-heading{margin:8px auto}}
@@ -51,13 +49,13 @@ body{margin:0}
 <body>
 <a class="skip" href="#portfolio-heading">Skip to content</a>
 <main id="portfolio-heading" tabindex="-1">
-<div class="portfolio cobalt" aria-label="Swiss grid and Quiet gallery combined portfolio">
+<div class="portfolio cobalt" aria-label="Daniel Moose’s projects">
 <div class="inner">
 <header class="masthead"><h1>Daniel Moose</h1></header>
-<p class="intro">My background spans nonprofit leadership, education, coaching, and applied AI evaluation. I’ve led programs, coordinated outreach, and designed instruction and assessment, with a focus on making the work clear for the people doing it. I bring that same approach to technology: understand the task, build around the user, test what can go wrong, and revise. Applied AI Lab and Ozark Putting League are independent projects where I put that experience into practice through learning design, workflow design, and software development.</p>
+<p class="intro">I’ve led nonprofit programs, coordinated outreach for a national disc golf tour, and worked in education and coaching. I also evaluate AI outputs for Mercor Intelligence. These are two projects I designed and built: Applied AI Lab, a course with workplace practice exercises, and Ozark Putting League, an app for check-in, scoring, and standings.</p>
 <div class="projects" aria-label="Independent projects">
-<article class="project lab"><h2>Applied AI Lab</h2><p>Lessons and workplace exercises on using AI responsibly. Includes Foundations and Studio.</p><div class="action"><a href="lab/">Explore the Lab →</a></div></article>
-<article class="project league"><h2><a href="putting-league/">Ozark Putting League</a></h2><p>A putting league app for check-in, scoring, and standings. Public demos use fictional players.</p><nav class="action" aria-label="Putting League"><a href="putting-league/#demos">Demos →</a><a href="putting-league/#guide">Guide →</a></nav></article>
+<article class="project lab"><h2>Applied AI Lab</h2><p>Seven AI lessons and eight workplace practice scenarios, organized into Foundations and Studio.</p><div class="action"><a href="lab/">Open project →</a></div></article>
+<article class="project league"><h2>Ozark Putting League</h2><p>Check-in, scoring, and standings for singles, doubles, and disc golf baseball. Public demos and a guide.</p><div class="action"><a href="putting-league/">Open project →</a></div></article>
 </div>
 </div>
 </div>
