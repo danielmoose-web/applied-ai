@@ -1,6 +1,13 @@
-# Applied AI Lab — public portfolio homepage
+# Daniel Moose — project portfolio
 
-A standalone static homepage intended for free hosting on GitHub Pages or Cloudflare Pages.
+A static portfolio with two independent projects: Applied AI Lab and Ozark Putting League.
+
+- `/applied-ai-lab/`: minimal project introduction.
+- `/applied-ai-lab/lab/`: full Applied AI Lab landing, walkthrough, and leadership/about sections.
+- `/applied-ai-lab/foundations/` and `/applied-ai-lab/studio/`: existing learning activities. Course Home links return to `/lab/`.
+- `/applied-ai-lab/putting-league/`: public demos and guide only, with fictional players and local interactions. No operational league application, admin tools, player records, or production endpoints are included.
+
+Serve the entire repository root; the Lab landing uses relative sibling links to the existing assets and course directories. No build step or deployment configuration change is needed.
 
 ## Publish with GitHub Pages
 1. Create a public GitHub repository (for example `applied-ai-lab`).
