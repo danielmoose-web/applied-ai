@@ -2,45 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Applied AI Lab and Ozark Putting League — independent projects by Daniel Moose.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Daniel Moose — nonprofit leadership, education, and applied AI evaluation. Explore Applied AI Lab and Ozark Putting League.">
 <title>Daniel Moose — Projects</title>
 <style>
-:root{color-scheme:light;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#282d29;background:#faf9f6;font-synthesis:none}
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&display=swap");
+#portfolio-heading{color-scheme:light dark}
+#portfolio-heading .portfolio{background:var(--paper);color:var(--ink);padding:40px;font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;box-sizing:border-box}
+#portfolio-heading .inner{max-width:840px;margin:auto}
+#portfolio-heading .masthead{margin-bottom:22px}
+#portfolio-heading h1{font:500 36px/1.2 "Atkinson Hyperlegible Next",Arial,sans-serif;margin:0;letter-spacing:normal}
+#portfolio-heading .intro{max-width:67ch;font:400 19px/1.65 "Atkinson Hyperlegible Next",Arial,sans-serif;letter-spacing:normal;margin:0 0 38px;text-wrap:pretty}
+#portfolio-heading .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+#portfolio-heading .project{padding:27px;border-radius:12px;display:flex;flex-direction:column;min-height:240px;box-sizing:border-box}
+#portfolio-heading .lab{background:var(--lab)}
+#portfolio-heading .league{background:var(--league)}
+#portfolio-heading h2{font:500 25px/1.15 "Atkinson Hyperlegible Next",Arial,sans-serif;letter-spacing:normal;margin:0 0 17px;overflow-wrap:anywhere}
+#portfolio-heading .project p{font:400 16px/1.6 "Atkinson Hyperlegible Next",Arial,sans-serif;margin:0 0 26px;max-width:35ch}
+#portfolio-heading .action{font:500 14px/1.5 "Atkinson Hyperlegible Next",Arial,sans-serif;margin-top:auto}
+@media(max-width:550px){#portfolio-heading .portfolio{padding:28px 22px}#portfolio-heading .masthead{margin-bottom:20px}#portfolio-heading .intro{font-size:17px;line-height:1.7;margin-bottom:30px}#portfolio-heading .projects{grid-template-columns:1fr}#portfolio-heading .project{min-height:210px;padding:24px}}
+#portfolio-heading .portfolio{min-height:0}
+#portfolio-heading .cobalt{--paper:light-dark(#fcfcff,#171f34);--ink:light-dark(#192a4b,#edf2ff);--accent:light-dark(#245cdb,#82a8ff);--lab:light-dark(#cfdeff,#233d69);--league:light-dark(#ffd4b6,#653c29)}
+
+
+#portfolio-heading .action{color:var(--ink)}
+@media(max-width:550px){#portfolio-heading .portfolio{min-height:0}}
+#portfolio-heading h1{color:var(--ink)}
+@media(max-width:550px){#portfolio-heading h1{font-size:32px}}
+
+:root{color-scheme:light dark;background:light-dark(#fcfcff,#171f34)}
 *{box-sizing:border-box}
-body{margin:0;-webkit-font-smoothing:antialiased}
-main{width:100%;max-width:664px;margin:clamp(56px,13vh,132px) auto;padding:0 32px 64px}
-h1{font-size:15px;line-height:1.5;font-weight:550;margin:0 0 64px;color:#555e56}
-section+section{margin-top:48px}
-h2{font:400 clamp(27px,3vw,32px)/1.25 Georgia,"Times New Roman",serif;letter-spacing:-.025em;margin:0 0 12px}
-p{max-width:44ch;margin:0;color:#5c645d;text-wrap:pretty}
-nav{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:15px;font-size:14px}
-a{color:inherit;text-underline-offset:5px;text-decoration-thickness:1px;text-decoration-color:#a5ada4}
-h2 a{text-decoration:none}
-h2 a::after{content:"→";display:inline-block;margin-left:12px;font:400 17px/1 system-ui,sans-serif;vertical-align:middle;color:#768272}
-a:hover{color:#3d5c40;text-decoration-color:currentColor}
-h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
-a:focus-visible{outline:2px solid #3d5c40;outline-offset:6px;border-radius:1px}
-nav a{display:inline-block;padding:5px 0}
-.skip{position:absolute;top:-100px;left:20px;background:#fff;padding:10px}
-.skip:focus{top:10px}
-@media(max-width:480px){main{padding:0 26px 48px;margin-top:56px}h1{margin-bottom:48px}section+section{margin-top:40px}h2{font-size:28px}}
-@media(prefers-reduced-motion:no-preference){a{transition:color .15s ease,text-decoration-color .15s ease}}
+body{margin:0}
+#portfolio-heading{max-width:920px;margin:clamp(20px,6vh,64px) auto}
+#portfolio-heading a{color:inherit;text-underline-offset:5px;text-decoration-thickness:1px}
+#portfolio-heading h2 a{text-decoration:none}
+#portfolio-heading h2 a:hover{text-decoration:underline}
+#portfolio-heading .project{position:relative}
+#portfolio-heading .project>.action a::after{content:"";position:absolute;inset:0;border-radius:12px}
+#portfolio-heading .project a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+#portfolio-heading .project>.action a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
+#portfolio-heading .league .action{display:flex;flex-wrap:wrap;gap:12px 24px}
+#portfolio-heading .league .action a{display:inline-block;padding:8px 0}
+.skip{position:absolute;left:16px;top:-100px;background:light-dark(#fff,#171f34);color:light-dark(#192a4b,#edf2ff);padding:12px}
+.skip:focus{top:10px;z-index:1}
+@media(max-width:550px){#portfolio-heading{margin:8px auto}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<main id="main" tabindex="-1">
-<h1>Daniel Moose</h1>
-<section aria-labelledby="lab-title">
-<h2 id="lab-title"><a href="lab/">Applied AI Lab</a></h2>
-<p>Lessons and exercises on using AI responsibly.</p>
-</section>
-<section aria-labelledby="league-title">
-<h2 id="league-title"><a href="putting-league/">Ozark Putting League</a></h2>
-<p>A putting league app. Public demos with fictional players.</p>
-<nav aria-label="Putting League"><a href="putting-league/#demos">Demos</a><a href="putting-league/#guide">Guide</a></nav>
-</section>
+<a class="skip" href="#portfolio-heading">Skip to content</a>
+<main id="portfolio-heading" tabindex="-1">
+<div class="portfolio cobalt" aria-label="Swiss grid and Quiet gallery combined portfolio">
+<div class="inner">
+<header class="masthead"><h1>Daniel Moose</h1></header>
+<p class="intro">My background spans nonprofit leadership, education, coaching, and applied AI evaluation. I’ve led programs, coordinated outreach, and designed instruction and assessment, with a focus on making the work clear for the people doing it. I bring that same approach to technology: understand the task, build around the user, test what can go wrong, and revise. Applied AI Lab and Ozark Putting League are independent projects where I put that experience into practice through learning design, workflow design, and software development.</p>
+<div class="projects" aria-label="Independent projects">
+<article class="project lab"><h2>Applied AI Lab</h2><p>Lessons and workplace exercises on using AI responsibly. Includes Foundations and Studio.</p><div class="action"><a href="lab/">Explore the Lab →</a></div></article>
+<article class="project league"><h2><a href="putting-league/">Ozark Putting League</a></h2><p>A putting league app for check-in, scoring, and standings. Public demos use fictional players.</p><nav class="action" aria-label="Putting League"><a href="putting-league/#demos">Demos →</a><a href="putting-league/#guide">Guide →</a></nav></article>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
