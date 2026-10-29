@@ -8,7 +8,7 @@ Public portfolio at https://danielmoose-web.github.io/applied-ai/.
 - `/lab/`: Applied AI Lab landing, walkthrough, and about sections.
 - `/lab/foundations/`: Foundations course.
 - `/lab/studio/`: Studio entry; `Index.html` is the hub and Game 1, `Projects.html` contains Games 2–8, and `resources.html` contains the resource library.
-- `/putting-league/`: public scoring demos and guide, with fictional players.
+- `/putting-league/`: app screenshots and guide, with fictional players.
 - `/assets/`: shared Lab styles and accessibility support.
 - `/foundations/` and `/studio/`: compatibility redirects to the nested course paths. Redirects preserve query strings and fragments.
 
@@ -20,7 +20,7 @@ The previous applied-ai-lab repository redirects visitors to the corresponding p
 
 ## Public data boundary
 
-Foundations and Studio run in the browser. Learner progress stays in localStorage, and sample analytics are synthetic. Putting League contains only public demos and a guide; the operational app, player records, organizer tools, and production endpoints are not included.
+Foundations and Studio run in the browser. Learner progress stays in localStorage, and sample analytics are synthetic. Putting League contains only app screenshots and a guide; the operational app, player records, organizer tools, and production endpoints are not included.
 
 ## Checks
 
