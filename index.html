@@ -3,62 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Daniel Moose — nonprofit leadership, education, and applied AI evaluation. Explore Applied AI Lab and Ozark Putting League.">
-<title>Daniel Moose — Projects</title>
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&display=swap");
-#portfolio-heading{color-scheme:light dark}
-#portfolio-heading .portfolio{background:var(--paper);color:var(--ink);padding:40px;font-family:"Atkinson Hyperlegible Next",Arial,sans-serif;box-sizing:border-box}
-#portfolio-heading .inner{max-width:840px;margin:auto}
-#portfolio-heading .masthead{margin-bottom:22px}
-#portfolio-heading h1{font:500 36px/1.2 "Atkinson Hyperlegible Next",Arial,sans-serif;margin:0;letter-spacing:normal}
-#portfolio-heading .intro{max-width:67ch;font:400 19px/1.65 "Atkinson Hyperlegible Next",Arial,sans-serif;letter-spacing:normal;margin:0 0 38px;text-wrap:pretty}
-#portfolio-heading .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-#portfolio-heading .project{padding:27px;border-radius:12px;display:flex;flex-direction:column;min-height:240px;box-sizing:border-box}
-#portfolio-heading .lab{background:var(--lab)}
-#portfolio-heading .league{background:var(--league)}
-#portfolio-heading h2{font:500 25px/1.15 "Atkinson Hyperlegible Next",Arial,sans-serif;letter-spacing:normal;margin:0 0 17px;overflow-wrap:anywhere}
-#portfolio-heading .project p{font:400 16px/1.6 "Atkinson Hyperlegible Next",Arial,sans-serif;margin:0 0 26px;max-width:35ch}
-#portfolio-heading .action{font:500 14px/1.5 "Atkinson Hyperlegible Next",Arial,sans-serif;margin-top:auto}
-@media(max-width:550px){#portfolio-heading .portfolio{padding:28px 22px}#portfolio-heading .masthead{margin-bottom:20px}#portfolio-heading .intro{font-size:17px;line-height:1.7;margin-bottom:30px}#portfolio-heading .projects{grid-template-columns:1fr}#portfolio-heading .project{min-height:210px;padding:24px}}
-#portfolio-heading .portfolio{min-height:0}
-#portfolio-heading .cobalt{--paper:light-dark(#fcfcff,#171f34);--ink:light-dark(#192a4b,#edf2ff);--accent:light-dark(#245cdb,#82a8ff);--lab:light-dark(#cfdeff,#233d69);--league:light-dark(#ffd4b6,#653c29)}
-
-
-#portfolio-heading .action{color:var(--ink)}
-@media(max-width:550px){#portfolio-heading .portfolio{min-height:0}}
-#portfolio-heading h1{color:var(--ink)}
-@media(max-width:550px){#portfolio-heading h1{font-size:32px}}
-
-:root{color-scheme:light dark;background:light-dark(#fcfcff,#171f34)}
-*{box-sizing:border-box}
-body{margin:0}
-#portfolio-heading{max-width:920px;margin:clamp(20px,6vh,64px) auto}
-#portfolio-heading a{color:inherit;text-underline-offset:5px;text-decoration-thickness:1px}
-#portfolio-heading h2 a{text-decoration:none}
-#portfolio-heading h2 a:hover{text-decoration:underline}
-#portfolio-heading .project{position:relative}
-#portfolio-heading .project>.action a::after{content:"";position:absolute;inset:0;border-radius:12px}
-#portfolio-heading .project a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-#portfolio-heading .project>.action a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px}
-.skip{position:absolute;left:16px;top:-100px;background:light-dark(#fff,#171f34);color:light-dark(#192a4b,#edf2ff);padding:12px}
-.skip:focus{top:10px;z-index:1}
-@media(max-width:550px){#portfolio-heading{margin:8px auto}}
-</style>
+<title>Daniel Moose | Program Operations, Education & Digital Tools</title>
+<meta name="description" content="Daniel Moose’s professional portfolio: program coordination, operations, education, and practical digital tools. Explore two projects, experience, skills, and resume.">
+<link rel="stylesheet" href="assets/portfolio.css">
 </head>
 <body>
-<a class="skip" href="#portfolio-heading">Skip to content</a>
-<main id="portfolio-heading" tabindex="-1">
-<div class="portfolio cobalt" aria-label="Daniel Moose’s projects">
-<div class="inner">
-<header class="masthead"><h1>Daniel Moose</h1></header>
-<p class="intro">I’ve led nonprofit programs, coordinated outreach for a national disc golf tour, and worked in education and coaching. I also evaluate AI outputs for Mercor Intelligence. These are two projects I designed and built: Applied AI Lab, a course with workplace practice exercises, and Ozark Putting League, an app for check-in, scoring, and standings.</p>
-<div class="projects" aria-label="Independent projects">
-<article class="project lab"><h2>Applied AI Lab</h2><p>Seven AI lessons and eight workplace practice scenarios, organized into Foundations and Studio.</p><div class="action"><a href="lab/">Open project →</a></div></article>
-<article class="project league"><h2>Ozark Putting League</h2><p>Check-in, scoring, and standings for singles, doubles, and disc golf baseball. App screenshots and a guide.</p><div class="action"><a href="putting-league/">Open project →</a></div></article>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header container">
+<a class="name" href="./">Daniel Moose</a>
+<nav class="site-nav desktop-nav" aria-label="Main navigation">
+<a href="#projects">Projects</a>
+<a href="#experience">Professional Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+<details class="mobile-menu">
+<summary>Menu</summary>
+<nav class="site-nav" aria-label="Mobile navigation">
+<a href="#projects">Projects</a>
+<a href="#experience">Professional Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+</details>
+</header>
+<main id="main" class="container">
+<section class="hero" aria-labelledby="intro-title">
+<p class="eyebrow">Program operations · Education · Digital tools</p>
+<h1 id="intro-title">Building useful tools.<br>Improving how work gets done.</h1>
+<p class="intro">My background spans education, coaching, nonprofit leadership, national event outreach, and AI evaluation. I coordinate people and projects, document processes, and build tools that make the work easier to carry out. These projects show how I turn a practical need into something people can use.</p>
+<div class="actions">
+<a class="button" href="#projects">View Projects</a>
+<a class="button secondary" href="#experience">Professional Background</a>
+</div>
+</section>
+<section class="section" id="projects" aria-labelledby="projects-title">
+<div class="section-heading">
+<h2 id="projects-title">Selected Projects</h2>
+<p>Two independent projects, from planning through testing.</p>
+</div>
+<div class="projects">
+<article class="project">
+<a class="project-image" href="projects/applied-ai-lab/" aria-label="View Applied AI Lab case study">
+<img src="assets/portfolio/foundations.jpg" width="1200" height="850" alt="Applied AI Lab’s seven Foundations modules, with practice activities and a resource library.">
+</a>
+<div class="project-body">
+<h3>
+<a href="projects/applied-ai-lab/">Applied AI Lab</a>
+</h3>
+<p class="summary">A browser-based learning project with seven AI lessons and eight workplace practice scenarios. Learners examine evidence, test workflows, and explain their decisions.</p>
+<p class="skills-line">
+<strong>Skills demonstrated</strong>Learning design, documentation, evaluation criteria, and usability testing.</p>
+<div class="project-links">
+<a href="projects/applied-ai-lab/">View Project and Case Study →</a>
+<a class="live" href="lab/">Open the live Lab →</a>
 </div>
 </div>
+</article>
+<article class="project">
+<a class="project-image" href="projects/ozark-putting-league/" aria-label="View Ozark Putting League case study">
+<img src="putting-league/screenshots/phone-tv/singles-tv.jpg" width="1600" height="900" alt="Ozark Putting League’s television display with sample division standings, hot rounds, and a putting queue.">
+</a>
+<div class="project-body">
+<h3>
+<a href="projects/ozark-putting-league/">Ozark Putting League</a>
+</h3>
+<p class="summary">An app for check-in, score entry, and standings across three putting games. The public showcase includes actual app screens and a guide to the rules.</p>
+<p class="skills-line">
+<strong>Skills demonstrated</strong>Workflow design, rules implementation, score review, and interface testing.</p>
+<div class="project-links">
+<a href="projects/ozark-putting-league/">View Project and Case Study →</a>
+<a class="live" href="putting-league/">Explore the screenshots and guide →</a>
 </div>
+</div>
+</article>
+</div>
+</section>
+<section class="section" id="experience" aria-labelledby="experience-title">
+<h2 id="experience-title">Professional Experience &amp; Leadership</h2>
+<p class="experience-intro">Experience organizing programs, supporting people, and keeping recurring work on track—in schools, a nonprofit, a national event network, and AI evaluation.</p>
+<div class="experience-list">
+<article class="experience-row">
+<div>
+<h3>Senior Domain Expert</h3>
+<p class="organization">Mercor Intelligence</p>
+<p class="dates">2025–present · Remote</p>
+</div>
+<p>Evaluate AI outputs using structured criteria and rubric-based review. Identify recurring errors, ambiguous instructions, and gaps in task requirements.</p>
+</article>
+<article class="experience-row">
+<div>
+<h3>Education &amp; Program Coordination</h3>
+<p class="organization">Springdale School District</p>
+<p class="dates">2012–June 2026 · Springdale, Arkansas</p>
+</div>
+<p>Coordinated timelines, responsibilities, and communication across campuses. Developed process documentation and administrative automation, alongside instruction and academic support.</p>
+</article>
+<article class="experience-row">
+<div>
+<h3>Coaching &amp; Athletics Operations</h3>
+<p class="organization">Springdale School District</p>
+<p class="dates">2012–June 2026</p>
+</div>
+<p>Planned training and assessments, coordinated events and schedules, and organized communication for athletes and stakeholders.</p>
+</article>
+<article class="experience-row">
+<div>
+<h3>Outreach Director</h3>
+<p class="organization">National Amateur Disc Golf Tour</p>
+<p class="dates">2022–2023 · Remote</p>
+</div>
+<p>Supported a distributed event network through organizer and partner coordination, participant communication, operational documentation, and issue resolution.</p>
+</article>
+<article class="experience-row">
+<div>
+<h3>Executive Director</h3>
+<p class="organization">Kids Disc Golf</p>
+<p class="dates">Through 2024</p>
+</div>
+<p>Led nonprofit program operations, outreach, stakeholder engagement, and organizational initiatives supporting youth disc golf.</p>
+</article>
+</div>
+<p class="education">
+<strong>Education:</strong> Master of Arts in Teaching, University of Arkansas at Monticello · BA in Philosophy and Classical Studies, University of Arkansas, cum laude.</p>
+<a href="assets/portfolio/Daniel-Moose-Resume.pdf">Read the resume (PDF) →</a>
+</section>
+<section class="section" id="skills" aria-labelledby="skills-title">
+<h2 id="skills-title">Skills &amp; Tools</h2>
+<div class="skills-grid">
+<article class="skill">
+<h3>Project Coordination</h3>
+<p>Timelines, task ownership, stakeholder communication, and event coordination. Practiced across school programs and national event operations.</p>
+</article>
+<article class="skill">
+<h3>Operations &amp; Process Support</h3>
+<p>Repeatable workflows, handoffs, administrative automation, and exception handling.</p>
+<a href="projects/ozark-putting-league/">See the league workflow →</a>
+</article>
+<article class="skill">
+<h3>Documentation &amp; Reporting</h3>
+<p>Process documentation, standard operating procedures, status tracking, and practical reference guides. Microsoft Office and Google Workspace.</p>
+</article>
+<article class="skill">
+<h3>Digital Tools &amp; Evaluation</h3>
+<p>Browser-based tools, Google Apps Script, workflow testing, and rubric-based AI output review.</p>
+<a href="projects/applied-ai-lab/">See the Lab’s evaluation approach →</a>
+</article>
+<article class="skill">
+<h3>Education &amp; Program Design</h3>
+<p>Instruction, coaching, scenario design, assessment criteria, and academic support. Applied in the classroom and the Lab.</p>
+</article>
+</div>
+</section>
+<section class="contact" id="contact" aria-labelledby="contact-title">
+<h2 id="contact-title">Let’s discuss the work.</h2>
+<p>I’m interested in opportunities in program coordination, operations, learning, and digital enablement. Get in touch to discuss a role or ask about the projects.</p>
+<a class="email" href="mailto:daniel.moose@gmail.com">daniel.moose@gmail.com</a>
+<div class="actions">
+<a class="button" href="assets/portfolio/Daniel-Moose-Resume.pdf">View Resume (PDF)</a>
+<a href="assets/portfolio/Daniel-Moose-Resume.pdf" download>Download resume</a>
+<a href="https://www.linkedin.com/in/danielmoose/">LinkedIn →</a>
+</div>
+</section>
 </main>
+<footer class="site-footer container">
+<p>Daniel Moose · Springdale, Arkansas</p>
+<div class="footer-links">
+<a href="mailto:daniel.moose@gmail.com">Contact</a>
+<a href="assets/portfolio/Daniel-Moose-Resume.pdf">Resume</a>
+</div>
+</footer>
+<script>document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{a.closest('details').open=false}));</script>
 </body>
 </html>

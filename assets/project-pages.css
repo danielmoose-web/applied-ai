@@ -1,0 +1,464 @@
+/* Presentation layer only: course interfaces and gallery behavior remain independent. */
+:root {
+  color-scheme:light;
+  --ink:#18211D;
+  --paper:#F4F1EA;
+  --cream:#fffefb;
+  --muted:#4b5b51;
+  --line:#cdd3ca;
+  --mint:#DCE6DC;
+  --green:#245747;
+  --red:#245747;
+  --gold:#DCE6DC
+}
+
+body {
+  background:var(--paper);
+  color:var(--ink);
+  font:17px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
+}
+
+body::before {
+  display:none
+}
+
+h1,h2,h3 {
+  font-family:inherit;
+  font-weight:600;
+  letter-spacing:-.025em
+}
+
+h1 {
+  font-size:clamp(2.25rem,5.3vw,3.75rem);
+  line-height:1.15;
+  max-width:900px
+}
+
+h2 {
+  font-size:clamp(1.65rem,3vw,2.15rem);
+  line-height:1.2
+}
+
+h3 {
+  font-size:1.3rem;
+  line-height:1.3
+}
+
+a {
+  color:var(--green);
+  text-underline-offset:4px
+}
+
+a:focus-visible,button:focus-visible,summary:focus-visible {
+  outline:3px solid var(--green);
+  outline-offset:5px
+}
+
+header.project-header {
+  background:var(--paper);
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  max-width:1100px;
+  min-height:94px;
+  margin:auto;
+  padding:20px 0;
+  border-bottom:1px solid var(--line)
+}
+
+header.project-header .portfolio-name {
+  font-size:1.25rem;
+  font-weight:600;
+  text-decoration:none;
+  color:var(--ink);
+  letter-spacing:0
+}
+
+header.project-header nav {
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap
+}
+
+header.project-header nav a {
+  color:var(--ink);
+  font-size:.94rem;
+  font-weight:400;
+  text-decoration:none;
+  padding:10px 0
+}
+
+header.project-header nav a:hover {
+  text-decoration:underline
+}
+
+main {
+  max-width:1148px;
+  padding:0 24px;
+  margin:0 auto
+}
+
+main .hero {
+  border:0;
+  background:transparent;
+  color:var(--ink);
+  padding:54px 0 40px;
+  margin:0
+}
+
+main .hero h1 {
+  font-family:inherit;
+  font-size:clamp(2.25rem,5.3vw,3.75rem);
+  max-width:930px;
+  margin:14px 0 24px
+}
+
+main .hero p {
+  color:var(--muted);
+  font-size:1.1rem;
+  max-width:800px
+}
+
+main .hero .eyebrow,main .hero .overline {
+  color:var(--green);
+  font-size:.86rem;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none
+}
+
+.hero-actions {
+  gap:14px 24px
+}
+
+.hero-actions .cta,.hero .button-link,.button-link,.contact-block .cta {
+  background:var(--green);
+  color:#fff;
+  border:1px solid var(--green);
+  border-radius:8px;
+  min-height:48px;
+  padding:11px 20px;
+  font-size:1rem;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none
+}
+
+.hero-actions .cta:hover,.hero .button-link:hover,.button-link:hover,.contact-block .cta:hover {
+  background:#1c4438;
+  color:white
+}
+
+.hero-actions a:not(.cta):not(.button-link) {
+  color:var(--green);
+  font-weight:500
+}
+
+.hero-actions .button-link:nth-child(n+2) {
+  background:transparent;
+  color:var(--green)
+}
+
+.section-intro {
+  background:transparent;
+  padding:32px 0 10px;
+  border-top:1px solid var(--line);
+  margin-top:0
+}
+
+.section-intro .eyebrow {
+  display:none
+}
+
+.cards {
+  background:transparent;
+  padding:14px 0 40px;
+  gap:26px
+}
+
+.card,.card.two {
+  background:var(--cream);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:28px;
+  min-height:340px
+}
+
+.card .level,.card.two .level {
+  color:var(--green);
+  font-size:.84rem;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none
+}
+
+.card p,.card.two p {
+  color:var(--muted)
+}
+
+.card .cta,.card.two .cta,.card .cta:hover,.card.two .cta:hover {
+  background:var(--green);
+  color:white;
+  padding:12px 20px;
+  border:0;
+  border-radius:8px;
+  font-size:.96rem;
+  font-weight:500;
+  letter-spacing:0
+}
+
+.walkthrough {
+  background:transparent;
+  border:0;
+  border-top:1px solid var(--line);
+  padding:40px 0;
+  margin:0
+}
+
+.walkthrough .eyebrow {
+  display:none
+}
+
+.walkthrough p {
+  max-width:850px
+}
+
+.steps {
+  max-width:850px
+}
+
+.about {
+  background:transparent;
+  color:var(--ink);
+  border:0;
+  border-top:1px solid var(--line);
+  padding:40px 0;
+  margin:0
+}
+
+.about p {
+  color:var(--muted)
+}
+
+.about strong {
+  color:var(--ink)
+}
+
+.about .eyebrow {
+  color:var(--green);
+  font-size:.86rem;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none
+}
+
+.leadership-evidence article {
+  border-top:1px solid var(--line)
+}
+
+.leadership-evidence h3 {
+  font-size:1.14rem
+}
+
+.about .contact-block {
+  border-color:var(--line);
+  background:var(--mint);
+  border-radius:10px;
+  padding:24px;
+  margin-top:28px
+}
+
+.about .author-signature {
+  color:var(--ink);
+  font-family:inherit;
+  font-size:1rem;
+  font-style:normal;
+  letter-spacing:0
+}
+
+.section {
+  background:transparent;
+  border:0;
+  border-top:1px solid var(--line);
+  padding:40px 0;
+  margin:0
+}
+
+.guide-grid article {
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:24px
+}
+
+.guide-grid article h3 {
+  font-size:1.13rem
+}
+
+.section.screenshot-showcase {
+  border-top:1px solid var(--line);
+  padding:0
+}
+
+.footer,body>footer {
+  background:transparent;
+  color:var(--muted);
+  border-top:1px solid var(--line);
+  padding:24px;
+  text-align:center;
+  font-size:.92rem
+}
+
+.footer a {
+  color:var(--green);
+  font-weight:500
+}
+
+#league-phone-preview {
+  color-scheme:light
+}
+
+#league-phone-preview .showcase {
+  background:transparent;
+  color:var(--ink);
+  padding:40px 0;
+  font-family:inherit
+}
+
+#league-phone-preview h2 {
+  font:600 clamp(1.65rem,3vw,2.15rem)/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  letter-spacing:-.025em
+}
+
+#league-phone-preview button {
+  border-color:#87998a;
+  border-radius:8px;
+  font-size:15px;
+  color:var(--ink)
+}
+
+#league-phone-preview .games button[aria-pressed=true] {
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green)
+}
+
+#league-phone-preview .intro,#league-phone-preview .game-description,#league-phone-preview .count,#league-phone-preview .tv-preview p {
+  color:var(--muted)
+}
+
+#league-phone-preview .sample-note {
+  font-size:14px;
+  color:var(--muted)
+}
+
+#league-phone-preview .tv-preview {
+  border-color:var(--line)
+}
+
+#league-phone-preview .tv-preview h3 {
+  font-size:1.13rem
+}
+
+#league-phone-preview .slide-caption {
+  font-size:16px
+}
+
+#league-phone-preview .game-description {
+  font-size:16px
+}
+
+#league-phone-preview .tv-preview p {
+  font-size:15px
+}
+
+#league-phone-preview .games {
+  gap:10px
+}
+
+@media(max-width:1150px) {
+  header.project-header {
+    margin:0 24px
+  }
+
+
+}
+
+@media(max-width:700px) {
+  body {
+    font-size:16px
+  }
+
+  header.project-header {
+    margin:0 18px;
+    min-height:80px;
+    padding:16px 0;
+    gap:12px;
+    flex-direction:column;
+    align-items:flex-start
+  }
+
+  header.project-header nav {
+    gap:10px 22px
+  }
+
+  header.project-header nav a {
+    font-size:.94rem;
+    min-height:44px
+  }
+
+  main {
+    padding:0 18px
+  }
+
+  main .hero {
+    padding:34px 0
+  }
+
+  main .hero p {
+    font-size:1.06rem
+  }
+
+  .hero-actions {
+    align-items:flex-start;
+    flex-direction:row
+  }
+
+  .hero-actions .cta {
+    width:auto
+  }
+
+  .cards {
+    padding:10px 0 30px
+  }
+
+  .card {
+    padding:24px
+  }
+
+  .section-intro {
+    padding:30px 0 10px
+  }
+
+  .walkthrough,.about,.section {
+    padding:30px 0
+  }
+
+  .guide-grid {
+    gap:18px
+  }
+
+  #league-phone-preview .showcase {
+    padding:30px 0
+  }
+
+  #league-phone-preview .games button {
+    min-height:46px
+  }
+
+
+}
+
