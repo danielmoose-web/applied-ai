@@ -25,6 +25,42 @@ fieldset{border:0;padding:0;margin:0 0 14px}label,legend{font-weight:720;font-si
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .screenshots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px;margin-top:26px}.screenshots figure{margin:0;min-width:0}.screenshot-link{display:flex;align-items:center;justify-content:center;background:#082d24;aspect-ratio:4/3;border:1px solid var(--line);border-radius:5px;overflow:hidden}.screenshot-link img{display:block;max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain}.screenshots figcaption{padding:16px 0 0}.screenshots figcaption h3{margin-bottom:7px}.screenshots figcaption p{margin:0;color:var(--muted);font-size:.95rem}#demos{scroll-margin-top:24px}#screenshot-viewer{width:min(1120px,94vw);max-height:92vh;border:1px solid var(--line);border-radius:6px;background:var(--cream);color:var(--ink);padding:20px;overflow:auto}#screenshot-viewer::backdrop{background:#10231de6}#screenshot-viewer form{display:flex;justify-content:flex-end;margin:0 0 12px}#screenshot-viewer h2{font-size:1.4rem;margin-bottom:16px}#viewer-image{display:block;width:100%;height:auto}#screenshot-viewer .full-size{display:inline-block;margin-top:16px}@media(max-width:650px){.screenshots{grid-template-columns:1fr;gap:26px}.screenshot-link{aspect-ratio:1/1}#screenshot-viewer{padding:14px}}
+
+#league-phone-preview{color-scheme:light dark}
+#league-phone-preview .showcase{background:light-dark(#fffdf5,#152b23);color:light-dark(#29342e,#f6f4e9);padding:32px;font:400 16px/1.6 system-ui,sans-serif}
+#league-phone-preview h2{font:400 31px/1.15 Georgia,serif;margin:0 0 14px}
+#league-phone-preview .intro{margin:0 0 28px;color:light-dark(#536456,#c0cfc2);max-width:55ch}
+#league-phone-preview .demo-layout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:28px;align-items:start}
+#league-phone-preview .games{display:flex;flex-direction:column;gap:8px;margin:0 0 28px}
+#league-phone-preview button{font:500 14px/1.4 system-ui,sans-serif;color:inherit;background:transparent;border:1px solid light-dark(#bdc8bb,#596f5e);border-radius:5px;min-height:44px;padding:10px 14px}
+#league-phone-preview .games button{text-align:left}
+#league-phone-preview .games button[aria-pressed="true"]{background:light-dark(#293e32,#e1e9db);color:light-dark(#fffdf5,#172c22);border-color:light-dark(#293e32,#e1e9db)}
+#league-phone-preview .game-description{margin:0;color:light-dark(#536456,#c0cfc2);font-size:14px}
+#league-phone-preview .sample-note{font-size:12px;color:light-dark(#607064,#b1c3b2);margin-top:18px}
+#league-phone-preview .phone-area{max-width:314px;width:100%;margin:auto}
+#league-phone-preview .phone{position:relative;background:#1b211e;border:1px solid #657067;border-radius:39px;padding:25px 9px 21px;box-shadow:0 10px 24px #00000020}
+#league-phone-preview .phone::before{content:"";position:absolute;top:10px;left:calc(50% - 25px);width:50px;height:5px;background:#080e0b;border-radius:6px}
+#league-phone-preview .phone::after{content:"";position:absolute;bottom:8px;left:calc(50% - 36px);width:72px;height:4px;background:#9aa39d;border-radius:6px}
+#league-phone-preview .screen{aspect-ratio:1/2;overflow:hidden;border-radius:21px;background:#03241d;touch-action:pan-y}
+#league-phone-preview .screen img{display:block;width:100%;height:100%;object-fit:contain;user-select:none}
+#league-phone-preview .slide-caption{font-size:14px;margin:16px 0 11px;min-height:24px;text-align:center}
+#league-phone-preview .slideshow-controls{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#league-phone-preview .count{font-size:13px;color:light-dark(#536456,#c0cfc2);font-variant-numeric:tabular-nums}
+#league-phone-preview .tv-preview{margin:36px 0 0;padding-top:26px;border-top:1px solid light-dark(#ccd4c8,#4a6150)}
+#league-phone-preview .tv-preview h3{font:500 18px/1.4 system-ui,sans-serif;margin:0 0 15px}
+#league-phone-preview .tv-preview img{display:block;width:100%;height:auto;border-radius:5px}
+#league-phone-preview .tv-preview p{font-size:13px;color:light-dark(#536456,#c0cfc2);margin:12px 0 0}
+#league-phone-preview .television{position:relative;background:#171c19;border:3px solid #414a43;border-radius:11px;padding:8px 8px 21px;box-shadow:0 8px 16px #00000020}
+#league-phone-preview .tv-glass{aspect-ratio:16/9;overflow:hidden;background:#03241d;border-radius:3px}
+#league-phone-preview .tv-glass img{width:100%;height:100%;object-fit:contain;border-radius:0}
+#league-phone-preview .tv-brand{position:absolute;bottom:3px;left:0;width:100%;text-align:center;color:#a2aaa4;font:400 11px/1.2 system-ui,sans-serif;letter-spacing:.07em}
+#league-phone-preview .tv-power{position:absolute;right:15px;bottom:8px;width:4px;height:4px;border-radius:50%;background:#92c39a}
+#league-phone-preview .tv-legs{position:relative;height:24px;width:76%;margin:auto}
+#league-phone-preview .tv-legs::before,#league-phone-preview .tv-legs::after{content:"";position:absolute;top:-3px;width:8px;height:27px;background:#262e28;border-radius:0 0 3px 3px}
+#league-phone-preview .tv-legs::before{left:6%;transform:rotate(28deg)}#league-phone-preview .tv-legs::after{right:6%;transform:rotate(-28deg)}
+@media(max-width:550px){#league-phone-preview .showcase{padding:24px 18px}#league-phone-preview .demo-layout{grid-template-columns:1fr;gap:22px}#league-phone-preview .games{flex-direction:row;flex-wrap:wrap;margin-bottom:14px;gap:7px}#league-phone-preview .games button{flex:1;padding:10px 8px;text-align:center}#league-phone-preview .sample-note{margin:10px 0 0}#league-phone-preview .phone-area{max-width:300px}#league-phone-preview h2{font-size:28px}}
+
+.section.screenshot-showcase{padding:0}
 </style>
 </head>
 <body>
@@ -32,10 +68,43 @@ fieldset{border:0;padding:0;margin:0 0 14px}label,legend{font-weight:720;font-si
 <header><a class="brand" href="../">DANIEL MOOSE / PROJECTS</a><nav aria-label="Page navigation"><a href="#screenshots">Screenshots</a><a href="#guide">Guide</a><a href="#approach">About the project</a></nav></header>
 <main id="main">
 <section class="hero" aria-labelledby="title"><div class="overline">App screenshots and rules</div><h1 id="title">Ozark Putting League</h1><p>An app for checking players in, recording scores, and showing standings for singles, doubles, and disc golf baseball.</p><p>The screenshots below show the app with fictional players and scores. Player records and organizer tools are private.</p><div class="hero-actions"><a class="button-link" href="#screenshots">View screenshots</a><a class="button-link" href="#guide">Read the guide</a><a class="button-link" href="../">Portfolio home</a></div></section>
-<section class="section" id="screenshots" aria-labelledby="screenshots-title"><span id="demos" aria-hidden="true"></span><h2 id="screenshots-title">Inside the app</h2><p id="screenshot-note">Screenshots from the app with fictional players and scores. Select an image to enlarge it.</p><div class="screenshots"><figure><a class="screenshot-link" href="screenshots/singles.jpg" data-title="Singles scorecard" aria-label="Enlarge singles scorecard screenshot"><img src="screenshots/singles.jpg" alt="Singles scorecard showing Alex, Jamie, and Morgan at the 20-foot station." loading="lazy" decoding="async"></a><figcaption><h3>Singles scorecard</h3><p>Record up to three players’ scores on one card.</p></figcaption></figure>
-<figure><a class="screenshot-link" href="screenshots/doubles.jpg" data-title="Doubles scoring" aria-label="Enlarge doubles scoring screenshot"><img src="screenshots/doubles.jpg" alt="Doubles match with Cranberry ahead 7–5 and paired putt entry controls." loading="lazy" decoding="async"></a><figcaption><h3>Doubles scoring</h3><p>Enter both players’ putts and review the turn before saving.</p></figcaption></figure>
-<figure><a class="screenshot-link" href="screenshots/baseball.jpg" data-title="Baseball game view" aria-label="Enlarge baseball game view screenshot"><img src="screenshots/baseball.jpg" alt="Game Wire showing Morgan batting against Riley, with runners on second and third." loading="lazy" decoding="async"></a><figcaption><h3>Baseball game view</h3><p>Follow at-bats, pitcher responses, runners, and the play feed.</p></figcaption></figure>
-<figure><a class="screenshot-link" href="screenshots/baseball-tv.jpg" data-title="Baseball TV display" aria-label="Enlarge baseball tv display screenshot"><img src="screenshots/baseball-tv.jpg" alt="Baseball TV display with scoreboard, base runners, batter, and pitcher." loading="lazy" decoding="async"></a><figcaption><h3>Baseball TV display</h3><p>Show the score, runners, batter, and pitcher on a large screen.</p></figcaption></figure></div></section>
+<section class="section screenshot-showcase" id="screenshots" aria-labelledby="screenshots-title"><span id="demos" aria-hidden="true"></span><div id="league-phone-preview">
+
+<section class="showcase" aria-label="Putting League phone slideshow preview">
+<h2 id="screenshots-title">Inside the app</h2>
+<p class="intro">Choose a game to see its phone and LeagueTV screens.</p>
+<div class="demo-layout">
+<div>
+<div class="games" role="group" aria-label="Choose game">
+<button type="button" data-game="singles" aria-pressed="false">Singles</button>
+<button type="button" data-game="doubles" aria-pressed="false">Doubles</button>
+<button type="button" data-game="baseball" aria-pressed="true">Baseball</button>
+</div>
+<p class="game-description" id="phone-game-description">Follow the game and open a sample player card.</p>
+<p class="sample-note">Sample screens and scores. Baseball uses the app’s exhibition player cards.</p>
+</div>
+<section class="phone-area" aria-label="Phone screenshot slideshow">
+<div class="phone" aria-label="Phone frame"><div class="screen"><img src="screenshots/phone-tv/baseball-card.jpg" id="phone-image" alt="Sample Paul McBeth player card open inside the baseball app." draggable="false"></div></div>
+<p class="slide-caption" id="phone-caption" aria-live="polite">Sample player card</p>
+<div class="slideshow-controls"><button type="button" id="phone-previous" aria-label="Previous screenshot">← Previous</button><span class="count" id="phone-count">2 / 2</span><button type="button" id="phone-next" aria-label="Next screenshot">Next →</button></div>
+</section>
+</div>
+<figure class="tv-preview"><h3 id="tv-title">LeagueTV · Baseball</h3><div class="television" aria-label="Television frame"><div class="tv-glass"><img src="screenshots/phone-tv/baseball-tv.jpg" id="tv-image" alt="Sample baseball TV scoreboard showing illustrated player cards." loading="lazy"></div><span class="tv-brand" aria-hidden="true">LeagueTV</span><span class="tv-power" aria-hidden="true"></span></div><div class="tv-legs" aria-hidden="true"></div><p id="tv-caption" aria-live="polite">Sample exhibition game with illustrated player cards.</p></figure>
+</section>
+<template id="phone-assets">
+<img data-file="singles-entry" src="screenshots/phone-tv/singles-entry.jpg">
+<img data-file="singles-review" src="screenshots/phone-tv/singles-review.jpg">
+<img data-file="doubles-entry" src="screenshots/phone-tv/doubles-entry.jpg">
+<img data-file="doubles-review" src="screenshots/phone-tv/doubles-review.jpg">
+<img data-file="baseball-feed" src="screenshots/phone-tv/baseball-feed.jpg">
+<img data-file="baseball-card" src="screenshots/phone-tv/baseball-card.jpg">
+<img data-file="singles-tv" src="screenshots/phone-tv/singles-tv.jpg">
+<img data-file="doubles-tv" src="screenshots/phone-tv/doubles-tv.jpg">
+<img data-file="baseball-tv" src="screenshots/phone-tv/baseball-tv.jpg">
+</template>
+
+</div>
+</section>
 <section class="section" id="guide" aria-labelledby="guide-title"><h2 id="guide-title">How to play</h2><p>A short guide to check-in, scoring, and results.</p><div class="guide-grid">
 <article><h3>01 / Check-in and cards</h3><p>Organizers create an event, check players in, and assign scoring groups. A scorekeeper can record scores for up to three players on one phone.</p></article>
 <article><h3>02 / Singles scoring</h3><p>Play three rounds. Each round includes five putts at 15, 20, 25, and 32 feet. Each make earns 3, 5, 7, or 10 points, respectively. Review the scores before submitting a round.</p></article>
@@ -46,8 +115,22 @@ fieldset{border:0;padding:0;margin:0 0 14px}label,legend{font-weight:720;font-si
 </div></section>
 <section class="section" id="approach" aria-labelledby="approach-title"><h2 id="approach-title">What I built</h2><p>I designed and built the check-in screens, scorecards, and standings, and implemented the scoring rules for all three games. I also tested score entry, corrections, and results.</p><p>I used AI tools to help write code, then reviewed and tested it.</p><p><a class="button-link" href="../">Back to portfolio</a></p></section>
 </main><footer class="footer">Ozark Putting League · Screenshots and guide · Designed by Daniel Moose · <a href="../">Portfolio home</a></footer>
-<dialog id="screenshot-viewer" aria-labelledby="viewer-title"><form method="dialog"><button class="button-link" type="submit">Close screenshot</button></form><h2 id="viewer-title"></h2><img id="viewer-image" alt=""><a class="full-size" id="viewer-full-size" target="_blank" rel="noopener">Open full-size image</a></dialog>
 <script>
-(()=>{const viewer=document.getElementById('screenshot-viewer');if(!viewer||typeof viewer.showModal!=='function')return;const image=document.getElementById('viewer-image'),title=document.getElementById('viewer-title'),full=document.getElementById('viewer-full-size');for(const link of document.querySelectorAll('.screenshot-link'))link.addEventListener('click',event=>{event.preventDefault();image.src=link.href;image.alt=link.querySelector('img').alt;title.textContent=link.dataset.title;full.href=link.href;viewer.showModal();});})();
+(()=>{
+const root=document.getElementById('league-phone-preview'),bank=root.querySelector('#phone-assets').content;
+const slides={singles:[{file:'singles-entry',caption:'Enter a station score',alt:'Singles scorecard for sample player Alex, with two of five putts made.'},{file:'singles-review',caption:'Review the round',alt:'Singles score review showing each station and a 50-point round total.'}],doubles:[{file:'doubles-entry',caption:'Score the paired putts',alt:'Doubles scoreboard and paired putt entry controls with sample teams.'},{file:'doubles-review',caption:'Confirm before saving',alt:'Doubles confirmation screen showing two makes and three points for each player.'}],baseball:[{file:'baseball-feed',caption:'Follow the at-bat',alt:'Baseball Game Wire with sample player portraits for Paul McBeth and Eagle McMahon.'},{file:'baseball-card',caption:'Sample player card',alt:'Sample Paul McBeth player card open inside the baseball app.'}]};
+const descriptions={singles:'Enter scores, then review each station before submitting the round.',doubles:'Record both opponents’ putts and confirm the turn together.',baseball:'Follow the game and open a sample player card.'};
+const television={singles:{title:'LeagueTV · Singles',alt:'Sample Singles LeagueTV standings for Pro, Am, and Women divisions, hot rounds, and the putting queue.',caption:'Division standings, hot rounds, and the putting queue.'},doubles:{title:'LeagueTV · Doubles',alt:'Sample Doubles LeagueTV display with two matches and the overall single-elimination bracket.',caption:'Match scores and the tournament bracket.'},baseball:{title:'LeagueTV · Baseball',alt:'Sample Baseball LeagueTV scoreboard with illustrated Paul McBeth and Eagle McMahon player cards and runner portraits.',caption:'Scoreboard, runners, and exhibition player cards.'}};
+const image=root.querySelector('#phone-image'),caption=root.querySelector('#phone-caption'),count=root.querySelector('#phone-count'),description=root.querySelector('#phone-game-description');
+let game='baseball',indices={singles:0,doubles:0,baseball:1};
+function restore(saved){if(saved?.game&&slides[saved.game])game=saved.game;if(saved?.indices)for(const key of Object.keys(indices))if(Number.isInteger(saved.indices[key])&&saved.indices[key]>=0&&saved.indices[key]<slides[key].length)indices[key]=saved.indices[key];}
+function render(){const item=slides[game][indices[game]],tv=television[game];image.src=bank.querySelector('[data-file="'+item.file+'"]').getAttribute('src');image.alt=item.alt;caption.textContent=item.caption;count.textContent=(indices[game]+1)+' / '+slides[game].length;description.textContent=descriptions[game];root.querySelector('#tv-image').src=bank.querySelector('[data-file="'+game+'-tv"]').getAttribute('src');root.querySelector('#tv-image').alt=tv.alt;root.querySelector('#tv-title').textContent=tv.title;root.querySelector('#tv-caption').textContent=tv.caption;for(const b of root.querySelectorAll('[data-game]'))b.setAttribute('aria-pressed',String(b.dataset.game===game));}
+function move(delta){indices[game]=(indices[game]+delta+slides[game].length)%slides[game].length;render();}
+for(const b of root.querySelectorAll('[data-game]'))b.addEventListener('click',()=>{game=b.dataset.game;render();});
+root.querySelector('#phone-previous').addEventListener('click',()=>move(-1));root.querySelector('#phone-next').addEventListener('click',()=>move(1));
+root.querySelector('.phone-area').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();move(e.key==='ArrowRight'?1:-1);}});
+let touchX=null;root.querySelector('.screen').addEventListener('pointerdown',e=>{touchX=e.clientX;});root.querySelector('.screen').addEventListener('pointerup',e=>{if(touchX!==null&&Math.abs(e.clientX-touchX)>45)move(e.clientX<touchX?1:-1);touchX=null;});
+render();
+})();
 </script>
 </body></html>

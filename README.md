@@ -25,3 +25,4 @@ Foundations and Studio run in the browser. Learner progress stays in localStorag
 ## Checks
 
 Run `npm ci`, install Playwright Chromium, then run `npm test`. Set CHROMIUM_PATH when using an existing browser executable. The tests cover five-stage scoring, validation, draft persistence, downloads, backups, attempt history, and nested project navigation.
+The Putting League showcase pairs a phone screenshot slideshow with LeagueTV. One game selector switches both displays between Singles, Doubles, and Baseball. All scores are samples; baseball uses the app’s isolated exhibition player cards. No operational app code or endpoints are bundled.
