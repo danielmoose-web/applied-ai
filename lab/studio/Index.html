@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#383d37">
+  <base target="_top">
+  <title>Applied AI Lab | Level 02 — Applied AI Studio</title>
+  <style>
+    :root { --navy:#101827; --navy2:#192538; --ink:#172235; --sub:#5b6b7f; --teal:#007f78; --aqua:#dff4f0; --light:#f4f7f9; --line:#dce4ea; --white:#ffffff; --gold:#dc9b31; --danger:#b43f3f; --radius:15px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--light); font-family: Inter, -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--ink); line-height:1.48; }
+    button,select,input,textarea { font:inherit; }
+    button { cursor:pointer; }
+    button:disabled { cursor:not-allowed; opacity:.45; }
+    :focus-visible { outline:3px solid #40b9a9; outline-offset:3px; }
+    .app { min-height:100vh; display:grid; grid-template-columns:260px minmax(0,1fr); }
+    .rail { background:var(--navy); color:#fff; padding:27px 18px; display:flex; flex-direction:column; gap:24px; min-height:100vh; }
+    .brand { display:flex; align-items:center; gap:11px; padding:0 9px; font-size:19px; font-weight:800; letter-spacing:-.5px; }
+    .brand-mark { height:34px; width:34px; border-radius:12px; background:#65dec9; color:var(--navy); display:grid; place-items:center; font-weight:900; }
+    .rail-cap { color:#93a1b3; font-size:10px; font-weight:800; letter-spacing:1.75px; text-transform:uppercase; padding:0 12px; margin-bottom:9px; }
+    .rail-nav { display:grid; gap:5px; }
+    .rail-item { width:100%; text-align:left; border:0; background:transparent; color:#b8c6d5; border-radius:10px; display:flex; align-items:center; gap:11px; padding:11px 12px; font-size:13px; }
+    .rail-item.current { background:#28394d; color:#fff; font-weight:750; }
+    .rail-item:hover { background:#223144; color:#fff; }
+    .nav-num { display:inline-grid; place-items:center; border:1px solid #596779; font-size:11px; width:24px; height:24px; border-radius:7px; flex:0 0 auto; }
+    .rail-item.current .nav-num { background:#53c9b9; border-color:#53c9b9; color:#12212e; }
+    .rail-bottom { margin-top:auto; padding:15px 13px; border:1px solid #3d4c5e; border-radius:13px; font-size:12px; color:#b8c6d5; }
+    .rail-bottom strong { color:#fff; }
+    .main { width:100%; max-width:1260px; padding:32px clamp(22px,5vw,65px) 65px; margin:auto; }
+    .topline { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; }
+    .eyebrow { font-size:11px; font-weight:850; color:var(--teal); letter-spacing:2px; text-transform:uppercase; }
+    .pill { border-radius:30px; background:#e3edf5; color:#42607d; padding:6px 12px; font-size:11px; font-weight:750; white-space:nowrap; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(32px,4.5vw,49px); line-height:1.08; margin:12px 0; letter-spacing:-1.8px; }
+    h2 { font-size:25px; line-height:1.2; letter-spacing:-.6px; margin:0 0 8px; }
+    h3 { font-size:16px; margin:0 0 9px; }
+    .lead { font-size:16px; color:var(--sub); max-width:760px; margin:0 0 25px; }
+    .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .btn { background:var(--teal); color:white; border:1px solid var(--teal); border-radius:9px; padding:11px 16px; font-size:13px; font-weight:800; display:inline-flex; gap:8px; align-items:center; justify-content:center; text-decoration:none; transition:transform .12s,background .12s; }
+    .btn:hover:not(:disabled){ transform:translateY(-1px); background:#006b66; }
+    .btn.outline { background:#fff; color:var(--ink); border:1px solid var(--line); }
+    .btn.outline:hover:not(:disabled) { background:#eff4f7; }
+    .btn.dark { background:var(--navy); border-color:var(--navy); }
+    .btn.soft { background:#e8f7f3; color:#066d66; border-color:#c7e8e1; }
+    .btn.small { font-size:12px; padding:8px 11px; }
+    .btn.full { width:100%; }
+    .btn:focus-visible { outline-offset:2px; }
+    .panel { background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 4px 19px rgba(24,41,62,.035); padding:23px; }
+    .panel + .panel { margin-top:16px; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(230px,1fr); gap:15px; margin:24px 0 21px; }
+    .hero { color:#fff; background:linear-gradient(115deg,#152336,#224550); border-radius:18px; padding:28px; min-height:230px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; position:relative; }
+    .hero:after { content:""; position:absolute; width:180px;height:180px;border-radius:100%;border:36px solid rgba(116,218,202,.09);right:-85px;top:-90px; }
+    .hero h2 { font-size:25px; max-width:460px; }
+    .hero p { color:#cedbdc; font-size:13px; max-width:470px; }
+    .hero .eyebrow { color:#79e4d3; }
+    .metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+    .metric { background:#fff; border:1px solid var(--line); border-radius:13px; padding:21px; }
+    .metric .val { font-size:29px; font-weight:850; letter-spacing:-1px; }
+    .metric .label { color:var(--sub); font-size:12px; }
+    .section-cap { color:#79889c; font-size:11px; font-weight:800; letter-spacing:1.35px; text-transform:uppercase; margin:28px 0 12px; }
+    .game-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px; }
+    .game-card { border:1px solid var(--line);border-radius:13px;background:#fff;padding:18px;min-height:165px;display:flex; flex-direction:column;gap:8px; }
+    .game-card.active { border-color:#91d1c6; background:linear-gradient(155deg,#fff 68%,#eafaf7); }
+    .game-card .meta { font-size:11px; color:var(--sub); }
+    .game-card p { color:var(--sub); font-size:12px; margin:0; }
+    .game-card .btn { margin-top:auto; align-self:start; }
+    .game-card.disabled { opacity:.72; }
+    .muted { color:var(--sub); }
+    .smalltxt { font-size:12px; }
+    .step-header { display:flex; justify-content:space-between; align-items:start; gap:14px; flex-wrap:wrap; margin-bottom:19px; }
+    .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:19px 0 22px; }
+    .step { border:1px solid var(--line); background:#fff; border-radius:9px; padding:11px 4px; text-align:center; font-size:11px; font-weight:800; color:#8793a2; }
+    .step.active { background:#e3f7f2; color:var(--teal); border-color:#6ec9b9; }
+    .step.done { background:#172b3a; border-color:#172b3a; color:#fff; }
+    .stage-layout { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(265px,.85fr); gap:16px; align-items:start; }
+    .stage-layout .panel { margin:0; }
+    .instructions { padding:17px 20px; background:#eaf4f3; border-radius:12px; border-left:3px solid #0d9187; margin-bottom:18px; font-size:13px; }
+    .instructions p:last-child { margin-bottom:0; }
+    .field { margin:0 0 19px; }
+    .field>label, .field>fieldset>legend { font-size:13px; font-weight:800; display:block; margin-bottom:7px; }
+    .field .hint { font-size:12px; color:var(--sub); margin:0 0 9px; }
+    select,input[type="number"],input[type="text"],textarea { width:100%; padding:11px 12px; border:1px solid #c6d3dd; border-radius:9px; background:white; color:var(--ink); font-size:13px; }
+    textarea { resize:vertical; min-height:74px; }
+    input[type="checkbox"] { accent-color:var(--teal); width:17px; height:17px; flex-shrink:0; }
+    .checkrow { display:flex;align-items:flex-start;gap:9px;font-size:13px;margin:9px 0; }
+    .field fieldset { border:0; padding:0; margin:0; }
+    .inline-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .sourcebox { background:#f5f8fa; border:1px solid #e2e9ed; border-radius:10px;padding:13px; margin-bottom:12px; }
+    .sourcebox strong { font-size:12px; }
+    .sourcebox p { color:var(--sub); font-size:12px;margin:5px 0 0; }
+    .data-table { border-collapse:collapse; width:100%; font-size:11.5px; margin:10px 0 16px; }
+    .data-table th, .data-table td { padding:7px 8px; border-bottom:1px solid #e6ebef; text-align:left; }
+    .data-table th { color:#5a6f80; background:#f2f6f8; font-weight:800; }
+    .data-table td.n { text-align:right; font-variant-numeric:tabular-nums; }
+    .scroll-x { overflow-x:auto; }
+    .question-note { background:#fff8e9; color:#6b4b16; border:1px solid #f1deb4;border-radius:11px;padding:13px 15px;font-size:12px;margin-bottom:14px; }
+    .stage-footer { margin-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .checkpoint { background:#e7f6f2; border:1px solid #b7e1d8;border-radius:12px;padding:15px;margin-top:18px; }
+    .checkpoint strong { display:block;margin-bottom:8px; }
+    .checkpoint p { font-size:12px; margin:0 0 12px; }
+    .error { color:#a02c39; font-size:12px; margin-top:8px; }
+    .notice { font-size:12px;background:#eff5f8;padding:12px;border-radius:9px;color:#456175; }
+    .scorebig { font-size:62px;font-weight:850;letter-spacing:-3px;line-height:1; }
+    .scorebig span {font-size:22px;color:#788a9c;font-weight:600;letter-spacing:0;}
+    .barback {height:9px; background:#e5ecef; border-radius:8px; overflow:hidden;}
+    .bar {height:100%;background:var(--teal);border-radius:8px;}
+    .results-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:15px; }
+    .result-metric { padding:12px;border-bottom:1px solid #e7ecef;display:flex;gap:10px;justify-content:space-between;font-size:13px; }
+    .receipt { background:#f6f9fa; border:1px solid #dfe8e9;border-radius:10px;padding:15px;margin:14px 0; }
+    .consent { padding:13px 15px; border:1px solid #dce5e9;border-radius:11px;margin:8px 0; }
+    .progressline {height:5px;background:#dce9eb;border-radius:6px;margin-top:9px;overflow:hidden;}
+    .progressline>div {height:100%;background:var(--teal);}
+    .footnote { font-size:11px; color:var(--sub); margin-top:18px; }
+    .hidden { display:none!important; }
+    .tag { display:inline-flex; align-items:center; font-size:10px; font-weight:800;color:#0d766e;background:#e4f6f0;padding:4px 8px;border-radius:5px; }
+    .footer { border-top:1px solid var(--line); padding-top:18px; margin-top:44px; display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap; color:#7c8c9c; font-size:11px; }
+    @media(max-width:1000px){ .app{grid-template-columns:205px minmax(0,1fr)}.main{padding:27px 23px}.hero-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(4,1fr)}.metric{padding:15px}.metric .val{font-size:24px}.stage-layout{grid-template-columns:1fr}.stage-layout aside{order:2;} }
+    @media(max-width:690px){.app{display:block}.rail{position:static;min-height:0;padding:13px;gap:8px}.brand{font-size:16px}.rail-cap,.rail-nav,.rail-bottom{display:none}.main{padding:21px 16px 35px}.metric-grid{grid-template-columns:repeat(2,1fr)}.game-grid,.results-grid,.inline-grid{grid-template-columns:1fr}.hero{padding:23px}.steps{gap:3px}.step{font-size:9px;padding:9px 1px}.panel{padding:17px}.stage-footer .btn{flex:1}.scorebig{font-size:47px}}
+
+    /* v1.1 | Bright Studio — selected palette: mint, aqua, peach, coral */
+    :root {
+      --navy:#10223e; --navy2:#203e51; --ink:#10223e; --sub:#60748b;
+      --teal:#087b70; --mint:#5bdac1; --aqua:#87e5e9; --peach:#ffbd86;
+      --coral:#ff8d91; --light:#f7fbfd; --line:#dfeaf1; --white:#fff;
+      --gold:#b97022; --danger:#b33d57;
+    }
+    body {background:radial-gradient(circle at 99% 0%,#fff1e7 0,transparent 21%),radial-gradient(circle at 78% 0%,#e2f9f7 0,transparent 27%),var(--light)}
+    .rail {background:#fff;color:var(--ink);border-right:1px solid var(--line);box-shadow:2px 0 12px rgba(36,69,92,.025)}
+    .brand {color:var(--ink)}
+    .brand-mark {background:linear-gradient(135deg,#99f1e4,#55d9c7);color:#082d37}
+    .rail-cap {color:#7a8da4}
+    .rail-item {color:#435c79}
+    .rail-item.current {background:linear-gradient(105deg,#d8f9ef,#d9f8f9);color:#096b65;font-weight:800}
+    .rail-item:hover {background:#e9f8f7;color:#095f60}
+    .nav-num {border-color:#bed5db;color:#345c67}
+    .rail-item.current .nav-num {background:#74ddce;border-color:#64d0c3;color:#064c49}
+    .rail-bottom {color:#426578;background:linear-gradient(130deg,#ddfaf2,#e6fafb);border:1px solid #c9f0e7}
+    .rail-bottom strong {color:#0b6d6a}
+    .eyebrow {color:#0c8c83}
+    .pill {background:#ebf4f8;color:#426780}
+    .btn {box-shadow:0 3px 9px rgba(10,124,113,.11)}
+    .btn:hover:not(:disabled) {background:#00645e}
+    .btn.outline {box-shadow:none}
+    .btn.dark {background:#1a3552;border-color:#1a3552}
+    .btn.soft {background:#dbfaf2;color:#075f57;border-color:#baebde}
+    .hero {color:#143647;background:linear-gradient(115deg,#c5fae9 0%,#d6f8f8 58%,#fff0e2 100%);box-shadow:0 7px 22px rgba(39,119,130,.07)}
+    .hero:after {border-color:rgba(255,164,126,.24)}
+    .hero h2,.hero p {color:#143647}
+    .hero .eyebrow {color:#00786e}
+    .hero .row>span {color:#466d77!important}
+    .metric {box-shadow:0 4px 16px rgba(23,71,94,.035)}
+    .metric:nth-child(1) {border-color:#baeee2;background:linear-gradient(150deg,#fff 53%,#e3fbf5)}
+    .metric:nth-child(2) {border-color:#bfecef;background:linear-gradient(150deg,#fff 53%,#e6fcfd)}
+    .metric:nth-child(3) {border-color:#ffdeba;background:linear-gradient(150deg,#fff 53%,#fff4e8)}
+    .metric:nth-child(4) {border-color:#ffd0d3;background:linear-gradient(150deg,#fff 53%,#fff0f0)}
+    .panel {box-shadow:0 5px 20px rgba(30,71,97,.04)}
+    .game-card {box-shadow:0 4px 15px rgba(30,71,97,.035)}
+    .game-card.active {border-color:#88e4d1;background:linear-gradient(145deg,#fff 55%,#e9fbf5)}
+    .game-card:nth-child(4n+2) {border-top:3px solid #77dfe4}
+    .game-card:nth-child(4n+3) {border-top:3px solid #ffbd86}
+    .game-card:nth-child(4n+4) {border-top:3px solid #ff9ba3}
+    .step.active {background:#e5faf5;border-color:#80dfcf;color:#006e68}
+    .step.done {background:#cbf6ed;border-color:#a8eadc;color:#105d5a}
+    .step:nth-child(2).active {background:#e4fafe;border-color:#a5e8ee}
+    .step:nth-child(3).active {background:#fff1e3;border-color:#ffc998;color:#8a4c1d}
+    .step:nth-child(4).active {background:#fff0f1;border-color:#ffb1ba;color:#a14154}
+    .step:nth-child(5).active {background:#eef0ff;border-color:#c0c5fc;color:#525aaa}
+    .instructions {background:linear-gradient(100deg,#e2fbf3,#eafafa);border-left-color:#19a78b}
+    .sourcebox {background:#f8fcfe}
+    .data-table th {background:#e9f8f7;color:#315c66}
+    .question-note {background:#fff4e8;color:#80511a;border-color:#ffe0bc}
+    .checkpoint {background:#e6fbf5;border-color:#a5e8d9}
+    .notice {background:#ebf7fa;color:#416d7c}
+    .receipt {background:#f3fbfd}
+    .consent {background:#fbfeff}
+    .consent:has(input:checked) {border-color:#93ddca;background:#f1fcf7}
+    .tag {background:#dff8f1;color:#086e66}
+    :focus-visible {outline-color:#fb9268}
+
+  
+/* LEVEL 02 STUDIO / FOUNDATION DESIGN SYSTEM 1.2 */
+
+:root {--navy:#383d37;--navy2:#252b27;--ink:#383d37;--sub:#59625b;--teal:#1265c7;--aqua:#a8e5e8;--light:#fffdf7;--line:#d8dbcf;--white:#fffdf7;--gold:#ffe51c;--danger:#b83637;--radius:6px;
+--f-aqua:#74ddce;--f-orange:#ff653c;--f-yellow:#ffe51c;--f-cyan:#17acdf;--f-blue:#1265c7;--f-lime:#c9e65c;--f-pink:#f1a4b7;--f-ink:#383d37;--f-cream:#fffdf7}
+html{background:var(--f-cream)}body{font-family:'Lexend',Arial,sans-serif;background:var(--f-cream);color:var(--ink);line-height:1.5}
+.app{display:block;min-height:100vh;position:relative;z-index:1;background:transparent}
+.shared-paint{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.83;overflow:hidden}
+.shared-paint svg{width:100%;height:100%;display:block}
+.studio-head{position:sticky;top:0;z-index:20;background:var(--f-ink);color:var(--f-cream)}
+.studio-head-inner{max-width:1250px;margin:auto;padding:12px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.brand{display:block;padding:0;font-size:20px;line-height:1.2;color:#fff;font-weight:600;white-space:nowrap}
+.brand small{display:block;font-weight:700;letter-spacing:2px;color:var(--f-lime);font-size:10px;margin-top:4px}
+.studio-nav{display:flex;gap:8px;flex-wrap:wrap}
+.studio-nav .rail-item{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:white;width:auto;padding:10px 14px;border:1px solid #7e877d;border-radius:4px;letter-spacing:.3px;font-size:11px;font-weight:800;text-transform:uppercase}
+.studio-nav .rail-item.current{background:var(--f-yellow);border-color:var(--f-yellow);color:var(--f-ink)}
+.studio-nav .rail-item:hover,.studio-nav .rail-item:focus-visible{background:var(--f-aqua)!important;border-color:var(--f-ink)!important;color:var(--f-ink)!important;opacity:1!important;visibility:visible!important}
+.main{max-width:1250px;padding:30px 30px 65px;width:100%;margin:auto}
+#view-home,#view-game,#view-results{background:rgba(255,253,247,.92);padding:22px 26px 28px;box-shadow:0 0 0 1px rgba(56,61,55,.08)}
+.topline{margin-bottom:6px}.eyebrow{color:var(--f-ink);font-size:10px;letter-spacing:2.3px}
+h1,h2,h3{font-family:'Lexend',Arial,sans-serif;letter-spacing:-.7px}h1{font-size:clamp(30px,4vw,52px);line-height:1.15;max-width:850px}h2{font-size:25px}
+.lead{font-size:15px;color:var(--sub)}.pill{background:var(--f-aqua);color:var(--f-ink);border-radius:3px;font-weight:800}
+.btn{border-radius:4px;background:var(--f-yellow);color:var(--f-ink);border-color:var(--f-yellow);box-shadow:none;font-weight:800;text-transform:uppercase;letter-spacing:.35px}
+.btn:hover:not(:disabled){background:var(--f-lime);border-color:var(--f-lime);color:var(--f-ink);transform:translateY(-1px)}
+.btn.outline{background:#fffdf7;color:var(--f-ink);border:1px solid var(--f-ink)}.btn.outline:hover:not(:disabled){background:var(--f-aqua)}
+.btn.dark{background:var(--f-ink);color:#fff;border-color:var(--f-ink)}.btn.soft{background:var(--f-aqua);border-color:var(--f-aqua);color:var(--f-ink)}
+.hero-grid{grid-template-columns:minmax(0,1.42fr) minmax(250px,1fr);gap:12px;margin-top:23px}
+.hero{background:var(--f-ink);color:#fff;border-radius:5px;padding:27px;min-height:258px;border-top:7px solid var(--f-yellow);box-shadow:none}
+.hero::after{border-color:rgba(23,172,223,.35)}.hero h2{color:#fff;font-size:27px}.hero p{color:#e1e9df;font-size:13px}.hero .eyebrow{color:var(--f-lime)}.hero .row>span{color:var(--f-aqua)!important}
+.metric-grid{gap:9px}.metric{background:#fff!important;border:1px solid #d0d9cf!important;border-top:6px solid var(--f-cyan)!important;border-radius:5px;box-shadow:none!important;padding:19px}
+.metric:nth-child(2){border-top-color:var(--f-yellow)!important}.metric:nth-child(3){border-top-color:var(--f-orange)!important}.metric:nth-child(4){border-top-color:var(--f-pink)!important}
+.metric .val{font-size:30px;font-weight:700}.metric .label{color:var(--f-ink)}
+.section-cap{color:#3d5144;margin:25px 0 13px;font-size:11px;letter-spacing:1.8px}
+.game-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.game-card,.game-card.disabled,.game-card.active{background:var(--f-ink);border:1px solid #404940;border-top:7px solid var(--f-yellow);border-radius:5px;padding:18px 17px;min-height:228px;display:flex;flex-direction:column;box-shadow:none;opacity:1;color:#fff}
+.game-card:nth-child(4n+2){border-top:7px solid var(--f-cyan)}
+.game-card:nth-child(4n+3){border-top:7px solid var(--f-orange)}
+.game-card:nth-child(4n+4){border-top:7px solid var(--f-lime)}
+.game-card h3{font-size:17px;color:#fff}.game-card p{font-size:12px;color:#e0e6df}.game-card .meta{color:#b6dae3}.game-card .pill{background:#c8e7d2}
+.game-card.active .tag{background:var(--f-lime);color:var(--f-ink)}.game-card .btn{margin-top:auto;width:100%}
+.panel{border:1px solid #d6dacf;background:#fffdf7;box-shadow:none;border-radius:5px}.panel h2{color:var(--f-ink)}
+.instructions{background:#eff9ed;border-left:5px solid var(--f-cyan);border-radius:3px;color:var(--f-ink)}
+.steps{gap:7px}.step{border-radius:4px;border:1px solid #b1bdb4;background:#fff;color:var(--f-ink)}
+.step.active{border:2px solid var(--f-orange)!important;background:var(--f-yellow)!important;color:var(--f-ink)!important}
+.step.done{background:var(--f-ink)!important;color:var(--f-lime)!important;border-color:var(--f-ink)!important}
+.sourcebox{background:#f5f7ed;border-color:#d4d9c8;border-radius:4px}
+.data-table th{background:var(--f-aqua);color:var(--f-ink)}
+.question-note{background:#fff9d6;color:#574e20;border-color:#ded079;border-radius:4px}
+.checkpoint{background:#ebf9ee;border:1px solid #a3d9c4;border-radius:4px}
+.notice{background:#eaf8fb;color:#23525e;border-radius:4px}.tag{background:var(--f-lime);color:var(--f-ink);border-radius:3px}
+.pill,.tag{letter-spacing:.3px}
+input,textarea,select,input[type=number],input[type=text]{border-radius:4px;color:var(--f-ink)}
+.checkrow input[type=checkbox],input[type=checkbox]{accent-color:var(--f-blue)}
+.progressline>div,.bar{background:var(--f-cyan)}.scorebig{color:var(--f-ink)}
+.footer{color:#4f5650;background:#f6f5e9;padding:14px 18px;margin-top:10px;border-top:3px solid var(--f-cyan)}
+.results-grid .panel:first-child{border-top:6px solid var(--f-yellow)}.results-grid .panel:nth-child(2){border-top:6px solid var(--f-cyan)}
+@media(max-width:1100px){.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}} 
+@media(max-width:850px){.studio-head-inner{flex-direction:column;align-items:flex-start;padding:14px 22px}.main{padding:24px 18px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.stage-layout{grid-template-columns:1fr}}
+@media(max-width:590px){.studio-head-inner{gap:10px}.studio-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.studio-nav .rail-item{font-size:9px;padding:9px 4px}.main{padding:12px 9px 35px}#view-home,#view-game,#view-results{padding:16px 12px}.game-grid,.results-grid,.inline-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-card{min-height:185px}.hero{min-height:250px}.stage-layout{grid-template-columns:1fr}.step{font-size:9px;padding:8px 0}}
+
+/* Version 2.2: facilitator preview; same charcoal / brushstroke system as Foundations. */
+#view-admin{background:rgba(255,253,247,.97);padding:22px 26px 30px;box-shadow:0 0 0 1px rgba(56,61,55,.08)}
+.admin-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0}
+.admin-kpi{background:#fffef9;border:2px solid var(--f-ink);padding:15px 15px 13px;min-height:115px}
+.admin-kpi:nth-child(1){border-top:8px solid var(--f-yellow)}
+.admin-kpi:nth-child(2){border-top:8px solid var(--f-cyan)}
+.admin-kpi:nth-child(3){border-top:8px solid var(--f-pink)}
+.admin-kpi:nth-child(4){border-top:8px solid var(--f-lime)}
+.admin-kpi .big{font-size:34px;font-weight:800;line-height:1.1}
+.admin-kpi .admin-caption{font-size:11px;color:#545f56;margin-top:8px;line-height:1.3}
+.admin-layout{display:grid;grid-template-columns:1.22fr .95fr;gap:12px;margin-top:12px}
+.admin-panel{background:#fffdf7;border:2px solid var(--f-ink);padding:18px}
+.admin-panel h3{font-size:17px}
+.admin-panel .section-cap{margin:0 0 10px;color:var(--f-ink)}
+.admin-mode{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.admin-mode button[aria-pressed="true"]{background:var(--f-yellow);color:var(--f-ink);border-color:var(--f-yellow)}
+.admin-mode button[aria-pressed="false"]{background:var(--f-ink);color:#fff;border-color:var(--f-ink)}
+.admin-warning{background:#fff0d3;border-left:6px solid var(--f-orange);padding:12px 15px;font-size:12px;margin:14px 0}
+.admin-bar-row{display:grid;grid-template-columns:minmax(84px,145px) minmax(0,1fr) 43px;align-items:center;gap:12px;margin:13px 0;font-size:12px}
+.admin-bar-track{width:100%;height:16px;background:#e5eadf;overflow:hidden;border:1px solid #d3d8cb}
+.admin-bar-fill{height:100%;background:var(--f-cyan)}
+.admin-bar-row:nth-of-type(3n) .admin-bar-fill{background:var(--f-pink)}
+.admin-bar-row:nth-of-type(3n+1) .admin-bar-fill{background:var(--f-lime)}
+.admin-bar-row:nth-of-type(3n+2) .admin-bar-fill{background:var(--f-orange)}
+.admin-table{border-collapse:collapse;width:100%;font-size:12px}
+.admin-table th,.admin-table td{border-bottom:1px solid #dadecf;padding:9px 6px;text-align:left}
+.admin-table th{background:#e9f5ed;font-size:11px;text-transform:uppercase;letter-spacing:.35px}
+.admin-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+.admin-empty{padding:18px;background:#f7f8ef;border:1px dashed #8c9686;font-size:12px;color:#536052}
+.admin-source{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:2px solid var(--f-ink);background:var(--f-yellow);color:var(--f-ink);font-weight:800;font-size:11px;letter-spacing:.7px}
+.admin-notes{background:#ebf8fb;border-left:6px solid var(--f-cyan);padding:12px 15px;font-size:12px;margin-top:12px}
+@media(max-width:860px){.admin-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-layout{grid-template-columns:1fr}}
+@media(max-width:590px){#view-admin{padding:17px 12px}.admin-kpis{gap:7px}.admin-kpi{min-height:105px;padding:12px}.admin-kpi .big{font-size:29px}.admin-panel{padding:13px}.studio-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.demo-banner{background:#fff4ce;border:2px solid #383d37;border-top:7px solid #17acdf;padding:18px;margin-bottom:20px;color:#252b27}.demo-banner p{font-size:13px;margin:9px 0}.demo-phases{display:flex;flex-wrap:wrap;gap:7px}.demo-entry{margin:0 0 16px}.demo-banner details{margin-top:12px}.demo-banner summary{cursor:pointer;font-size:13px;font-weight:700}
+
+header a.home-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border:1px solid #a8e5e8;border-radius:4px;background:#383d37;color:#fff;font:700 12px/1.4 Arial,sans-serif;text-decoration:none;white-space:nowrap}header a.home-link:hover,header a.home-link:focus-visible{background:#a8e5e8;color:#252b27;outline:2px solid #ffe51c;outline-offset:2px}
+</style>
+<link rel="stylesheet" href="../../assets/topbar.css?v=4"><link rel="stylesheet" href="../../assets/accessibility.css?v=1"><script src="../../assets/accessibility.js?v=1" defer></script><link rel="stylesheet" href="../../assets/laptop.css?v=1"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="shared-paint" aria-hidden="true"><svg aria-hidden="true" class="paint" preserveaspectratio="none" viewbox="0 0 1400 900"><rect fill="#f4f3e9" height="900" width="1400"></rect><g><path d="M-40 -25 L480 -40 350 110 160 160 -60 110Z" fill="#ff653c" opacity=".96"></path><path d="M375 -50 L900 -20 720 410 475 370 570 80Z" fill="#ffe51c"></path><path d="M1000 -70 L1430 0 1410 400 1090 300 1190 150Z" fill="#a8e5e8"></path><path d="M1320 -60 L1440 -30 1410 210 1260 120Z" fill="#1265c7"></path><path d="M-40 220 L210 170 120 430 -60 420Z" fill="#17acdf"></path><path d="M1020 200 L1200 100 1190 400 1000 420Z" fill="#c9e65c"></path><path d="M820 260 L1030 200 1010 410 760 410Z" fill="#f1a4b7"></path><path d="M300 110 L360 75 340 300 275 340Z" fill="#fffdf7" opacity=".65"></path><path d="M700 -40 L770 -30 660 220 630 230Z" fill="#17acdf" opacity=".7"></path><path d="M1170 10 L1220 -30 1150 260 1120 270Z" fill="#ff653c" opacity=".65"></path><path d="M-70 550 L210 470 280 720 -50 800Z" fill="#17acdf" opacity=".8"></path><path d="M280 670 L600 530 700 850 330 940Z" fill="#f1a4b7" opacity=".88"></path><path d="M750 610 L970 520 1090 850 820 940Z" fill="#ffe51c" opacity=".82"></path><path d="M1140 470 L1450 560 1440 950 1200 800Z" fill="#c9e65c" opacity=".9"></path><path d="M620 480 L680 440 570 900 520 930Z" fill="#ff653c" opacity=".75"></path></g></svg></div>
+<div class="app">
+  <header class="site-topbar course-topbar"><div class="course-topbar-inner"><div class="brand"><span>Applied AI Lab</span><small>LEVEL 02 · APPLIED AI STUDIO</small></div><nav class="studio-nav" aria-label="Applied AI Studio navigation"><a class="home-link" href="../">Home</a>
+        <button class="rail-item current" id="nav-home" onclick="showHome()">Games/Projects</button>
+        <a class="rail-item" href="resources.html">Resource Library</a>
+        <button class="rail-item" id="nav-results" onclick="showResults()">Reporting Rescue results</button>
+        <button class="rail-item" id="nav-admin" onclick="showAdmin()">Reporting Demo</button>
+      </nav></div></header>
+  <main class="main" id="main" tabindex="-1">
+    <div id="view-home"></div>
+    <div id="view-game" class="hidden"></div>
+    <div id="view-results" class="hidden"></div>
+    <div id="view-admin" class="hidden"></div>
+    <footer class="footer"><span>Applied AI Lab · Level 02 · Studio 2.3.0 · Public practice demo</span><span>Browser-local progress · No AI API key needed</span></footer>
+  </main>
+</div>
+<script>
+"use strict";
+const VERSION = '1.2.0'; // Consent-minimized reporting: matching backend required.
+const VISUAL_VERSION = '2.3.0'; // Public frontend; local practice only.
+const GAME_ID = 'G01';
+const STAGES = ['Discover','Design','Build','Break','Explain'];
+const DEMO_MODE = new URLSearchParams(location.search).get('demo')==='1';
+const KEY = DEMO_MODE ? 'applied-ai-lab-g01-presentation-v1' : 'applied-ai-lab-g01-v1'; // Preserve legacy progress.
+const ARCHIVE_PREFIX = DEMO_MODE ? 'applied-ai-lab-g01-presentation-attempt-' : 'applied-ai-lab-g01-attempt-';
+const BACKUP_SCHEMA = 'applied-ai-lab-studio-progress-1';
+const RATIONALES = ['Accuracy','Speed','Simplicity','Cost','Reliability','Security / privacy','Accessibility','User experience','Maintainability','Practical value','Other','Not stated'];
+const OUTCOMES = ['Worked as intended','Partially worked','Revised after testing','Did not work','Not yet tested'];
+const ASSISTANCE = ['Independent','Guided','Collaborative','AI-led'];
+const BUDGET = [
+  {department:'Programs',category:'Personnel',amount:35000},
+  {department:'Programs',category:'Supplies',amount:12000},
+  {department:'Operations',category:'Personnel',amount:29000},
+  {department:'Operations',category:'Supplies',amount:8000},
+  {department:'Outreach',category:'Personnel',amount:21000},
+  {department:'Outreach',category:'Supplies',amount:7000}
+];
+const LEDGER = [
+  {id:'L-101',department:'Programs',category:'Personnel',amount:36000,invoice:'PAY-10'},
+  {id:'L-102',department:'Programs',category:'Supplies',amount:8700,invoice:'INV-2041'},
+  {id:'L-103',department:'Operations',category:'Personnel',amount:28800,invoice:'PAY-11'},
+  {id:'L-104',department:'Operations',category:'Supplies',amount:8400,invoice:'INV-2050'},
+  {id:'L-105',department:'Outreach',category:'Personnel',amount:21600,invoice:'PAY-12'},
+  {id:'L-106',department:'Outreach',category:'Supplies',amount:6200,invoice:'INV-2059'},
+  {id:'L-107',department:'Outreach',category:'Supplies',amount:3000,invoice:'INV-2063'}
+];
+const initial=()=>({attemptId:makeId(),learnerId:null,level:'Explorer',stage:0,completed:false,answers:{},traces:{},drafts:{},consentScore:false,consentTrace:false,nickname:'',sent:false,receipt:null,submittedReceiptId:null,deleteToken:null,lastSavedAt:null});
+let state = load();
+let storageProblem = false;
+let currentView='home';
+let pendingStage = null;
+let analyticsMode = 'demo'; // Presentation-safe synthetic cohort by default; never a server-backed admin login.
+function makeId(){ const a=(crypto&&crypto.randomUUID)?crypto.randomUUID():('attempt-'+Date.now()+'-'+Math.random().toString(36).slice(2));return a; }
+function validId(id){return typeof id==='string' && /^[A-Za-z0-9-]{12,80}$/.test(id);}
+function load(){try {const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&validId(s.attemptId)&&s.answers&&typeof s.answers==='object')return {...initial(),...s,drafts:s.drafts||{}};}catch(e){}return initial();}
+function save(){try{state.lastSavedAt=new Date().toISOString();const raw=JSON.stringify(state);localStorage.setItem(KEY,raw);localStorage.setItem(ARCHIVE_PREFIX+state.attemptId,raw);storageProblem=false;return true;}catch(err){storageProblem=true;return false;}}
+function archiveList(){const list=[];try {for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k.startsWith(ARCHIVE_PREFIX))continue;const a=JSON.parse(localStorage.getItem(k)||'null');if(a&&validId(a.attemptId))list.push(a);}}catch(e){}return list.sort((a,b)=>String(b.lastSavedAt||'').localeCompare(String(a.lastSavedAt||'')));}
+function dateDisplay(iso){if(!iso)return 'Not yet saved';const d=new Date(iso);return Number.isNaN(+d)?'Unknown':d.toLocaleString();}
+function switchAttempt(id){if(!validId(id))return;const other=archiveList().find(a=>a.attemptId===id);if(!other)return;if(!confirm('Open this saved attempt? Your current work is preserved as a separate local attempt.'))return;save();state={...initial(),...other,drafts:other.drafts||{}};save();state.completed?showResults():showGame();}
+function makePortable(){save();return {schema:BACKUP_SCHEMA,exportedAt:new Date().toISOString(),currentAttemptId:state.attemptId,attempts:archiveList()};}
+function showBackupText(){const text=JSON.stringify(makePortable(),null,2);let box=document.getElementById('backupText');if(!box){box=document.createElement('textarea');box.id='backupText';box.setAttribute('aria-label','Complete progress backup JSON');box.readOnly=true;document.getElementById('reportingBackups').appendChild(box);}box.value=text;box.scrollIntoView();}
+function exportBackup(){const value=makePortable();downloadFile('applied_ai_studio_progress_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(value,null,2),'application/json');}
+function restoreProgressText(rawText){try {if(rawText.length>512000)throw new Error('File is too large to be a Studio backup.');const data=JSON.parse(rawText);if(!data||data.schema!==BACKUP_SCHEMA||!Array.isArray(data.attempts)||data.attempts.length===0||data.attempts.length>100)throw new Error('This is not a compatible Studio progress backup.');const found=[];for(const raw of data.attempts){if(!raw||!validId(raw.attemptId)||!['Explorer','Builder','Architect'].includes(raw.level)||!Number.isInteger(raw.stage)||raw.stage<0||raw.stage>4||typeof raw.completed!=='boolean'||!raw.answers||typeof raw.answers!=='object'||Array.isArray(raw.answers)||!raw.traces||typeof raw.traces!=='object'||Array.isArray(raw.traces)|| (raw.drafts!==undefined && (typeof raw.drafts!=='object'||Array.isArray(raw.drafts))) )throw new Error('Invalid attempt in backup.');found.push({...initial(),...raw,drafts:raw.drafts||{},receipt:null}); /* Recompute imported receipt to prevent untrusted backup markup. */}if(!confirm('Restore '+found.length+' attempt(s)? Matching local attempt IDs will be overwritten. No information is submitted to the course administrator.'))return;localStorage.setItem(KEY+'-pre-restore-'+Date.now(),JSON.stringify(makePortable()));save();for(const a of found)localStorage.setItem(ARCHIVE_PREFIX+a.attemptId,JSON.stringify(a));state=found.find(a=>a.attemptId===data.currentAttemptId)||found[0];save();alert('Progress restored. You can continue from your last saved stage.');state.completed?showResults():showGame();}catch(err){alert('Could not restore progress: '+(err?.message||'Unrecognized file'));}}
+function restoreBackupText(){const raw=prompt('Paste the complete contents of your Studio JSON progress backup. This stays in your browser; nothing is submitted.');if(raw!==null)restoreProgressText(raw);}
+function restoreBackup(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.hidden=true;document.body.appendChild(input);input.addEventListener('change',async()=>{const file=input.files&&input.files[0];if(!file)return;restoreProgressText(await file.text());input.remove();});input.click();}
+function captureDraft(){const f=document.getElementById('stageForm');if(!f||currentView!=='game')return;const draft={};for(const el of f.querySelectorAll('input[name],select[name],textarea[name]')){if(el.type==='checkbox')draft[el.name]=!!el.checked;else if(el.type==='radio'){if(el.checked)draft[el.name]=el.value;}else draft[el.name]=el.value;}state.drafts=state.drafts||{};state.drafts[STAGES[state.stage]]=draft;save();}
+function restoreDraft(){const f=document.getElementById('stageForm');if(!f)return;const draft=(state.drafts||{})[STAGES[state.stage]];if(draft&&typeof draft==='object'){for(const el of f.querySelectorAll('input[name],select[name],textarea[name]')){if(!Object.prototype.hasOwnProperty.call(draft,el.name))continue;const value=draft[el.name];if(el.type==='checkbox')el.checked=value===true;else if(el.type==='radio')el.checked=el.value===value;else if(typeof value==='string'&&value.length<=900)el.value=value;}}
+ f.addEventListener('input',captureDraft);f.addEventListener('change',captureDraft);}
+
+function e(s){return String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));}
+function money(n){return Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
+function selectInput(key,options,value='',placeholder='Choose an option'){return '<select id="'+key+'" name="'+key+'" required><option value="">'+placeholder+'</option>'+options.map(x=>'<option value="'+e(x)+'"'+(value===x?' selected':'')+'>'+e(x)+'</option>').join('')+'</select>';}
+function fieldSelect(label,key,options,value='',hint=''){return `<div class="field"><label for="${key}">${label}</label>${hint?`<p class="hint">${hint}</p>`:''}${selectInput(key,options,value)}</div>`;}
+function fieldNumber(label,key,value='',hint=''){return `<div class="field"><label for="${key}">${label}</label>${hint?`<p class="hint">${hint}</p>`:''}<input name="${key}" id="${key}" type="number" step="1" min="-1000000" max="1000000" required value="${e(value)}"></div>`;}
+function dataTable(rows,cols){return '<div class="scroll-x"><table class="data-table"><caption class="sr-only">'+(cols.length===3?'Synthetic budget export':'Synthetic general ledger export')+'</caption><thead><tr>'+cols.map(c=>'<th scope="col">'+e(c[1])+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+cols.map(c=>'<td class="'+(c[2]?'n':'')+'">'+e(c[2]?money(r[c[0]]):r[c[0]])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
+function navigate(view){if(currentView==='game' && view!=='game')captureDraft();currentView=view; ['home','game','results','admin'].forEach(x=>{ document.getElementById('view-'+x).classList.toggle('hidden',x!==view);document.getElementById('nav-'+x)?.classList.toggle('current',x===view||(x==='home'&&view==='game'));});window.scrollTo({top:0,behavior:'instant'});}
+function openStudioProject(id){captureDraft();save();window.location.href='Projects.html?game='+encodeURIComponent(id);}
+function showHome(){renderHome();navigate('home');}
+function showGame(){if(state.completed){showResults();return;}renderGame();navigate('game');}
+function showResults(){renderResults();navigate('results');}
+function showAdmin(){renderAdmin();navigate('admin');}
+
+// Presentation-safe demo analytics. No network calls and no real participant data.
+const STUDIO_ANALYTICS_STAGES = ['Discover','Design','Build','Break','Explain'];
+const STUDIO_ANALYTICS_ANCHORS = ['AIA-1','INX-2','GOV-2'];
+const DEMO_REASON_OPTIONS = ['Accuracy','Reliability','Simplicity','Practical value','Speed','Security / privacy','Maintainability','Cost'];
+function syntheticAnalyticsAttempts(){
+ const rows=[];
+ const totals=[87,78,94,71,82,92,65,89,76,83,90,73,88,69,95,80,84];
+ for(let i=0;i<24;i++){
+  const completed=i<totals.length;
+  const stages=completed?5:Math.max(1,4-(i%4));
+  const traces={};
+  for(let k=0;k<stages;k++){
+   const name=STUDIO_ANALYTICS_STAGES[k];
+   traces[name]={stage:name,choice:[
+    'Inspect the source data before designing a solution',
+    'Separate calculations, AI commentary, and approvals',
+    'Build a validated spreadsheet and narrative output',
+    'Test an exception and revise the workflow',
+    'Explain results with evidence and limitations'
+   ][k],rationale:DEMO_REASON_OPTIONS[(i+2*k)%DEMO_REASON_OPTIONS.length],outcome:k===3 && i%3===0?'Revised after testing':'Worked as intended',assistance:['Independent','Guided','Collaborative','AI-led'][(i+k)%4]};
+  }
+  const anchors=STUDIO_ANALYTICS_ANCHORS.map((id,j)=>({id,level:Math.min(3,Math.max(1,1+((i+j)%3)))}));
+  rows.push({attemptId:'synthetic-'+String(i+1).padStart(3,'0'),level:['Explorer','Builder','Architect'][i%3],stage:Math.min(4,stages),completed,receipt:completed?{score:totals[i],anchors}:null,traces,gameId:'G01'});
+ }
+ return rows;
+}
+function localAnalyticsAttempts(){
+ // Local-only: read current browser's attempts; no permissions and no cross-learner aggregation.
+ const all=archiveList();
+ if(!all.some(x=>x.attemptId===state.attemptId))all.unshift(state);
+ return all.filter(x=>x && x.answers && x.traces && validId(x.attemptId)).map(x=>({...x,gameId:'G01'}));
+}
+function calculateAdminMetrics(attempts){
+ const done=attempts.filter(a=>a.completed);
+ const scores=done.map(a=>{const n=Number(a.receipt?.score);return Number.isFinite(n)?n:typeof score==='function'?Object.values(score(a.answers||{})).reduce((v,w)=>v+w,0):null;}).filter(n=>Number.isFinite(n));
+ const stageCounts=Object.fromEntries(STUDIO_ANALYTICS_STAGES.map(s=>[s,attempts.reduce((n,a)=>n+(a.traces&&a.traces[s]?1:0),0)]));
+ const reasons={};const modes={};let traceCount=0;
+ for(const a of attempts)for(const stage of STUDIO_ANALYTICS_STAGES){const t=a.traces&&a.traces[stage];if(!t)continue;traceCount++;const r=DEMO_REASON_OPTIONS.includes(t.rationale)?t.rationale:(t.rationale==='Not stated'?'Not stated':'Other');reasons[r]=(reasons[r]||0)+1;const mode=['Independent','Guided','Collaborative','AI-led'].includes(t.assistance)?t.assistance:'Not stated';modes[mode]=(modes[mode]||0)+1;}
+ const anchors={}; for(const id of STUDIO_ANALYTICS_ANCHORS){const nums=done.map(a=>(a.receipt?.anchors||[]).find(x=>x.id===id)?.level).filter(v=>Number.isFinite(v));anchors[id]=nums.length?nums.reduce((a,b)=>a+b,0)/nums.length:null;}
+ return{total:attempts.length,completed:done.length,avgScore:scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:null,traceCount,stageCounts,reasons,modes,anchors};
+}
+function adminBars(items,maximum,empty='No stage records are available yet.'){
+ if(!items.length)return `<div class="admin-empty">${e(empty)}</div>`;
+ return items.map(([label,value])=>`<div class="admin-bar-row"><span>${e(label)}</span><div class="admin-bar-track"><div class="admin-bar-fill" style="width:${maximum?Math.max(0,Math.min(100,value/maximum*100)):0}%"></div></div><strong>${value}</strong></div>`).join('');
+}
+function selectAdminMode(mode){if(!['demo','local'].includes(mode))return;analyticsMode=mode;renderAdmin();}
+function renderAdmin(){
+ const data=analyticsMode==='demo'?syntheticAnalyticsAttempts():localAnalyticsAttempts();const m=calculateAdminMetrics(data);
+ const demo=analyticsMode==='demo';
+ const reasons=Object.entries(m.reasons).sort((a,b)=>b[1]-a[1]);
+ const stages=STUDIO_ANALYTICS_STAGES.map(n=>[n,m.stageCounts[n]]);
+ const anchors=STUDIO_ANALYTICS_ANCHORS.map(id=>({id,label:{'AIA-1':'Workflow architecture','INX-2':'Structured implementation','GOV-2':'Evaluation and reliability'}[id],avg:m.anchors[id]}));
+ const recent=data.slice(0,8);
+ const el=document.getElementById('view-admin');
+ el.innerHTML=`<div class="topline"><span class="eyebrow">Applied AI Lab / Level 02 / Facilitator perspective</span><span class="admin-source">${demo?'SYNTHETIC COHORT':'THIS DEVICE ONLY'}</span></div>
+ <h1>Demo & my activity</h1><p class="lead">A view of learning progress, decisions, and skills—not private ChatGPT transcripts. Use the demo cohort to showcase the program, or inspect attempts saved in this browser.</p>
+ <div class="admin-mode"><button type="button" class="btn small" aria-pressed="${demo}" onclick="selectAdminMode('demo')">Demo cohort</button><button type="button" class="btn small" aria-pressed="${!demo}" onclick="selectAdminMode('local')">My saved attempts</button><span class="smalltxt muted">Reporting Rescue only · Game 01</span></div>
+ <div class="admin-warning"><strong>${demo?'Demonstration data only.':'Personal activity on this device only.'}</strong> ${demo?'All rows, scores, and stage decisions on this screen are generated examples, not actual people or submissions. Nothing is uploaded.':'Only attempts saved in this browser are shown. These are not verified course-wide statistics or voluntary research submissions.'}</div>
+ <section class="admin-kpis" aria-label="Key program measures"><div class="admin-kpi"><div class="big">${m.total}</div><div class="admin-caption">${demo?'Synthetic':'Locally saved'} attempts</div></div><div class="admin-kpi"><div class="big">${m.completed}</div><div class="admin-caption">Completed attempts</div></div><div class="admin-kpi"><div class="big">${m.avgScore===null?'—':m.avgScore.toFixed(1)+'%'}</div><div class="admin-caption">Average practice score</div></div><div class="admin-kpi"><div class="big">${m.traceCount}</div><div class="admin-caption">Stage Decision Trace records</div></div></section>
+ <section class="admin-layout"><div class="admin-panel"><div class="section-cap">Learning journey</div><h3>Stage completion</h3><p class="smalltxt muted">Number of attempts with a confirmed stage record. Counts are not individual learner totals.</p>${adminBars(stages,m.total,'No confirmed stages yet.')}</div>
+ <div class="admin-panel"><div class="section-cap">Decision Trace analytics</div><h3>Why learners made their choices</h3><p class="smalltxt muted">Categorical rationales recorded across stage checkpoints.</p>${adminBars(reasons,Math.max(1,...reasons.map(x=>x[1])),'No reviewed rationales available yet.')}</div></section>
+ <section class="admin-layout"><div class="admin-panel"><div class="section-cap">Program standards</div><h3>Anchor mastery</h3><p class="smalltxt muted">Illustrative proficiency on the 0–3 rubric, aggregated from completed attempts with anchor scores.</p><table class="admin-table"><thead><tr><th>Standard</th><th>Capability</th><th style="text-align:right">Mean level</th></tr></thead><tbody>${anchors.map(a=>`<tr><td><strong>${a.id}</strong></td><td>${e(a.label)}</td><td class="num">${a.avg===null?'Not scored':a.avg.toFixed(2)+' / 3'}</td></tr>`).join('')}</tbody></table></div>
+ <div class="admin-panel"><div class="section-cap">Observed collaboration</div><h3>Level of assistance</h3><p class="smalltxt muted">Learner-reported assistance categories, not a judgment of ability.</p>${adminBars(Object.entries(m.modes).sort((a,b)=>b[1]-a[1]),Math.max(1,...Object.values(m.modes)),'No assistance records available yet.')}</div></section>
+ <section class="admin-panel" style="margin-top:12px"><div class="section-cap">Attempt evidence</div><h3>Recent activity overview</h3><div class="scroll-x"><table class="admin-table"><thead><tr><th>Attempt</th><th>Difficulty</th><th>Stage records</th><th>Status</th><th style="text-align:right">Practice score</th></tr></thead><tbody>${recent.length?recent.map((a,i)=>`<tr><td>${demo?'Demo #'+String(i+1).padStart(2,'0'):'Saved #'+String(i+1).padStart(2,'0')}</td><td>${e(a.level||'Explorer')}</td><td>${Object.keys(a.traces||{}).filter(s=>STUDIO_ANALYTICS_STAGES.includes(s)).length} / 5</td><td>${a.completed?'Completed':'In progress'}</td><td class="num">${a.completed?(Number.isFinite(Number(a.receipt?.score))?Number(a.receipt.score)+' / 100':'Scored at completion'):'—'}</td></tr>`).join(''):'<tr><td colspan="5">No saved attempts</td></tr>'}</tbody></table></div></section>
+ <div class="admin-notes"><strong>For an interview demo:</strong> switch to <em>Demo cohort</em> to show the proposed learning analytics. Switch to <em>My saved attempts</em> for evidence of your personal testing. When other learners join, actual cross-user reporting must come from consented results behind authenticated administrator access. This page is a presentation-safe preview, not an authorization boundary.</div>
+ <div class="row" style="margin-top:17px"><button type="button" class="btn" onclick="showHome()">Back to Studio</button><button type="button" class="btn outline" onclick="exportBackup()">Back up my work</button></div>`;
+}
+
+function setLevel(el){state.level=el.value;save();renderHome();}
+function resetGame(){if(!confirm('Start a new attempt? Your current attempt will remain in saved history, but clearing browser data will erase local history. Download a progress backup for safekeeping.'))return;save();const previousId=state.learnerId;state=initial();state.learnerId=previousId;save();showGame();}
+function renderHome(){
+ const done=Object.keys(state.traces||{}).length;
+ const games=[['02','The Document Detective','Build answers grounded in source material.'],['03','The Overflowing Inbox','Triage requests and design review rules.'],['04','The Comparison Trap','Compare options and justify a decision.'],['05','The Idea Gauntlet','Prioritize AI projects with limited resources.'],['06','The Agent With Boundaries','Give an agent carefully defined tools.'],['07','The Workflow That Broke','Diagnose failures and make systems reliable.'],['08','Launch Day','Design adoption, support, and evaluation.']];
+ document.getElementById('view-home').innerHTML=demoControls()+`<div class="topline"><div class="eyebrow">Applied AI Lab / Level 02 / Practice through building</div><span class="pill">Eight independent games</span></div><h1>Applied AI projects and practical decisions.</h1><p class="lead">Build on the Foundations course with eight practical projects. Discover a problem, design a solution, work in your own ChatGPT account, test the result, and explain your choices.</p>
+ <div class="hero-grid"><section class="hero"><div><div class="eyebrow">Independent studio project · Game 01</div><h2>The Reporting Rescue</h2><p>Five stages. One messy month-end report. Turn fictional transaction data into a trustworthy analysis—and catch the mistakes that would fool a chatbot.</p></div><div class="row"><button class="btn" onclick="showGame()">${done>0?'Resume game':'Start the game'} →</button><span class="smalltxt" style="color:#b8d7d2">45–60 minutes · Explorer / Builder / Architect</span></div></section>
+ <section class="metric-grid"><div class="metric"><div class="val">08<span class="muted" style="font-size:16px"> / 08</span></div><div class="label">Available games</div></div><div class="metric"><div class="val">${done}<span class="muted" style="font-size:16px"> / 5</span></div><div class="label">Stages recorded</div></div><div class="metric"><div class="val">12</div><div class="label">Anchor standards</div></div><div class="metric"><div class="val">${state.completed?'100%':Math.round(done/5*100)+'%'}</div><div class="label">Current progress</div></div></section></div>
+ <div class="row" style="justify-content:space-between"><div class="section-cap">Your project pathway</div><div class="row"><label class="smalltxt muted" for="level">Level</label><select id="level" onchange="setLevel(this)" style="width:auto;padding:8px 11px"><option ${state.level==='Explorer'?'selected':''}>Explorer</option><option ${state.level==='Builder'?'selected':''}>Builder</option><option ${state.level==='Architect'?'selected':''}>Architect</option></select></div></div>
+ <section class="game-grid"><div class="game-card active"><div class="row" style="justify-content:space-between"><span class="tag">PLAYABLE</span><span class="meta">AIA-1 · INX-2 · GOV-2</span></div><h3>01 — The Reporting Rescue</h3><p>Practice data validation, workflow decisions, responsible AI use, and reporting.</p><button class="btn small" onclick="showGame()">${done?'Continue':'Play now'} →</button></div>${games.map(g=>`<div class="game-card"><div class="row" style="justify-content:space-between"><span class="pill">Independent project</span><span class="meta">Game ${g[0]}</span></div><h3>${g[1]}</h3><p>${g[2]}</p><button class="btn small" type="button" aria-label="Open project: ${e(g[1])}" onclick="openStudioProject('G${g[0]}')">Open project →</button></div>`).join('')}</section>
+ <details class="panel" id="reportingBackups" style="margin-top:20px"><summary style="cursor:pointer;font-weight:800">Reporting Rescue progress & backups</summary><p class="smalltxt muted">Confirmed stages and in-progress fields save automatically in this browser. For recovery or another device, export a private progress backup and restore it there. This is not yet cloud synchronization.</p><p class="smalltxt"><strong>Last saved:</strong> ${dateDisplay(state.lastSavedAt)}${storageProblem?' · WARNING: Browser storage unavailable; download a backup now.':''}</p><div class="row"><button type="button" class="btn small" onclick="exportBackup()">Download progress backup</button><button type="button" class="btn outline small" onclick="showBackupText()">Show backup text</button><button type="button" class="btn outline small" onclick="restoreBackup()">Restore a backup</button><button type="button" class="btn outline small" onclick="restoreBackupText()">Restore backup text</button></div><div class="section-cap">Local attempt history</div>${archiveList().slice(0,12).map(a=>`<div class="result-metric"><span class="smalltxt"><strong>${a.attemptId===state.attemptId?'Current · ':''}Game 01 · ${e(a.level)}</strong><br><span class="muted">${a.completed?'Completed':'Stage '+(a.stage+1)+' / 5'} · Saved ${e(dateDisplay(a.lastSavedAt))}</span></span><button type="button" class="btn outline small" ${a.attemptId===state.attemptId?'disabled':''} onclick="switchAttempt('${a.attemptId}')">Open</button></div>`).join('')||'<p class="muted smalltxt">No archived attempts yet.</p>'}</details>
+ <div class="panel" style="margin-top:20px"><h3>From Foundations to Studio</h3><p class="smalltxt muted">Foundations teaches responsible decisions in seven short, self-contained modules. Studio extends that learning into practical projects. This website supplies synthetic files, stage prompts, structured decisions, and local assessment. Your own ChatGPT account is an external workbench: it is not connected to this site, and the website cannot read those conversations.</p><p class="smalltxt muted" style="margin:0">The two levels keep separate progress. Studio automatically saves every stage and unfinished form entry in this browser. Download a portable progress backup to restore on another device. There is no cloud synchronization or reporting in this public demo. No chat messages or uploaded documents are included.</p></div>`;
+}
+function stageContent(i){const a=state.answers[STAGES[i]]||{};
+ if(i===0)return `<div class="instructions"><strong>Your assignment</strong><p>A small nonprofit spends six hours each month combining its expenses with department budgets. The director wants a reliable dashboard that highlights actual versus budget and flags anything requiring human review. You have two synthetic source exports below.</p></div>
+ <details class="source-reference" ${DEMO_MODE?'':'open'}><summary>Source data · budget and ledger exports</summary><div class="sourcebox"><strong>Budget export · September</strong><p>Approved budget amounts by department and category</p></div>${dataTable(BUDGET,[['department','Department'],['category','Category'],['amount','Budget',1]])}
+ <div class="sourcebox"><strong>General ledger export · September</strong><p>Seven posted records; invoice and department mappings may require investigation</p></div>${dataTable(LEDGER,[['id','Entry'],['department','Department'],['category','Category'],['amount','Actual',1],['invoice','Invoice']])}
+ <div class="row"><button class="btn outline small" type="button" onclick="downloadData('budget')">↓ Budget.csv</button><button class="btn outline small" type="button" onclick="downloadData('ledger')">↓ Ledger.csv</button></div></details>
+ <div class="field" style="margin-top:23px"><label for="firstAction">What would you investigate first?</label>${selectInput('firstAction',['Check source-to-department mappings','Write the executive summary immediately','Ask AI to estimate missing information','Focus only on the grand total'],a.firstAction)}</div>
+ ${fieldSelect('What would make the workflow successful?','success',['Accurate, reconciled results with less manual effort','A polished-looking dashboard','Finishing as quickly as possible','Giving AI full responsibility'],a.success)}
+ `;
+ if(i===1)return `<div class="instructions"><strong>New information from a program manager</strong><p>Invoice <strong>INV-2063 ($3,000)</strong> was coded to Outreach supplies, but its approved purchase request belongs to <strong>Programs supplies</strong>. The organization's controls require finance approval for reclassification. Your design should handle this without changing the overall ledger total.</p></div>
+ <div class="question-note"><strong>Design tradeoff:</strong> Financial math must be reproducible. AI may explain results, but it should not invent or silently modify bookkeeping entries.</div>
+ ${fieldSelect('Select the workflow architecture','architecture',['Spreadsheet calculations + AI-written commentary','AI estimates totals directly from text','One large prompt with no validation','Manual copying into a presentation'],a.architecture)}
+ <div class="field"><fieldset><legend>Which controls will you add? (Select all that apply)</legend><label class="checkrow"><input type="checkbox" name="reconcile" ${a.reconcile?'checked':''}> Reconcile output totals to the source ledger</label><label class="checkrow"><input type="checkbox" name="mapping" ${a.mapping?'checked':''}> Verify the department mapping and keep the original entry</label><label class="checkrow"><input type="checkbox" name="approval" ${a.approval?'checked':''}> Require finance approval before publishing corrected figures</label><label class="checkrow"><input type="checkbox" name="cosmetic" ${a.cosmetic?'checked':''}> Hide exceptions to keep the dashboard simple</label></fieldset></div>
+ <details class="architecture-review"><summary>Architecture review prompts</summary><div class="sourcebox"><p>What will run deterministically (formulas or code)? What will the AI model do? Where will a person review a consequential action?</p></div></details>`;
+ if(i===2)return `<div class="instructions"><strong>Build the reporting calculation</strong><p>Use your chosen approach to reconcile the source records. Treat the $3,000 reclassification as approved <em>for this simulation only</em>. It moves the expense from Outreach supplies to Programs supplies; it does not add or remove any expense. You may use the downloadable CSVs and ChatGPT or a spreadsheet as your workbench.</p></div>
+ <div class="row" style="margin-bottom:16px"><button type="button" class="btn outline small" onclick="copyPrompt(2)">Copy ChatGPT build prompt</button><button type="button" class="btn outline small" onclick="window.open('https://chatgpt.com/','_blank','noopener')">Open ChatGPT ↗</button></div>
+ <div class="inline-grid">${fieldNumber('Reconciled total actual spending ($)','actual',a.actual??'','Total expenses across all departments, after reclassification.')}${fieldNumber('Organization budget variance ($)','variance',a.variance??'','Actual minus approved budget. Positive means over budget.')}</div>
+ ${fieldNumber('Corrected Programs actual spending ($)','program',a.program??'','Include the $3,000 reclassification in Programs supplies.')}
+ <div class="question-note"><strong>Important:</strong> Record the numbers you obtained, not values supplied by the game. You will receive a clear breakdown when you finish.</div>`;
+ if(i===3)return `<div class="instructions"><strong>Stress test: the late invoice</strong><p>Just before publication, Operations submits invoice <strong>INV-2099 for $600</strong> in Supplies. The new export accidentally includes it twice. The legitimate invoice should be counted once. Your workflow must recover without double-counting.</p></div>
+ ${fieldSelect('What should your workflow do with the repeated record?','duplicate',['Quarantine the duplicate, reconcile, then accept one invoice','Accept both matching invoice records','Ignore the whole Operations department','Ask AI to pick whichever amount looks plausible'],a.duplicate)}
+ ${fieldNumber('Revised valid organization actual total ($)','revisedActual',a.revisedActual??'','Count the $600 invoice once after detecting the duplicate.')}
+ ${fieldSelect('If a refresh fails, what is the safest next step?','fallback',['Keep the last verified report and alert the owner','Publish partial new numbers without a warning','Automatically retry sending the report until it succeeds','Delete all exceptions to speed things up'],a.fallback)}
+ <div class="sourcebox"><strong>Test idea</strong><p>Repeat the calculation with an unexpected extra row, missing department label, or reordered columns. Can someone else reproduce the correct result?</p></div>`;
+ return `<div class="instructions"><strong>Final briefing</strong><p>You have built a prototype, investigated a mapping error, and tested a duplicate invoice. Explain what your process would deliver to a real user—and where it still needs review or additional testing.</p></div>
+ <div class="inline-grid">${fieldSelect('What is the strongest basis for your claim of success?','evidence',['Reconciliation results, test outcomes, and measured labor time','The writing sounds confident','The assistant created a sophisticated-looking chart','Other people will probably like it'],a.evidence)}
+ ${fieldSelect('Who should approve the report before distribution?','review',['The designated finance owner','The AI model itself','Any participant without access to source data','No review is necessary'],a.review)}</div>
+ <div class="field"><label for="briefing">Your executive summary (optional, up to 400 characters)</label><textarea id="briefing" name="briefing" maxlength="400" placeholder="What did you build? What does it solve? What remains uncertain?">${e(a.briefing||'')}</textarea></div>
+ <details class="communication-practice" ${a.audienceBrief||state.drafts?.Explain?.audienceBrief?'open':''}><summary>Explain it to the room · Optional communication practice</summary><div class="sourcebox"><p>The workflow uses reproducible spreadsheet calculations to reconcile spending, while AI may help draft a narrative summary. A finance owner checks the result before publication. Explain this same design to a different audience without changing the technical facts. This exercise is saved on your device and does not affect your numerical game score.</p></div>
+ ${fieldSelect('Choose your audience','audience',['Executive','Department leader','Employee','Technical partner'],a.audience||'Executive').replace(' required','')}
+ <div class="field"><label for="audienceBrief">Your explanation (optional, up to 900 characters)</label><textarea id="audienceBrief" name="audienceBrief" maxlength="900" placeholder="What does this audience need to know? What decision or action follows?">${e(a.audienceBrief||'')}</textarea></div>
+ <p class="footnote">Self-check: Is it technically accurate? Clear to this audience? Relevant to their responsibilities? Useful for a decision or next action? Keep necessary technical terms and explain them when appropriate. You may revise this draft before completing the game.</p></details>`;
+}
+function commonTrace(i){const name=STAGES[i],t=state.traces[name]||{};return `<div class="panel" style="margin-top:17px"><h2>Decision Trace · ${name}</h2><p class="smalltxt muted">Your decision is already captured from the choices above. Categorize <em>why</em> you chose it. Do not invent a reason that you did not actually use.</p>
+ ${fieldSelect('Primary reason','rationale',RATIONALES,t.rationale||'')}${fieldSelect('What was the outcome?','outcome',OUTCOMES,t.outcome||'')}${fieldSelect('How much help did you use?','assistance',ASSISTANCE,t.assistance||'')}
+ <div class="field"><label for="traceNote">Optional one-sentence reasoning (180 characters)</label><textarea id="traceNote" name="traceNote" maxlength="180" placeholder="I chose this because…">${e(t.note||'')}</textarea></div>
+ <p class="footnote">This checkpoint is editable. These records stay in this browser and your downloaded backups.</p></div>`;
+}
+function stageSidebar(i){const captions=[['The task','Make a trustworthy plan for reporting.'],['The design','Separate deterministic math, AI interpretation, and approvals.'],['The build','Use actual numbers instead of unsupported AI estimates.'],['The test','Handle new inputs and prevent duplicate actions.'],['The explanation','Communicate value and acknowledge limitations.']];return `<aside class="panel"><span class="tag">${e(state.level)} level</span><div class="section-cap" style="margin-top:15px">${captions[i][0]}</div><h2>${captions[i][1]}</h2><p class="smalltxt muted">Need help? Ask ChatGPT to act as a tutor, challenge your choices, or build a spreadsheet with the synthetic CSV files. It does not automatically report your conversation to this site.</p><div class="row"><button type="button" class="btn outline small full" onclick="copyPrompt(${i})">Copy ${STAGES[i]} prompt</button><button type="button" class="btn outline small full" onclick="copyContinuity()">Copy continuity brief</button><button type="button" class="btn outline small full" onclick="window.open('https://chatgpt.com/','_blank','noopener')">Open ChatGPT ↗</button></div><div style="border-top:1px solid var(--line);margin-top:17px;padding-top:15px"><div class="smalltxt"><strong>Anchor standards</strong></div><p class="smalltxt muted">AIA-1 · Workflow design<br>INX-2 · Structured implementation<br>GOV-2 · Evaluation and reliability</p></div><div class="notice">No account or paid API needed. Free ChatGPT usage limits may apply. The game can also be completed without ChatGPT.</div></aside>`;}
+
+const DEMO_ANSWERS = {
+ Discover:{firstAction:'Check source-to-department mappings',success:'Accurate, reconciled results with less manual effort'},
+ Design:{architecture:'Spreadsheet calculations + AI-written commentary',reconcile:true,mapping:true,approval:true,cosmetic:false},
+ Build:{actual:112700,variance:700,program:47700},
+ Break:{duplicate:'Quarantine the duplicate, reconcile, then accept one invoice',revisedActual:113300,fallback:'Keep the last verified report and alert the owner'},
+ Explain:{evidence:'Reconciliation results, test outcomes, and measured labor time',review:'The designated finance owner',briefing:'The simulated ledger reconciles to $112,700 against a $112,000 budget. Finance approved moving INV-2063 to Programs, producing $47,700 in Programs actuals. The duplicate-invoice test counts INV-2099 once, yielding $113,300. Calculations remain deterministic; AI drafts commentary. Finance owns publication. Time savings require a measured pilot.',audience:'Executive',audienceBrief:'The reporting workflow combines spreadsheet calculations with AI-assisted commentary and a finance approval gate. Mapping checks and reconciliation catch misclassified costs before publication. A $600 late invoice is accepted once after duplicate quarantine. If checks fail, retain the last verified report and notify its owner. This demonstration uses synthetic data; it does not establish real savings or production reliability. A pilot would compare accuracy, review time, and total labor against the current six-hour process.'}
+};
+const DEMO_NOTES=[
+ 'Inspected department mappings and identified the $3,000 Programs invoice coded to Outreach. Set reconciliation, accuracy, and finance approval as acceptance criteria.',
+ 'Kept arithmetic in the spreadsheet; AI drafts explanations only. Required source mapping, total reconciliation, versioned evidence, and finance sign-off.',
+ 'Reconciled $112,000 budget to $112,700 actual: $700 unfavorable variance. Approved reclassification produces $47,700 Programs actual without changing total spend.',
+ 'Quarantined duplicate INV-2099 and accepted the $600 invoice once: $113,300 actual. On failure, retain the verified report and alert finance.',
+ 'Separated tested synthetic outcomes from expected benefits. Finance owns approval; a baseline comparison must establish quality and time savings.'
+];
+function enterPresentationDemo(){captureDraft();save();const url=new URL(location.href);url.searchParams.set('demo','1');location.href=url.href;}
+function exitPresentationDemo(){captureDraft();save();const url=new URL(location.href);url.searchParams.delete('demo');location.href=url.href;}
+function seedDemoStage(i){
+ const name=STAGES[i];state.answers[name]=JSON.parse(JSON.stringify(DEMO_ANSWERS[name]));
+ state.traces[name]={stage:name,choice:stageChoice(i,state.answers[name]),rationale:i===3?'Reliability':i===4?'Practical value':'Accuracy',outcome:'Worked as intended',assistance:'Guided',note:DEMO_NOTES[i],synthetic:true};
+ if(state.drafts)delete state.drafts[name];
+}
+function jumpDemoStage(i){
+ if(!DEMO_MODE||!Number.isInteger(i)||i<0||i>4)return;
+ captureDraft();for(let j=0;j<i;j++)seedDemoStage(j);
+ state.stage=i;state.completed=false;state.receipt=null;state.demo=true;pendingStage=null;save();renderGame();navigate('game');
+}
+function fillDemoExample(){if(!DEMO_MODE)return;seedDemoStage(state.stage);save();renderGame();}
+function demoControls(){
+ if(!DEMO_MODE)return '<div class="demo-entry"><button class="btn outline small" onclick="enterPresentationDemo()">Open presentation demo</button></div>';
+ const prior=STAGES.slice(0,state.stage);
+ return '<section class="demo-banner" aria-label="Presentation demo"><strong>Presentation demo · Synthetic example data</strong><p>Jump to any phase. Earlier phases receive strong sample decisions, not learner assessment evidence. Regular saved progress is separate.</p><div class="demo-phases">'+STAGES.map((n,i)=>'<button type="button" class="btn small '+(i===state.stage?'':'outline')+'" onclick="jumpDemoStage('+i+')" '+(i===state.stage?'aria-current="step"':'')+'>'+n+'</button>').join('')+'</div>'+(prior.length?'<details><summary>Backfilled evidence: '+prior.join(', ')+'</summary>'+prior.map((n,i)=>'<p><strong>'+n+':</strong> '+e(DEMO_NOTES[i])+'</p>').join('')+'</details>':'')+'<div class="row" style="margin-top:12px"><button class="btn outline small" onclick="fillDemoExample()">Fill this phase with an example</button>'+(state.stage<4?'<button class="btn small" onclick="jumpDemoStage('+(state.stage+1)+')">Next phase →</button>':'')+'<button class="btn outline small" onclick="exitPresentationDemo()">Return to regular game</button></div></section>';
+}
+
+function renderGame(){if(state.completed){showResults();return;}const i=state.stage;
+ document.getElementById('view-game').innerHTML=demoControls()+`<div class="topline"><div class="eyebrow">Game 01 / Reporting Rescue</div><span class="pill">Stage ${i+1} of 5</span></div><div class="step-header"><div><h1 style="font-size:36px">${STAGES[i]}</h1><p class="muted" style="margin:0">${['Understand the problem before choosing a tool.','Make your important architecture decisions.','Calculate, reconcile, and produce a working result.','Test a change that could undermine the report.','Present a defensible account of your work.'][i]}</p></div><button class="btn outline small" onclick="showHome()">Exit to dashboard</button></div><div class="steps">${STAGES.map((s,j)=>`<button class="step ${j<i?'done':j===i?'active':''}" type="button" ${!DEMO_MODE&&j>i?'disabled':''} onclick="goToStage(${j})">${j<i?'✓ ':''}${s}</button>`).join('')}</div><div class="stage-layout"><section><form id="stageForm" onsubmit="event.preventDefault();reviewStage()"><div class="panel"><div class="section-cap" style="margin-top:0">${'0'+(i+1)} / Interactive challenge</div>${stageContent(i)}</div>${commonTrace(i)}<div id="checkpoint" class="hidden"></div><div id="formerror" class="error" role="alert" aria-live="polite"></div><div class="stage-footer"><button type="button" class="btn outline" ${i===0?'disabled':''} onclick="goToStage(${i-1})">← Previous stage</button><button class="btn" type="submit">Review Decision Trace →</button></div></form></section>${stageSidebar(i)}</div>`;
+ restoreDraft();
+}
+function goToStage(i){if(DEMO_MODE){jumpDemoStage(i);return;}if(i<0||i>state.stage)return;captureDraft();state.stage=i;pendingStage=null;save();renderGame();window.scrollTo({top:0});}
+function collectStage(){const f=document.getElementById('stageForm');const fd=new FormData(f);let stage=STAGES[state.stage];const existing=state.answers[stage]||{};let answer={...existing};if(state.stage===0)answer={firstAction:fd.get('firstAction'),success:fd.get('success')};if(state.stage===1)answer={architecture:fd.get('architecture'),reconcile:fd.has('reconcile'),mapping:fd.has('mapping'),approval:fd.has('approval'),cosmetic:fd.has('cosmetic')};if(state.stage===2)answer={actual:Number(fd.get('actual')),variance:Number(fd.get('variance')),program:Number(fd.get('program'))};if(state.stage===3)answer={duplicate:fd.get('duplicate'),revisedActual:Number(fd.get('revisedActual')),fallback:fd.get('fallback')};if(state.stage===4)answer={evidence:fd.get('evidence'),review:fd.get('review'),briefing:String(fd.get('briefing')||'').slice(0,400),audience:String(fd.get('audience')||'Executive').slice(0,40),audienceBrief:String(fd.get('audienceBrief')||'').slice(0,900)};
+ let trace={rationale:fd.get('rationale'),outcome:fd.get('outcome'),assistance:fd.get('assistance'),note:String(fd.get('traceNote')||'').slice(0,180)};return {answer,trace};}
+function stageChoice(i,a){if(i===0)return a.firstAction;if(i===1)return a.architecture;if(i===2)return 'Calculated and reconciled financial totals';if(i===3)return a.duplicate;if(i===4)return a.evidence;return 'Not stated';}
+function reviewStage(){const form=document.getElementById('stageForm');if(!form.reportValidity())return;const stage=STAGES[state.stage];const obj=collectStage();if(!obj.trace.rationale||!obj.trace.outcome||!obj.trace.assistance){document.getElementById('formerror').textContent='Complete the three Decision Trace categories.';return;}pendingStage=obj;const checkpoint=document.getElementById('checkpoint');checkpoint.className='checkpoint';checkpoint.innerHTML=`<strong>Review this stage record</strong><p><b>Choice:</b> ${e(stageChoice(state.stage,obj.answer))}<br><b>Reason:</b> ${e(obj.trace.rationale)}<br><b>Outcome:</b> ${e(obj.trace.outcome)}<br><b>Assistance:</b> ${e(obj.trace.assistance)}${obj.trace.note?'<br><b>Note:</b> '+e(obj.trace.note):''}</p><div class="row"><button type="button" class="btn small" onclick="confirmStage()">Confirm and ${state.stage===4?'finish':'continue'} →</button><button class="btn outline small" type="button" onclick="editStage()">Edit record</button></div>`;checkpoint.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}
+function editStage(){pendingStage=null;document.getElementById('checkpoint').className='hidden';}
+function confirmStage(){if(!pendingStage)return;if(DEMO_MODE)for(let j=0;j<state.stage;j++)seedDemoStage(j);const name=STAGES[state.stage];state.answers[name]=pendingStage.answer;state.traces[name]={stage:name,choice:stageChoice(state.stage,pendingStage.answer),...pendingStage.trace};if(state.drafts)delete state.drafts[name];pendingStage=null;if(state.stage===4){state.completed=true;state.receipt=buildReceipt();save();showResults();return;}state.stage++;save();renderGame();window.scrollTo({top:0});}
+function score(a){let pts={Discover:0,Design:0,Build:0,Break:0,Explain:0};let v=a.Discover||{};if(v.firstAction==='Check source-to-department mappings')pts.Discover+=10;if(v.success==='Accurate, reconciled results with less manual effort')pts.Discover+=10;
+ v=a.Design||{};if(v.architecture==='Spreadsheet calculations + AI-written commentary')pts.Design+=10;if(v.reconcile)pts.Design+=5;if(v.mapping)pts.Design+=5;if(v.approval)pts.Design+=5;if(v.cosmetic)pts.Design=Math.max(0,pts.Design-5);
+ v=a.Build||{};if(Number(v.actual)===112700)pts.Build+=8;if(Number(v.variance)===700)pts.Build+=7;if(Number(v.program)===47700)pts.Build+=10;
+ v=a.Break||{};if(v.duplicate==='Quarantine the duplicate, reconcile, then accept one invoice')pts.Break+=8;if(Number(v.revisedActual)===113300)pts.Break+=7;if(v.fallback==='Keep the last verified report and alert the owner')pts.Break+=5;
+ v=a.Explain||{};if(v.evidence==='Reconciliation results, test outcomes, and measured labor time')pts.Explain+=5;if(v.review==='The designated finance owner')pts.Explain+=5;return pts;}
+function buildReceipt(){const pts=score(state.answers),total=Object.values(pts).reduce((a,b)=>a+b,0);return {demo:DEMO_MODE,evidenceType:DEMO_MODE?'Synthetic presentation example':'Learner practice',version:VERSION,gameId:GAME_ID,gameName:'The Reporting Rescue',attemptId:state.attemptId,learnerId:state.learnerId||null,difficulty:state.level,completedAt:new Date().toISOString(),score:total,maxScore:100,stageScores:pts,anchors:[{id:'AIA-1',level:Math.min(3,Math.floor((pts.Design+pts.Build)/15))},{id:'INX-2',level:Math.min(3,Math.floor((pts.Discover+pts.Build)/15))},{id:'GOV-2',level:Math.min(3,Math.floor((pts.Break+pts.Explain)/10))}],decisions:STAGES.map(s=>({...state.traces[s]}))};}
+function renderResults(){const el=document.getElementById('view-results');if(!state.completed){el.innerHTML=`<div class="eyebrow">Reporting Rescue results</div><h1>No completed attempt yet</h1><p class="lead">Complete Reporting Rescue to view its practice score and decision record. Games 2–8 use written responses and self-review; their work is saved within each project.</p><button class="btn" onclick="showGame()">Return to game →</button>`;return;}
+ if(!state.receipt){state.receipt=buildReceipt();save();}const r=state.receipt;
+ el.innerHTML=(DEMO_MODE?demoControls():'')+`<div class="topline"><span class="eyebrow">Reporting Rescue · Game 01</span><span class="tag">${DEMO_MODE?'Synthetic example receipt':'Local practice receipt'}</span></div><h1>${DEMO_MODE?'Sample Reporting Rescue results':'Reporting Rescue results'}</h1><p class="lead">${DEMO_MODE?'These sample results include synthetic, backfilled decisions for presentation. They are not evidence of learner performance.':'Review your rule-based practice score and decision record. This page covers Reporting Rescue only; Games 2–8 retain written work and self-review within each project.'}</p>
+ <div class="results-grid"><section class="panel"><div class="section-cap" style="margin-top:0">Assessment</div><div class="scorebig">${r.score}<span> / 100</span></div><p class="smalltxt muted">Rule-based practice score based on your selected answers. Not a verified or accredited grade.</p><div class="barback"><div class="bar" style="width:${r.score}%"></div></div><div style="margin-top:18px">${Object.entries(r.stageScores).map(([k,v])=>`<div class="result-metric"><span>${k}</span><strong>${v} / ${k==='Discover'?20:k==='Design'?25:k==='Build'?25:k==='Break'?20:10}</strong></div>`).join('')}</div><div class="row" style="margin-top:18px"><button class="btn outline small" onclick="downloadReceipt()">Download receipt (.json)</button><button class="btn outline small" onclick="resetGame()">New attempt</button></div></section>
+ <section class="panel"><div class="section-cap" style="margin-top:0">Anchor proficiency</div>${r.anchors.map(x=>`<div style="margin-bottom:17px"><div class="row" style="justify-content:space-between"><strong class="smalltxt">${x.id}</strong><span class="muted smalltxt">Level ${x.level} / 3</span></div><div class="progressline"><div style="width:${x.level*100/3}%"></div></div></div>`).join('')}<div class="notice"><strong>AIA-1</strong> Workflow architecture<br><strong>INX-2</strong> Structured implementation<br><strong>GOV-2</strong> Testing and reliability</div><p class="footnote">Levels are illustrative summaries derived from game performance; they do not prove workplace proficiency.</p></section></div>
+ <div class="panel"><div class="section-cap" style="margin-top:0">Your Decision Trace</div>${r.decisions.map(d=>`<div class="result-metric" style="display:block"><div class="row" style="justify-content:space-between"><strong>${e(d.stage)}</strong><span class="pill">${e(d.outcome)}</span></div><div class="smalltxt" style="margin:7px 0 2px">${e(d.choice)}</div><div class="muted smalltxt">Reason: ${e(d.rationale)} · Help: ${e(d.assistance)}</div>${d.note?`<div class="smalltxt" style="margin-top:5px">${e(d.note)}</div>`:''}</div>`).join('')}<p class="footnote">These are your checked, stage-by-stage decisions. They are saved only in this browser and in backups you download.</p></div>
+ <div class="panel"><div class="section-cap" style="margin-top:0">Your private practice record</div><h2>Keep your progress</h2><p>Your answers and results stay in this browser. This public demo does not submit reports or connect to the private pilot. Download a progress backup to recover your work or move it to another browser.</p><div class="row"><button class="btn outline" onclick="downloadReceipt()">Download receipt (.json)</button><button class="btn outline" onclick="exportBackup()">Download complete progress backup</button></div></div>`;
+}
+
+function csv(rows,fields){return fields.join(',')+'\r\n'+rows.map(row=>fields.map(k=>{let s=String(row[k]??'');return '"'+s.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');}
+function downloadFile(name,data,type='text/plain'){const blob=new Blob([data],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function downloadData(which){if(which==='budget')downloadFile('reporting_rescue_budget.csv',csv(BUDGET,['department','category','amount']),'text/csv');else downloadFile('reporting_rescue_ledger.csv',csv(LEDGER,['id','department','category','amount','invoice']),'text/csv');}
+function downloadReceipt(){const receipt=state.receipt||buildReceipt();downloadFile('applied_ai_lab_G01_'+state.attemptId.slice(0,8)+'.json',JSON.stringify({...receipt,decisionNotes:'This file has not been submitted automatically.'},null,2),'application/json');}
+function buildPrompt(i){
+  const stage=STAGES[i];
+  const briefs=[
+    'The team has six budget categories and seven general ledger entries. Investigate possible mapping errors and set acceptance criteria. Do not reveal corrections yet.',
+    'A program manager has confirmed that invoice INV-2063 ($3,000) is incorrectly coded to Outreach Supplies but belongs to Programs Supplies. Reclassification requires finance approval. Design architecture and controls.',
+    'Finance approved the INV-2063 reclassification for this simulated exercise. Reconcile budget, actuals, variance, and corrected Programs actual; preserve the original audit record.',
+    'A new valid Operations Supplies invoice INV-2099 for $600 appears twice. It should count once. Test duplicate detection and failure recovery.',
+    'Create a concise executive summary of the process, how it was validated, its measurable benefits, and remaining limitations. Be candid about anything not actually tested.'
+  ];
+  const seen=STAGES.slice(0,i).reduce((obj,k)=>(obj[k]=state.answers[k]||{},obj),{});
+  return `You are my tutor for Applied AI Lab: Game 1, The Reporting Rescue, at ${state.level} level. We are at Stage ${i+1}: ${stage}. Do not solve everything for me; ask questions, offer hints when requested, and challenge my approach. Scenario: ${briefs[i]}. Fictional budget records: ${JSON.stringify(BUDGET)}. Fictional ledger records: ${JSON.stringify(LEDGER)}. My previous stage choices: ${JSON.stringify(seen)}. Help me perform this stage with practical evidence and reflection. Do not reveal future stage complications. Do not ask me to upload real or confidential data. Remind me to return to the Applied AI Lab website to record my decision.`;
+}
+
+function buildContinuity(){
+ const stage=STAGES[state.stage];
+ const completed=STAGES.filter(x=>state.traces&&state.traces[x]);
+ const decisions=completed.map(x=>({stage:x,choice:state.traces[x].choice,rationale:state.traces[x].rationale,outcome:state.traces[x].outcome}));
+ return [
+  'Applied AI Studio — Game 01: The Reporting Rescue',
+  'Current stage: '+stage+' ('+(state.stage+1)+'/5). Difficulty: '+state.level+'.',
+  DEMO_MODE?'PRESENTATION DEMO: prior answers and decisions include synthetic backfilled examples, not learner evidence.':'This is an optional learner-supplied continuity brief, NOT an automatic conversation export.',
+  'Fictional exercise data only. Do not include real workplace financials or credentials.',
+  'Completed stage decisions: '+JSON.stringify(decisions),
+  'Confirmed stage answers: '+JSON.stringify(Object.fromEntries(completed.map(x=>[x,state.answers[x]]))),
+  'Current tutor directions:',buildPrompt(state.stage),
+  'Please continue from this point, rather than solving the full game. Ask for any missing context.'
+ ].join('\n\n');
+}
+async function copyContinuity(){
+ const brief=buildContinuity();
+ try{await navigator.clipboard.writeText(brief);}catch(e){const ta=document.createElement('textarea');ta.value=brief;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+ alert('Continuity brief copied. Paste it into your existing ChatGPT conversation or a new chat. Only your confirmed Stage decisions and synthetic exercise details are included.');
+}
+
+async function copyPrompt(i){const s=buildPrompt(i);try {await navigator.clipboard.writeText(s); alert('Stage prompt copied. Open ChatGPT and paste it to work with your AI tutor.');}catch(err){const ta=document.createElement('textarea');ta.value=s;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();alert('Stage prompt copied. Paste it into ChatGPT.');}}
+window.addEventListener('pagehide',()=>{if(currentView==='game')captureDraft();else save();});
+save();renderHome();renderGame();renderResults();renderAdmin();navigate('home');
+</script>
+</body>
+</html>

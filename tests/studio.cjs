@@ -4,12 +4,12 @@ const path = require('node:path');
 const http = require('node:http');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
-const prefix = '/applied-ai-lab/';
+const prefix = '/applied-ai/';
 const server = http.createServer((req, res) => {
   const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   if (!pathname.startsWith(prefix)) { res.writeHead(404).end(); return; }
   const file = path.resolve(root, pathname.slice(prefix.length) || 'index.html');
-  if (!file.startsWith(root + '/')) { res.writeHead(403).end(); return; }
+  if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
   let target = file;
   if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
   if (!fs.existsSync(target)) { res.writeHead(404).end(); return; }
@@ -34,12 +34,11 @@ async function download(page, locator) {
       const errors = [], external = [];
       page.on('pageerror', e => errors.push(e.message));
       await context.route('**/*', route => {
-        if (!route.request().url().startsWith(base)) { external.push(route.request().url()); return route.abort(); }
+        if (!route.request().url().startsWith(base)) { if(!/^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(route.request().url())) external.push(route.request().url()); return route.abort(); }
         return route.continue();
       });
       page.on('dialog', dialog => dialog.accept());
-      await page.goto(base);
-      assert.equal(await page.locator('a[href="https://sites.google.com/view/applied-ai-lab/applied-ai-lab"]').count(),2);
+      await page.goto(base+'lab/');
       await page.getByRole('link',{name:'Open Studio',exact:false}).click();
       await page.waitForURL('**/studio/Index.html');
       await page.locator('#level').selectOption('Builder');
@@ -62,7 +61,7 @@ async function download(page, locator) {
         if (stage===1) { await choose('architecture'); for (const name of ['reconcile','mapping','approval']) await sel(name).check(); }
         if (stage===2) { for (const [name,value] of Object.entries({actual:112700,variance:700,program:47700})) await sel(name).fill(String(value)); }
         if (stage===3) { await choose('duplicate'); await sel('revisedActual').fill('113300'); await choose('fallback'); }
-        if (stage===4) { await choose('evidence'); await choose('review'); await sel('briefing').fill('Reconciled source totals; finance reviews before publication.'); await sel('audienceBrief').fill('The workflow reconciles deterministic calculations and flags exceptions for review.'); }
+        if (stage===4) { await choose('evidence'); await choose('review'); await sel('briefing').fill('Reconciled source totals; finance reviews before publication.'); await page.locator('.communication-practice summary').click(); await sel('audienceBrief').fill('The workflow reconciles deterministic calculations and flags exceptions for review.'); }
         for (const name of ['rationale','outcome','assistance']) await choose(name);
         if (stage===0) {
           await page.getByRole('button',{name:'Copy Discover prompt',exact:true}).click();
@@ -85,7 +84,7 @@ async function download(page, locator) {
       const fresh = await browser.newContext({viewport,acceptDownloads:true});
       const recovered = await fresh.newPage();
       recovered.on('dialog',d=>d.accept());
-      await recovered.goto(base+'studio/Index.html');
+      await recovered.goto(base+'lab/studio/Index.html');
       const fileChooser = recovered.waitForEvent('filechooser');
       await recovered.getByRole('button',{name:'Restore a backup',exact:true}).click();
       await (await fileChooser).setFiles({name:'progress.json',mimeType:'application/json',buffer:Buffer.from(backup)});

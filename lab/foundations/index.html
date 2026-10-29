@@ -1,0 +1,930 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Responsible AI Foundations | Daniel Moose</title><meta name="description" content="Seven interactive modules on responsible AI, with private browser progress and portable backups."><style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+:root{--ink:#383d37;--cream:#fffdf7;--orange:#ff653c;--yellow:#ffe51c;--cyan:#17acdf;--blue:#1265c7;--lime:#c9e65c;--pink:#f1a4b7;--aqua:#a8e5e8}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Lexend',Arial,sans-serif;line-height:1.55}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.shell{max-width:1200px;margin:auto;padding:0 26px}header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:10}header .shell{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-family:'Lexend',Arial,sans-serif;font-size:21px;letter-spacing:-.3px}.brand small{font:600 10px 'Lexend',sans-serif;display:block;letter-spacing:2px;color:var(--lime);margin-top:1px}.topnav{display:flex;gap:8px;flex-wrap:wrap}.topnav button{border:1px solid #8e938d;background:transparent;color:white;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700}.topnav button.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}.hero{position:relative;overflow:hidden;min-height:340px;background:#e8f4ec}.paint{position:absolute;inset:0;width:100%;height:100%}.hero .shell{position:relative;padding-top:65px;padding-bottom:65px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase}.hero .course-title{font-family:'Lexend',Arial,sans-serif;font-size:clamp(35px,5vw,62px);line-height:1.16;letter-spacing:-1.2px;max-width:750px;margin:16px 0}.hero p{max-width:600px;font-size:17px;font-weight:600}.label{display:inline-block;background:var(--ink);color:white;padding:7px 12px;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}.content{padding-top:35px;padding-bottom:70px}.intro{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:23px}.intro h2,.panel h2{font-family:'Lexend',Arial,sans-serif;font-size:28px;line-height:1.3;margin:7px 0}.muted{color:#626b63}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.module{background:var(--ink);color:#fff;border:1px solid #383d37;border-radius:5px;min-height:190px;padding:22px;display:flex;flex-direction:column;gap:10px}.module.available{border-top:7px solid var(--yellow)}.module.locked{border-top:7px solid #a8e5e8}.module .num{color:var(--lime);font-size:12px;letter-spacing:2px;font-weight:700}.module h2{font-family:'Lexend',Arial,sans-serif;font-size:19px;line-height:1.4;margin:0}.module p{color:#e4e9e3;font-size:13px;margin:0;flex:1}.module .status{color:var(--aqua)}.status{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px}.button{border:0;background:var(--ink);color:white;padding:12px 18px;font-weight:700;border-radius:3px}.button:hover{filter:brightness(1.12)}.button.yellow{background:var(--yellow);color:var(--ink)}.button.ghost{background:white;color:var(--ink);border:1px solid #c8cec6}.button:disabled{opacity:.5;cursor:not-allowed}.panel{max-width:850px;margin:0 auto;background:#fff;border:1px solid #d5dbd3;padding:clamp(20px,4vw,42px);border-radius:5px}.progress{height:9px;background:#e9ece7;overflow:hidden;margin:20px 0}.progress div{height:100%;background:var(--cyan);transition:width .2s}.scenario{background:#f4f8f3;border-left:5px solid var(--blue);padding:20px;margin:20px 0}.options{display:grid;gap:10px;margin:20px 0}.option{background:white;border:2px solid #d4dbd3;text-align:left;padding:15px 17px;border-radius:4px;font-weight:600}.option:hover{border-color:var(--blue)}.option.selected{border-color:var(--blue);background:#e8f6fc}.feedback{padding:20px;border-left:5px solid var(--orange);background:#fff5e9;margin:20px 0}.feedback.good{background:#eef8ed;border-color:#399e7a}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.metric{padding:22px;background:var(--ink);color:white}.metric strong{display:block;font:700 30px 'Lexend',Arial,sans-serif}.metric span{font-size:11px;letter-spacing:1px;text-transform:uppercase}.barrow{margin:17px 0}.barrow>div:first-child{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}.bar{height:12px;background:#e6e9e5}.bar>div{height:100%;background:var(--blue)}.note{font-size:12px;color:#5c655c}.notice{padding:13px 17px;background:#f3e7ce;border-left:4px solid var(--orange);font-size:13px}.hidden{display:none!important}.foot{background:var(--ink);color:#fff;padding:24px 0;font-size:12px}.badge{background:var(--lime);padding:4px 9px;font-size:11px;font-weight:700;display:inline-block}.pill{border:1px solid #cbd0c8;border-radius:30px;padding:6px 12px;font-size:12px}.level{font:700 29px 'Lexend',Arial,sans-serif;margin:5px 0 12px}.adminrow{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:25px}.switchlabel{font-size:11px;color:#e6e7e4;margin-right:6px}@media(max-width:760px){.cards{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.adminrow{grid-template-columns:1fr}.hero{min-height:300px}.hero .shell{padding-top:45px;padding-bottom:45px}.intro{display:block}header .shell{padding-top:12px;padding-bottom:12px;align-items:start;flex-direction:column}.topnav{width:100%}.hero .course-title{letter-spacing:-1px}}
+
+.module .muted{color:#d8e0d8}.module .button{background:var(--yellow);color:var(--ink)}.module .button:hover{background:var(--lime)}
+.resource-tools{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}.resource-tools button{border:1px solid #abb6ab;background:#fff;padding:9px 13px;font-weight:700;font-size:12px}.resource-tools button:hover,.resource-tools button[aria-expanded="true"]{background:var(--aqua)}
+.resource-panel{background:#fff8dc;border:1px solid #d4bd74;padding:19px;margin:14px 0}.resource-panel h3{margin:0 0 8px;font:700 19px 'Lexend',serif}.resource-panel p{margin:7px 0}.resource-panel ul{padding-left:22px}.resource-panel li{margin:6px 0}.resource-panel .eyebrow{margin-bottom:7px}
+.lesson{background:#f2f8f7;border-left:6px solid var(--cyan);padding:22px;margin:20px 0}.lesson h3{margin:0 0 9px}.lesson p{margin:9px 0}.lesson ul{padding-left:20px}
+.chip{display:inline-block;padding:5px 10px;background:var(--lime);font-size:11px;font-weight:700;letter-spacing:.6px}.stage{color:#596459;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hintbox{background:#e9f6fc;border-left:4px solid var(--blue);padding:15px;margin:12px 0}.lesson-card{border:1px solid #d5dbd3;padding:16px;margin:12px 0}.lesson-card h4{margin:0 0 7px}.lesson-card p{margin:0}.library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.library-item{background:var(--ink);color:white;padding:20px}.library-item h3{font:700 18px 'Lexend',serif;margin:8px 0}.library-item p{font-size:13px;color:#e5e9e4}.library-item .eyebrow{color:var(--lime)}.library-item button{background:var(--yellow);color:var(--ink);border:0;padding:8px 12px;font-weight:700}.mode-switch{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.mode-switch button{border:1px solid #7b857b;padding:9px 13px;background:#fff}.mode-switch button.active{background:var(--ink);color:#fff}.subtle{font-size:12px;color:#5a645c}.resource-tag{font-size:10px;color:#505b52;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:760px){.library-grid{grid-template-columns:1fr}.resource-tools{display:grid;grid-template-columns:1fr 1fr}}
+
+/* v0.3 \2014  charcoal learning surfaces and non-navigating resource drawer */
+#lab .panel{background:var(--ink);color:#fff;border:1px solid #515950;box-shadow:0 15px 35px rgba(25,31,25,.12)}
+#lab .panel h2,#lab .panel h3,#lab .panel h4{color:#fff}
+#lab .panel .eyebrow,#lab .panel .stage,#lab .panel .resource-tag{color:var(--lime)}
+#lab .panel .subtle,#lab .panel .note{color:#d8e4dc}
+#lab .lesson,#lab .scenario,#lab .lesson-card{background:#485047;color:#fff;border-color:var(--cyan)}
+#lab .lesson p,#lab .lesson li,#lab .scenario{color:#f6faf7}
+#lab .option{background:#485047;color:#fff;border-color:#7b8b7d}
+#lab .option:hover,#lab .option:focus-visible{border-color:var(--yellow);background:#535e52}
+#lab .option.selected{background:#155e70;border-color:var(--cyan)}
+#lab .option:disabled{opacity:1;cursor:default}
+#lab .feedback{background:#614b38;color:#fff;border-color:var(--orange)}
+#lab .feedback.good{background:#245c4c;border-color:var(--lime)}
+#lab .hintbox{background:#244e5d;color:#fff;border-color:var(--cyan)}
+#lab .mode-switch button,#lab .resource-tools button{background:#485047;color:#fff;border:1px solid #879588}
+#lab .mode-switch button.active,#lab .resource-tools button:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+#lab .button.ghost{color:#fff;border-color:#aab8ab;background:transparent}
+#lab .button.ghost:hover{background:#525c50}
+#lab .chip{color:var(--ink)}
+body.drawer-open{overflow:hidden}
+.resource-drawer{display:none;position:fixed;inset:0;z-index:100}
+.resource-drawer.open{display:block}
+.drawer-backdrop{position:absolute;inset:0;background:rgba(15,24,20,.62)}
+.drawer-sheet{position:absolute;right:0;top:0;bottom:0;width:min(560px,100%);background:var(--cream);color:var(--ink);display:flex;flex-direction:column;box-shadow:-12px 0 38px rgba(0,0,0,.25)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;background:var(--ink);color:var(--lime);font-size:11px;font-weight:700;letter-spacing:1.2px}
+.drawer-header button{background:var(--yellow);border:0;color:var(--ink);padding:9px 12px;font-weight:700}
+.drawer-body{padding:22px 26px 50px;overflow-y:auto;overscroll-behavior:contain}
+.drawer-intro h2{font:700 29px/1.25 'Lexend',Arial,sans-serif;margin:8px 0}
+.drawer-intro p{color:#46534b}.drawer-filter{display:flex;align-items:center;gap:14px;margin:20px 0}
+.drawer-resource{background:var(--ink);color:white;padding:22px;margin:14px 0;border-left:6px solid var(--cyan)}
+.drawer-resource:nth-of-type(3n+2){border-left-color:var(--orange)}
+.drawer-resource:nth-of-type(3n){border-left-color:var(--lime)}
+.drawer-resource .eyebrow{color:var(--lime)}
+.drawer-resource h3{font:700 18px/1.4 'Lexend',Arial,sans-serif;margin:8px 0;color:#fff}
+.drawer-resource p{color:#f3f5f0;font-size:14px}.drawer-resource small{color:#c8d8ce}
+.drawer-disclaimer{font-size:12px;color:#536157}
+@media(max-width:600px){.drawer-body{padding:18px}.drawer-header{padding:12px 16px}#lab .panel{padding:20px}}
+
+/* v0.4 \2014  fixed full-page painted backdrop and semantic resource color system */
+body{background:#f4f3e9;isolation:isolate}
+.site-art{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#f4f3e9}
+.site-art .paint{position:absolute;inset:0;width:100%;height:100%;display:block;transform:scale(1.04)}
+.hero{background:transparent;min-height:330px;overflow:visible}
+.hero .shell{background:rgba(255,253,247,.76);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);max-width:1200px;margin-top:22px;border:1px solid rgba(56,61,55,.16)}
+.content{background:rgba(255,253,247,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);min-height:55vh;padding-left:26px;padding-right:26px;margin-bottom:36px;border:1px solid rgba(56,61,55,.15)}
+header{box-shadow:0 3px 18px rgba(0,0,0,.18)}
+/* Each resource has a consistent accent across toolbar, library tile, and slide-out panel. */
+.resource-suitability{--resource-accent:#ffe51c;--resource-ink:#383d37}
+.resource-limits{--resource-accent:#17acdf;--resource-ink:#102e3b}
+.resource-prompt{--resource-accent:#ff653c;--resource-ink:#38261f}
+.resource-iteration{--resource-accent:#f1a4b7;--resource-ink:#382a32}
+.resource-classification{--resource-accent:#c9e65c;--resource-ink:#26321b}
+.resource-policy{--resource-accent:#1265c7;--resource-ink:#fff}
+.resource-glossary{--resource-accent:#a8e5e8;--resource-ink:#203c3e}
+.library-item,.drawer-resource{border-left:8px solid var(--resource-accent,var(--cyan));position:relative}
+.library-item:before,.drawer-resource:before{content:'';position:absolute;top:0;right:0;width:38px;height:9px;background:var(--resource-accent,var(--cyan))}
+.library-item .eyebrow,.drawer-resource .eyebrow{color:var(--resource-accent,var(--lime))}
+.library-item button{background:var(--resource-accent,var(--yellow));color:var(--resource-ink,var(--ink))}
+.resource-panel{background:var(--ink);color:white;border:1px solid #586157;border-left:8px solid var(--resource-accent,var(--cyan))}
+.resource-panel .eyebrow{color:var(--resource-accent,var(--lime))}
+.resource-tools .resource-button,#lab .resource-tools .resource-button{border-left:5px solid var(--resource-accent,var(--cyan));background:var(--ink);color:#fff;border-top:1px solid #879588;border-right:1px solid #879588;border-bottom:1px solid #879588}
+.resource-tools .resource-button:hover,#lab .resource-tools .resource-button:hover,.resource-tools .resource-button[aria-expanded="true"],#lab .resource-tools .resource-button[aria-expanded="true"]{background:var(--resource-accent,var(--yellow));color:var(--resource-ink,var(--ink));border-color:var(--resource-accent,var(--yellow))}
+@media(max-width:760px){.hero .shell{margin-top:10px}.content{padding-left:16px;padding-right:16px}.site-art .paint{width:150%;left:-25%}}
+@media(prefers-reduced-motion:reduce){.site-art .paint{transform:none}}
+
+/* v0.5: artwork scaled to show full composition, not cropped/zoomed */
+.site-art .paint{transform:none!important;width:100%;height:100%;left:0;object-fit:contain}
+@media(max-width:760px){.site-art .paint{width:100%;left:0}}
+/* High-visibility semantic resource controls */
+.resource-tools .resource-button,#lab .resource-tools .resource-button{
+ background:var(--resource-accent,var(--yellow));color:var(--resource-ink,var(--ink));
+ border:2px solid var(--resource-accent,var(--yellow));border-left:8px solid var(--resource-accent,var(--yellow));
+ border-radius:5px;box-shadow:0 3px 0 rgba(0,0,0,.25);font-weight:800;padding:11px 15px;
+}
+.resource-tools .resource-button:hover,#lab .resource-tools .resource-button:hover,
+.resource-tools .resource-button[aria-expanded="true"],#lab .resource-tools .resource-button[aria-expanded="true"]{
+ background:var(--resource-accent,var(--yellow));color:var(--resource-ink,var(--ink));
+ filter:brightness(.94);outline:2px solid #fff;outline-offset:2px;transform:translateY(-1px)
+}
+.library-item button{background:var(--resource-accent,var(--yellow));color:var(--resource-ink,var(--ink));border:2px solid currentColor;font-weight:800;padding:10px 15px}
+
+/* v0.6 \2014  coffee-label knockout button system */
+:root{--cream-type:#fff9e9;--dark-cyan:#075773;--dark-orange:#89351f;--dark-lime:#344d24;--dark-pink:#733e53;--dark-aqua:#23565b;--dark-gold:#66500b;--dark-blue:#173c83}
+.resource-suitability{--resource-dark:var(--dark-gold)}
+.resource-limits{--resource-dark:var(--dark-cyan)}
+.resource-prompt{--resource-dark:var(--dark-orange)}
+.resource-iteration{--resource-dark:var(--dark-pink)}
+.resource-classification{--resource-dark:var(--dark-lime)}
+.resource-policy{--resource-dark:var(--dark-blue)}
+.resource-glossary{--resource-dark:var(--dark-aqua)}
+/* Labels remain legible with light knockout text on every color field. */
+button.button,.module .button,.library-item button,.drawer-header button,
+.resource-tools .resource-button,#lab .resource-tools .resource-button,
+.topnav button,.mode-switch button,#lab .mode-switch button,
+#lab .option{background:#383d37;color:var(--cream-type);border:2px solid #747d73;border-radius:3px;font-weight:700;box-shadow:0 3px 0 rgba(20,25,21,.26);transition:background-color .15s,border-color .15s,transform .15s,box-shadow .15s}
+.resource-tools .resource-button,#lab .resource-tools .resource-button,.library-item button{
+ background:var(--resource-dark,#383d37);color:var(--cream-type);border:2px solid var(--resource-accent,#ffe51c);border-left:7px solid var(--resource-accent,#ffe51c);font-family:'Lexend',Arial,sans-serif;font-size:13px;line-height:1.45;letter-spacing:.05px;padding:12px 16px;text-shadow:0 1px 1px rgba(0,0,0,.22)
+}
+.resource-tools .resource-button:hover,#lab .resource-tools .resource-button:hover,
+.resource-tools .resource-button[aria-expanded="true"],#lab .resource-tools .resource-button[aria-expanded="true"],
+.library-item button:hover{background:var(--resource-dark,#383d37);color:var(--cream-type);border-color:var(--resource-accent,#ffe51c);filter:brightness(1.22);transform:translateY(-2px);box-shadow:0 5px 0 rgba(20,25,21,.28)}
+.button.yellow,.module .button,.topnav button.active,#lab .mode-switch button.active{background:#173c83;color:var(--cream-type);border-color:#a8e5e8}
+.button.ghost,#lab .button.ghost{background:#383d37;color:var(--cream-type);border-color:#a8e5e8}
+#lab .option{width:100%;text-align:left;background:#404a40;color:var(--cream-type);padding:15px 17px}
+#lab .option:hover{background:#4f5b4f;border-color:#ffe51c}
+#lab .option.selected{background:#173c83;color:var(--cream-type);border-color:#ffe51c}
+button:focus-visible{outline:3px solid #ffe51c!important;outline-offset:3px!important}
+button:disabled{opacity:.55;cursor:not-allowed;transform:none!important}
+@media(prefers-reduced-motion:reduce){button{transition:none!important;transform:none!important}}
+
+/* v0.8 \2014  bold knockout lettering and translucent controls */
+:root{--button-lettering:#fff9e9}
+button.button,.module .button,.library-item button,.drawer-header button,
+.resource-tools .resource-button,#lab .resource-tools .resource-button,
+.topnav button,.mode-switch button,#lab .mode-switch button,#lab .option,
+.resource-tools button,.drawer-filter button{
+  font-family:'Lexend',Arial,sans-serif;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.075em;
+  line-height:1.4;
+  color:var(--button-lettering);
+  background-color:rgba(27,33,30,.68);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
+}
+/* Rich transparent tints preserve resource category recognition. */
+.resource-tools .resource-button,#lab .resource-tools .resource-button,.library-item button{
+  background-color:color-mix(in srgb,var(--resource-dark,#383d37) 68%,transparent);
+  border-color:var(--resource-accent,#ffe51c);
+  border-left-width:7px;
+}
+.resource-tools .resource-button:hover,#lab .resource-tools .resource-button:hover,
+.resource-tools .resource-button[aria-expanded="true"],#lab .resource-tools .resource-button[aria-expanded="true"],
+.library-item button:hover{
+  background-color:color-mix(in srgb,var(--resource-dark,#383d37) 86%,transparent);
+  color:var(--button-lettering);
+}
+.button.yellow,.module .button,.topnav button.active,#lab .mode-switch button.active{
+  background-color:rgba(23,60,131,.75);color:var(--button-lettering);border-color:#a8e5e8;
+}
+.button.ghost,#lab .button.ghost{background-color:rgba(27,33,30,.58);color:var(--button-lettering)}
+#lab .option{background-color:rgba(35,45,39,.73);color:var(--button-lettering);text-transform:none;letter-spacing:.012em;font-weight:700}
+#lab .option:hover{background-color:rgba(55,70,59,.88)}
+#lab .option.selected{background-color:rgba(23,60,131,.88)}
+/* A touch of transparency in module tiles exposes the fixed artwork behind the controls. */
+.module{background-color:rgba(40,45,40,.90)}
+@media(prefers-reduced-transparency:reduce){
+ button.button,.module .button,.library-item button,.drawer-header button,
+ .resource-tools .resource-button,#lab .resource-tools .resource-button,
+ .topnav button,.mode-switch button,#lab .mode-switch button,#lab .option{background-color:#383d37;backdrop-filter:none;-webkit-backdrop-filter:none}
+ .module{background-color:#383d37}
+}
+
+/* v1.1 \2014  actual knockout: mask the charcoal BUTTON SURFACE, not the text.
+   The button itself carries the fixed artwork; an SVG charcoal overlay is
+   punched through with the full letter shapes. */
+:root{--knockout-art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201400%20900%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22arttile%22%20width%3D%22602%22%20height%3D%22387%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Crect%20width%3D%22602%22%20height%3D%22387%22%20fill%3D%22%23f4f3e9%22%2F%3E%3Cg%20transform%3D%22scale%280.43%29%22%3E%3Cpath%20d%3D%22M-40%20-25%20L480%20-40%20350%20110%20160%20160%20-60%20110Z%22%20fill%3D%22%23ff653c%22%20opacity%3D%22.96%22%2F%3E%3Cpath%20d%3D%22M375%20-50%20L900%20-20%20720%20410%20475%20370%20570%2080Z%22%20fill%3D%22%23ffe51c%22%2F%3E%3Cpath%20d%3D%22M1000%20-70%20L1430%200%201410%20400%201090%20300%201190%20150Z%22%20fill%3D%22%23a8e5e8%22%2F%3E%3Cpath%20d%3D%22M1320%20-60%20L1440%20-30%201410%20210%201260%20120Z%22%20fill%3D%22%231265c7%22%2F%3E%3Cpath%20d%3D%22M-40%20220%20L210%20170%20120%20430%20-60%20420Z%22%20fill%3D%22%2317acdf%22%2F%3E%3Cpath%20d%3D%22M1020%20200%20L1200%20100%201190%20400%201000%20420Z%22%20fill%3D%22%23c9e65c%22%2F%3E%3Cpath%20d%3D%22M820%20260%20L1030%20200%201010%20410%20760%20410Z%22%20fill%3D%22%23f1a4b7%22%2F%3E%3Cpath%20d%3D%22M300%20110%20L360%2075%20340%20300%20275%20340Z%22%20fill%3D%22%23fffdf7%22%20opacity%3D%22.65%22%2F%3E%3Cpath%20d%3D%22M700%20-40%20L770%20-30%20660%20220%20630%20230Z%22%20fill%3D%22%2317acdf%22%20opacity%3D%22.7%22%2F%3E%3Cpath%20d%3D%22M1170%2010%20L1220%20-30%201150%20260%201120%20270Z%22%20fill%3D%22%23ff653c%22%20opacity%3D%22.65%22%2F%3E%3Cpath%20d%3D%22M-70%20550%20L210%20470%20280%20720%20-50%20800Z%22%20fill%3D%22%2317acdf%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M280%20670%20L600%20530%20700%20850%20330%20940Z%22%20fill%3D%22%23f1a4b7%22%20opacity%3D%22.88%22%2F%3E%3Cpath%20d%3D%22M750%20610%20L970%20520%201090%20850%20820%20940Z%22%20fill%3D%22%23ffe51c%22%20opacity%3D%22.82%22%2F%3E%3Cpath%20d%3D%22M1140%20470%20L1450%20560%201440%20950%201200%20800Z%22%20fill%3D%22%23c9e65c%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M620%20480%20L680%20440%20570%20900%20520%20930Z%22%20fill%3D%22%23ff653c%22%20opacity%3D%22.75%22%2F%3E%3C%2Fg%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%221400%22%20height%3D%22900%22%20fill%3D%22url%28%23arttile%29%22%2F%3E%3C%2Fsvg%3E")}
+button.true-knockout{position:relative!important;isolation:isolate;background-image:var(--knockout-art)!important;background-attachment:fixed!important;background-size:cover!important;background-position:center!important;overflow:hidden;}
+button.true-knockout .knockout-label{opacity:0!important;display:block;white-space:normal;position:relative;pointer-events:none;}
+button.true-knockout .knockout-surface{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+button.true-knockout:hover .knockout-surface{filter:brightness(1.18)}
+button.true-knockout:focus-visible{outline:3px solid #ffe51c!important;outline-offset:3px!important}
+@media(prefers-contrast:more),(prefers-reduced-transparency:reduce){
+ button.true-knockout{background:#383d37!important}
+ button.true-knockout .knockout-surface{display:none!important}
+ button.true-knockout .knockout-label{opacity:1!important;color:#fff9e9!important}
+}
+
+/* v1.5 \2014  uniform internal color haze, 25% stronger, clipped to the charcoal surface and
+   excluded from the transparent letterforms by the shared SVG mask. */
+button.true-knockout{
+  --glow-color:#a8e5e8;
+  box-shadow:0 2px 0 rgba(12,19,15,.24)!important;
+  transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease!important;
+}
+button.true-knockout:hover,
+button.true-knockout[aria-expanded="true"]{
+  box-shadow:0 2px 0 rgba(12,19,15,.27)!important;
+}
+button.true-knockout:focus-visible{
+  box-shadow:0 0 0 2px #252b27!important;
+}
+button.true-knockout .knockout-haze{opacity:.60;transition:opacity .2s ease}
+button.true-knockout:hover .knockout-haze,
+button.true-knockout[aria-expanded="true"] .knockout-haze{opacity:.9375}
+/* Home module actions glow yellow, regardless of their module accent. */
+#home button.true-knockout{--glow-color:#ffe51c;}
+/* Resource controls retain their categorical colors. */
+button.true-knockout.resource-button,
+.library-item button.true-knockout{--glow-color:var(--resource-accent,#a8e5e8);}
+button.true-knockout.resource-glossary{--glow-color:#a8e5e8;}
+button.true-knockout.resource-limits{--glow-color:#17acdf;}
+button.true-knockout.resource-prompt{--glow-color:#ff653c;}
+button.true-knockout.resource-iteration{--glow-color:#f1a4b7;}
+button.true-knockout.resource-classification{--glow-color:#c9e65c;}
+button.true-knockout.resource-policy{--glow-color:#1265c7;}
+button.true-knockout.resource-suitability{--glow-color:#ffe51c;}
+/* v1.6 \2014  stronger homepage illumination and weightier module controls. */
+#home button.true-knockout .knockout-haze{opacity:.90}
+#home button.true-knockout:hover .knockout-haze,
+#home button.true-knockout[aria-expanded="true"] .knockout-haze{opacity:1}
+/* Match the bold BEGIN PRACTICE lettering with a substantial 3px perimeter. */
+#lab button.true-knockout{border:3px solid var(--glow-color,#ffe51c)!important}
+#lab button.true-knockout .knockout-surface{inset:3px;width:calc(100% - 6px);height:calc(100% - 6px)}
+/* v1.7 \2014  solid yellow homepage actions; solid colored module borders. */
+#home button.true-knockout{
+  background:#ffe51c!important;
+  color:#252b27!important;
+  border:3px solid #ffe51c!important;
+}
+#home button.true-knockout .knockout-surface{display:none!important}
+#home button.true-knockout .knockout-label{
+  opacity:1!important;color:#252b27!important;
+  font-weight:900!important;
+}
+#home button.true-knockout:hover{background:#fff05c!important;border-color:#fff05c!important}
+#lab button.true-knockout{
+  border:3px solid var(--glow-color,#ffe51c)!important;
+  background-clip:padding-box!important;
+}
+/* The SVG surface stays within the border; the border itself is never masked. */
+#lab button.true-knockout .knockout-surface{inset:0;width:100%;height:100%}
+/* v1.8 \2014  clearer separation of charcoal shells and secondary gray surfaces. */
+#lab .panel{background:#292f2b;border-color:#68736a}
+#lab .lesson,#lab .scenario,#lab .lesson-card{background:#59635c;border-color:var(--cyan)}
+#lab .option{background:#59635c;border-color:#9aa79b}
+#lab .option:hover,#lab .option:focus-visible{background:#657168}
+#lab .mode-switch button,#lab .resource-tools button{background:#59635c;border-color:#9aa79b}
+/* Keep SVG artwork strictly inside the solid perimeter; no knockout reaches border. */
+#lab button.true-knockout .knockout-surface{inset:4px!important;width:calc(100% - 8px)!important;height:calc(100% - 8px)!important;overflow:hidden}
+/* v1.9 \2014  module button perimeter is a separate, opaque topmost layer.
+   The knockout mask only affects the SVG interior, never this solid ring. */
+#lab button.true-knockout{border:3px solid var(--glow-color,#ffe51c)!important}
+#lab button.true-knockout .knockout-surface{
+  inset:0!important;width:100%!important;height:100%!important;
+  border-radius:inherit;overflow:hidden;
+}
+#lab button.true-knockout::after{
+  content:"";position:absolute;inset:0;box-sizing:border-box;
+  border:3px solid var(--glow-color,#ffe51c);
+  border-radius:inherit;pointer-events:none;z-index:5;
+}
+@media(prefers-reduced-motion:reduce){button.true-knockout{transition:none!important}}
+@media(prefers-contrast:more){button.true-knockout{box-shadow:none!important}}
+
+/* v2.0 \2014  scan-friendly resources: decisions, steps, examples and glossary */
+.resource-content{display:grid;gap:14px;margin:14px 0 10px;color:#f8fbf7;font-size:.94rem;line-height:1.55}
+.resource-content p{margin:0}.resource-content strong{color:#fff}
+.resource-kicker{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;font-weight:900;color:var(--resource-accent,#ffe51c)}
+.resource-steps{list-style:none!important;padding:0!important;margin:0!important;display:grid;gap:9px;counter-reset:step}
+.resource-steps li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;padding:10px 12px;background:rgba(13,22,18,.34);border:1px solid rgba(255,255,255,.16);border-radius:10px}
+.resource-steps li::before{content:counter(step);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--resource-accent,#ffe51c);color:#242b26;font-weight:900}
+.resource-steps li strong,.resource-bullets strong{display:block;margin-bottom:2px}
+.resource-bullets{margin:0!important;padding-left:22px!important;display:grid;gap:8px}
+.resource-bullets li{padding-left:4px}
+.resource-bullets li::marker{color:var(--resource-accent,#ffe51c)}
+.resource-flow{display:grid;gap:7px}
+.resource-flow-node{padding:11px 13px;border:1px solid var(--resource-accent,#ffe51c);border-radius:9px;background:rgba(16,24,21,.43)}
+.resource-flow-arrow{text-align:center;color:var(--resource-accent,#ffe51c);font-weight:900;font-size:1.15rem;line-height:1}
+.resource-decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px}
+.resource-decision{border-radius:9px;padding:12px;border:1px solid rgba(255,255,255,.25);background:rgba(15,24,19,.42)}
+.resource-decision strong{display:block;margin-bottom:5px;color:var(--resource-accent,#ffe51c)}
+.resource-decision small{font-size:.87rem;line-height:1.5;color:#f0f5ef}
+.resource-note{padding:10px 13px;border-left:4px solid var(--resource-accent,#ffe51c);background:rgba(14,22,19,.5);border-radius:0 8px 8px 0}
+.resource-comparison{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.resource-comparison>div{padding:12px;border:1px solid rgba(255,255,255,.22);border-radius:9px;background:rgba(15,24,19,.4)}
+.resource-comparison strong{display:block;margin-bottom:8px;color:var(--resource-accent,#ffe51c)}
+.resource-glossary-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}
+.resource-glossary-list>div{background:rgba(14,22,19,.42);padding:11px;border-radius:9px;border:1px solid rgba(255,255,255,.2)}
+.resource-glossary-list dt{font-weight:900;color:var(--resource-accent,#ffe51c)}
+.resource-glossary-list dd{margin:4px 0 0}
+@media(max-width:540px){.resource-decision-grid,.resource-comparison,.resource-glossary-list{grid-template-columns:1fr}}
+
+/* v2.2 \2014  fixed header navigation uses solid home-screen button treatment. */
+.topnav button,
+.topnav button.active{
+  background:#ffe51c!important;
+  color:#252b27!important;
+  border:3px solid #ffe51c!important;
+  border-radius:3px;
+  font-weight:900;
+  text-transform:uppercase;
+  box-shadow:0 3px 0 rgba(20,25,21,.26);
+}
+.topnav button:hover{background:#fff05c!important;border-color:#fff05c!important}
+.topnav button.active{background:#fff05c!important;border-color:#fff05c!important;box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)}
+.topnav button:focus-visible{outline:3px solid #fff9e9;outline-offset:3px}
+/* v2.6 \2014  function-specific solid navigation palette. */
+.topnav #employeeTab{--nav-color:#ffe51c;--nav-hover:#fff05c}
+.topnav #libraryTab{--nav-color:#a8e5e8;--nav-hover:#c7f2f2}
+.topnav #adminTab{--nav-color:#17acdf;--nav-hover:#60cdf0}
+.topnav #resetTab{--nav-color:#ff653c;--nav-hover:#ff997d}
+.topnav button,.topnav button.active{
+ background:var(--nav-color)!important;
+ border-color:var(--nav-color)!important;
+ color:#252b27!important;
+}
+.topnav button:hover{background:var(--nav-hover)!important;border-color:var(--nav-hover)!important}
+.topnav button.active{box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)}
+
+
+/* v3.4: compact expandable resource banners and consolidated glossary */
+.library-grid{grid-template-columns:1fr;gap:11px}.library-accordion{padding:0;overflow:hidden;border-radius:10px;border-top:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15)}
+.library-accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;min-height:77px}.library-accordion summary::-webkit-details-marker{display:none}.library-accordion summary:focus-visible{outline:3px solid var(--yellow);outline-offset:-4px}.library-accordion summary:hover{background:rgba(255,255,255,.065)}
+.library-summary-copy{display:flex;flex-direction:column;gap:5px}.library-summary-copy strong{font-size:17px;color:#fff}.library-summary-copy small{color:#bce9e7;font-size:11px}.library-chevron{font-size:27px;color:var(--resource-accent,var(--yellow));transition:transform .18s}.library-accordion[open] .library-chevron{transform:rotate(180deg)}.library-accordion-body{padding:0 20px 20px;border-top:1px solid rgba(255,255,255,.15)}.library-accordion-body .resource-content{padding-top:14px}.glossary-modules{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.glossary-module-tag{font-size:10px;font-weight:800;letter-spacing:.2px;border:1px solid var(--resource-accent,#a8e5e8);border-radius:20px;padding:3px 7px;color:var(--resource-accent,#a8e5e8)}
+
+/* v4.1 \2014  restore distinct resource-category accents across Modules 4\2013 7.
+   These are solid opaque borders, not knockout borders. */
+.resource-verify{--resource-accent:#ffe51c;--resource-ink:#383d37;--resource-dark:#66500b}
+.resource-evidence{--resource-accent:#f1a4b7;--resource-ink:#382a32;--resource-dark:#733e53}
+.resource-release{--resource-accent:#c9e65c;--resource-ink:#26321b;--resource-dark:#344d24}
+.resource-oversight{--resource-accent:#17acdf;--resource-ink:#102e3b;--resource-dark:#075773}
+.resource-approval{--resource-accent:#ff653c;--resource-ink:#38261f;--resource-dark:#89351f}
+.resource-workflow{--resource-accent:#a8e5e8;--resource-ink:#203c3e;--resource-dark:#23565b}
+.resource-pilot{--resource-accent:#ffe51c;--resource-ink:#383d37;--resource-dark:#66500b}
+.resource-adoption{--resource-accent:#c9e65c;--resource-ink:#26321b;--resource-dark:#344d24}
+.resource-metrics{--resource-accent:#f1a4b7;--resource-ink:#382a32;--resource-dark:#733e53}
+#lab .resource-tools button.resource-button{border:3px solid var(--resource-accent,#a8e5e8)!important;background:var(--resource-dark,#383d37)!important;color:#fff9e9!important}
+#lab .resource-tools button.resource-button:hover,#lab .resource-tools button.resource-button[aria-expanded="true"]{filter:brightness(1.2)}
+
+/* v4.2 \2014  fixed-screen lab: no document scrolling during modules. */
+@media (min-width: 900px) and (min-height: 650px){
+ body.lab-fixed{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+ body.lab-fixed header{position:relative;flex:0 0 auto}
+ body.lab-fixed .hero,body.lab-fixed .foot{display:none}
+ body.lab-fixed main.content{flex:1;min-height:0;width:100%;padding:12px 24px;display:flex;flex-direction:column}
+ body.lab-fixed #employeeView,body.lab-fixed #lab{height:100%;min-height:0}
+ body.lab-fixed #lab:not(.hidden){display:flex;align-items:stretch;justify-content:center}
+ body.lab-fixed #lab>.panel{width:min(1120px,100%);max-width:1120px;height:100%;overflow-y:auto;overscroll-behavior:contain;padding:clamp(15px,2vh,25px) clamp(22px,3vw,36px);scrollbar-width:thin}
+ body.lab-fixed #lab .panel h2{font-size:clamp(21px,2.4vh,28px);margin:3px 0 7px}
+ body.lab-fixed #lab .panel h3{font-size:15px;margin:8px 0}
+ body.lab-fixed #lab .scenario{padding:12px 16px;margin:9px 0}
+ body.lab-fixed #lab .options{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:9px 0}
+ body.lab-fixed #lab .option{padding:10px 13px;font-size:13px;line-height:1.35}
+ body.lab-fixed #lab .progress{margin:9px 0;height:6px}
+ body.lab-fixed #lab .resource-tools{margin:8px 0}
+ body.lab-fixed #lab .resource-tools button{padding:8px 11px;font-size:11px}
+ body.lab-fixed #lab .actions{margin-top:12px}
+ body.lab-fixed #lab .lesson{padding:12px 16px}
+ body.lab-fixed #lab .feedback{padding:12px;margin:10px 0}
+}
+/* Module 6 resources use the same category accents as earlier modules. */
+#lab .resource-tools .resource-workflow{--resource-accent:#a8e5e8;--resource-dark:#23565b}
+#lab .resource-tools .resource-pilot{--resource-accent:#ffe51c;--resource-dark:#66500b}
+
+/* v4.3 \2014  one stretched, non-repeating background composition. */
+.site-art .paint{width:100%!important;height:100%!important;left:0!important;transform:none!important;object-fit:fill!important}
+/* Use the available desktop viewport instead of a narrow centered column. */
+@media (min-width:900px){
+ .shell{max-width: min(1800px, 98vw)}
+ .hero .shell{max-width:min(1800px,98vw)}
+ .content{max-width:min(1800px,98vw)}
+ .panel{max-width:min(1450px,100%)}
+ .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:900px) and (min-height:650px){
+ body.lab-fixed main.content{padding:12px clamp(16px,2vw,40px);margin-bottom:0}
+ body.lab-fixed #lab>.panel{width:100%;max-width:100%;padding:clamp(20px,3vh,36px) clamp(24px,3vw,56px)}
+ body.lab-fixed #lab .panel h2{font-size:clamp(25px,3vh,35px)}
+ body.lab-fixed #lab .scenario{padding:clamp(14px,2vh,22px) clamp(18px,2vw,30px);font-size:clamp(14px,1.05vw,17px)}
+ body.lab-fixed #lab .options{gap:clamp(10px,1.3vh,18px)}
+ body.lab-fixed #lab .option{padding:clamp(12px,1.5vh,19px) clamp(16px,1.5vw,24px);font-size:clamp(13px,1vw,16px)}
+ body.lab-fixed #lab .resource-tools button{padding:10px 15px;font-size:12px}
+}
+
+/* v4.4 \2014  distribute scenario content through the available charcoal panel height. */
+@media (min-width:900px) and (min-height:650px){
+ body.lab-fixed #lab>.panel.lab-scenario-panel{display:flex;flex-direction:column;gap:clamp(5px,.65vh,11px)}
+ body.lab-fixed #lab .lab-scenario-panel .scenario{flex:1 1 18%;display:flex;align-items:center;margin:0;min-height:65px}
+ body.lab-fixed #lab .lab-scenario-panel .options{flex:2 1 36%;grid-auto-rows:minmax(0,1fr);margin:0;min-height:140px}
+ body.lab-fixed #lab .lab-scenario-panel .option{height:100%;display:flex;align-items:center}
+ body.lab-fixed #lab .lab-scenario-panel .progress{flex:0 0 6px;margin:0}
+ body.lab-fixed #lab .lab-scenario-panel .actions{margin-top:auto}
+ body.lab-fixed #lab .lab-scenario-panel .feedback{flex:0 1 auto}
+}
+
+/* v4.5 \2014  one stable palette per resource category, across the library, drawers and modules.
+   Category classes intentionally override historical per-resource colors. */
+.resource-category-framework{--resource-accent:#17acdf;--resource-dark:#075773;--resource-ink:#102e3b}
+.resource-category-template{--resource-accent:#ffe51c;--resource-dark:#66500b;--resource-ink:#383d37}
+.resource-category-checklist{--resource-accent:#c9e65c;--resource-dark:#344d24;--resource-ink:#26321b}
+.resource-category-reference{--resource-accent:#a8e5e8;--resource-dark:#23565b;--resource-ink:#203c3e}
+/* Override older Module 6 resource-specific overrides without changing the category scheme. */
+#lab .resource-tools .resource-category-framework{--resource-accent:#17acdf;--resource-dark:#075773}
+#lab .resource-tools .resource-category-template{--resource-accent:#ffe51c;--resource-dark:#66500b}
+#lab .resource-tools .resource-category-checklist{--resource-accent:#c9e65c;--resource-dark:#344d24}
+#lab .resource-tools .resource-category-reference{--resource-accent:#a8e5e8;--resource-dark:#23565b}
+
+/* v4.6 \2014  category is the full button surface, not merely a border accent. */
+.resource-category-framework{--resource-fill:#0b6584;--resource-fill-hover:#107da3}
+.resource-category-template{--resource-fill:#8b7010;--resource-fill-hover:#aa8c12}
+.resource-category-checklist{--resource-fill:#486626;--resource-fill-hover:#587d2d}
+.resource-category-reference{--resource-fill:#2b676d;--resource-fill-hover:#367e85}
+/* Keep the resource controls legible and consistently filled in every module. */
+#lab .resource-tools button.resource-button.resource-category-framework,
+#lab .resource-tools button.resource-button.resource-category-template,
+#lab .resource-tools button.resource-button.resource-category-checklist,
+#lab .resource-tools button.resource-button.resource-category-reference,
+.resource-tools button.resource-button.resource-category-framework,
+.resource-tools button.resource-button.resource-category-template,
+.resource-tools button.resource-button.resource-category-checklist,
+.resource-tools button.resource-button.resource-category-reference{
+ background:var(--resource-fill)!important;
+ background-color:var(--resource-fill)!important;
+ border:3px solid var(--resource-accent)!important;
+ color:#fff9e9!important;
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 3px 0 rgba(20,25,21,.3);
+}
+#lab .resource-tools button.resource-button[class*="resource-category-"]:hover,
+#lab .resource-tools button.resource-button[class*="resource-category-"][aria-expanded="true"],
+.resource-tools button.resource-button[class*="resource-category-"]:hover{
+ background:var(--resource-fill-hover)!important;
+ background-color:var(--resource-fill-hover)!important;
+ border-color:var(--resource-accent)!important;
+ filter:none;
+}
+/* A module glossary is always a Guide & reference, even though its content is filtered. */
+#lab .resource-tools button.resource-glossary{
+ --resource-accent:#a8e5e8;--resource-fill:#2b676d;--resource-fill-hover:#367e85;
+ background:var(--resource-fill)!important;border:3px solid var(--resource-accent)!important;color:#fff9e9!important;
+}
+#lab .resource-tools button.resource-glossary:hover,
+#lab .resource-tools button.resource-glossary[aria-expanded="true"]{background:var(--resource-fill-hover)!important}
+/* Resource Library banners use the same category shading and border language. */
+.library-accordion[class*="resource-category-"]{
+ background:var(--resource-fill);border:3px solid var(--resource-accent);border-radius:10px;
+}
+.library-accordion[class*="resource-category-"] summary{background:var(--resource-fill)}
+.library-accordion[class*="resource-category-"] summary:hover,
+.library-accordion[class*="resource-category-"][open] summary{background:var(--resource-fill-hover)}
+.library-accordion[class*="resource-category-"] .library-accordion-body{background:#383d37}
+.library-accordion[class*="resource-category-"] .library-summary-copy small{color:#f0f7ed}
+/* v4.7 \2014  single-stroke resource controls: no inset ring or heavy left stripe. */
+#lab .resource-tools button.resource-button[class*="resource-category-"],
+.resource-tools button.resource-button[class*="resource-category-"],
+#lab .resource-tools button.resource-glossary{
+ border:3px solid var(--resource-accent)!important;
+ border-left-width:3px!important;
+ box-shadow:0 3px 0 rgba(20,25,21,.24)!important;
+ outline:none;
+}
+.library-accordion[class*="resource-category-"]{box-shadow:none!important;outline:none}
+.library-accordion[class*="resource-category-"] summary{border:0!important;box-shadow:none!important;outline:none}
+.library-accordion[class*="resource-category-"] summary:focus-visible,
+#lab .resource-tools button.resource-button:focus-visible{
+ outline:2px dashed #fff!important;outline-offset:4px;
+}
+
+/* v4.8 preview \2014  homepage-inspired, fully filled module resource buttons. */
+#lab .resource-tools button.resource-button[class*="resource-category-"],
+#lab .resource-tools button.resource-glossary{
+  background:var(--resource-accent)!important;
+  background-color:var(--resource-accent)!important;
+  border:3px solid var(--resource-accent)!important;
+  color:var(--resource-ink,#252b27)!important;
+  box-shadow:0 3px 0 rgba(20,25,21,.24)!important;
+  font-weight:900!important;
+}
+#lab .resource-tools button.resource-button[class*="resource-category-"]:hover,
+#lab .resource-tools button.resource-button[class*="resource-category-"][aria-expanded="true"],
+#lab .resource-tools button.resource-glossary:hover,
+#lab .resource-tools button.resource-glossary[aria-expanded="true"]{
+  background:var(--resource-accent)!important;
+  filter:brightness(1.08)!important;
+  color:var(--resource-ink,#252b27)!important;
+}
+#lab .resource-tools button.resource-button.true-knockout .knockout-surface,
+#lab .resource-tools button.resource-glossary.true-knockout .knockout-surface{display:none!important}
+#lab .resource-tools button.resource-button.true-knockout .knockout-label,
+#lab .resource-tools button.resource-glossary.true-knockout .knockout-label{
+  opacity:1!important;
+  color:var(--resource-ink,#252b27)!important;
+  font-weight:900!important;
+}
+#lab .resource-tools button.resource-glossary{--resource-ink:#203c3e}
+
+
+/* v4.9 comparison \2014  every in-module button follows the four top-navigation
+   buttons: solid surface, same-color 3px perimeter, dark bold text, simple hover. */
+#lab button:not(:disabled){transition:background-color .15s,border-color .15s,filter .15s}
+#lab .resource-tools button,
+#lab .mode-switch button,
+#lab .actions button,
+#lab button.button,
+#lab button.option{
+  --lab-button-color:var(--yellow);
+  background:var(--lab-button-color)!important;
+  border:3px solid var(--lab-button-color)!important;
+  border-radius:3px!important;
+  color:#252b27!important;
+  font-weight:900!important;
+  box-shadow:0 3px 0 rgba(20,25,21,.26)!important;
+  text-shadow:none!important;
+  filter:none!important;
+  transform:none!important;
+}
+#lab .resource-tools button.resource-button{--lab-button-color:var(--resource-accent,#a8e5e8)}
+#lab .resource-tools button.resource-glossary{--lab-button-color:#a8e5e8}
+#lab .resource-tools button:not(.resource-button):not(.resource-glossary){--lab-button-color:#a8e5e8}
+#lab .mode-switch button{--lab-button-color:#17acdf}
+#lab .mode-switch button.active{--lab-button-color:#ffe51c}
+#lab .actions button.button.ghost,#lab button.button.ghost{--lab-button-color:#a8e5e8}
+#lab .actions button.button:not(.yellow):not(.ghost){--lab-button-color:#17acdf}
+#lab button.option{--lab-button-color:#e8f2ed;text-align:left;letter-spacing:normal;text-transform:none}
+#lab button.option:hover:not(:disabled),#lab button.option:focus-visible{--lab-button-color:#a8e5e8}
+#lab button.option.selected{--lab-button-color:#17acdf!important}
+#lab button.option:disabled{opacity:1!important;cursor:default}
+#lab button:not(:disabled):hover{filter:brightness(1.08)!important}
+#lab button.true-knockout::after{display:none!important}
+#lab button.true-knockout .knockout-surface{display:none!important}
+#lab button.true-knockout .knockout-label{color:#252b27!important;opacity:1!important;font-weight:900!important;text-shadow:none!important}
+#lab button.true-knockout{background:var(--lab-button-color,var(--yellow))!important;border-color:var(--lab-button-color,var(--yellow))!important}
+#lab button:focus-visible{outline:3px solid #fffdf7!important;outline-offset:3px!important}
+
+
+/* v5.0 preview \2014  top-nav-style inner selection ring.
+   Only interactive hover, keyboard focus, or persistent selection displays the ring. */
+#lab button:hover:not(:disabled),
+#lab button:focus-visible,
+#lab .mode-switch button.active,
+#lab button.option.selected,
+#lab .resource-tools button[aria-expanded="true"]{
+  box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)!important;
+}
+#lab button.option.selected:disabled{
+  box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)!important;
+}
+
+
+/* v5.2 \2014  black inset ring stays; white OUTER outline is consistent on
+   all resource controls when hovered, expanded, or keyboard-focused. */
+#lab .resource-tools button.resource-button:hover:not(:disabled),
+#lab .resource-tools button.resource-button:focus-visible,
+#lab .resource-tools button.resource-button[aria-expanded="true"],
+#lab .resource-tools button.resource-glossary:hover:not(:disabled),
+#lab .resource-tools button.resource-glossary:focus-visible,
+#lab .resource-tools button.resource-glossary[aria-expanded="true"],
+#lab .resource-tools button:not(.resource-button):hover:not(:disabled),
+#lab .resource-tools button:not(.resource-button):focus-visible {
+  box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)!important;
+  outline:3px solid #fffdf7!important;
+  outline-offset:3px!important;
+}
+
+/* v5.3 \2014  remove external white outline on all in-module controls.
+   Keep the dark inset ring for hover, selection, and keyboard focus. */
+#lab button:hover:not(:disabled),
+#lab button:focus-visible,
+#lab .resource-tools button.resource-button:hover:not(:disabled),
+#lab .resource-tools button.resource-button:focus-visible,
+#lab .resource-tools button.resource-button[aria-expanded="true"],
+#lab .resource-tools button.resource-glossary:hover:not(:disabled),
+#lab .resource-tools button.resource-glossary:focus-visible,
+#lab .resource-tools button.resource-glossary[aria-expanded="true"] {
+  outline:none!important;
+  outline-offset:0!important;
+}
+
+/* v5.4 \2014  project-wide interaction standard: no external halo.
+   All interactive surfaces retain a black inset state indicator. */
+.topnav button:hover,.topnav button:focus-visible,.topnav button.active,
+.module button:hover,.module button:focus-visible,
+#lab button:hover:not(:disabled),#lab button:focus-visible,
+#lab button[aria-expanded="true"],#lab button.option.selected,
+#libraryView button:hover,#libraryView button:focus-visible,
+#resourceDrawer button:hover,#resourceDrawer button:focus-visible,
+.library-accordion summary:hover,.library-accordion summary:focus-visible,
+.library-accordion[open] summary,
+button.true-knockout:hover,button.true-knockout:focus-visible {
+  outline:none!important;
+  outline-offset:0!important;
+  box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)!important;
+}
+/* Preserve category-colored surface and border without an extra perimeter. */
+.library-accordion summary:focus-visible {outline:none!important}
+
+/* v5.5 \2014  explicit fallback for uncategorized resource actions (e.g. Browse all resources).
+   All module controls keep the black inset state ring, never an external halo. */
+#lab .resource-tools button:hover:not(:disabled),
+#lab .resource-tools button:focus-visible,
+#lab .resource-tools button[aria-expanded="true"]{
+  outline:0 none!important;outline-offset:0!important;
+  box-shadow:inset 0 0 0 2px #252b27,0 3px 0 rgba(20,25,21,.26)!important;
+}
+/* Homepage uses the available desktop viewport, rather than requiring page scroll.
+   Smaller screens retain normal document flow to avoid clipping content. */
+@media (min-width:900px) and (min-height:650px){
+ body.home-fixed{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+ body.home-fixed header{position:relative;flex:0 0 auto}
+ body.home-fixed .hero,body.home-fixed .foot{display:none}
+ body.home-fixed main.content{flex:1;min-height:0;width:100%;padding:clamp(12px,2vh,22px) clamp(16px,2vw,40px);display:flex;flex-direction:column}
+ body.home-fixed #employeeView,body.home-fixed #home{height:100%;min-height:0}
+ body.home-fixed #home{display:flex;flex-direction:column;gap:clamp(8px,1.2vh,16px)}
+ body.home-fixed #home .intro{flex:0 0 auto;margin-bottom:0}
+ body.home-fixed #home .intro h2{font-size:clamp(22px,2.8vh,32px);margin:3px 0}
+ body.home-fixed #home .intro p{margin:3px 0;font-size:13px}
+ body.home-fixed #home .cards{flex:1;min-height:0;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(9px,1.2vh,16px)}
+ body.home-fixed #home .module{min-height:0;overflow:hidden;padding:clamp(11px,1.7vh,22px);gap:clamp(4px,.8vh,10px)}
+ body.home-fixed #home .module h2{font-size:clamp(15px,1.8vh,20px);line-height:1.25}
+ body.home-fixed #home .module p{font-size:clamp(11px,1.35vh,13px);line-height:1.35}
+ body.home-fixed #home .module .status{font-size:10px;line-height:1.25}
+ body.home-fixed #home .module button{padding:clamp(7px,1vh,12px) 12px;font-size:clamp(11px,1.4vh,14px)}
+ body.home-fixed #home>.notice{flex:0 0 auto;margin-top:0!important;padding:8px 12px;font-size:11px;line-height:1.3}
+}
+@media (min-width:900px) and (min-height:650px) and (max-height:760px){
+ body.home-fixed #home .module{padding:10px 13px;gap:4px}
+ body.home-fixed #home .module .num{font-size:10px}
+ body.home-fixed #home .module h2{font-size:15px}
+ body.home-fixed #home .module p{font-size:11px}
+}
+/* v5.7 \2014  Resource Library homepage tile uses cyan, including top rail and CTA. */
+#home .home-library-card{border-top:7px solid var(--cyan,#17acdf);border-right:1px solid var(--ink,#383d37);border-bottom:1px solid var(--ink,#383d37);border-left:1px solid var(--ink,#383d37)}
+#home .home-library-card .num{color:var(--cyan,#17acdf)}
+#home .home-library-card .button{background:var(--cyan,#17acdf)!important;border:3px solid var(--cyan,#17acdf)!important;color:var(--ink,#383d37)!important}
+#home .home-library-card .button:hover,#home .home-library-card .button:focus-visible{box-shadow:inset 0 0 0 3px var(--ink,#383d37)!important;outline:none!important;filter:none}
+
+
+/* v5.8 \2014  Resource Library category landing page, matched to the home grid. */
+.library-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.library-hub-card{appearance:none;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;background:#383d37;color:#fff;border:3px solid var(--resource-accent);border-top-width:8px;border-radius:10px;padding:25px;cursor:pointer;font-family:Lexend,Arial,sans-serif;transition:transform .15s,filter .15s}
+.library-hub-card strong{font-size:clamp(20px,2.2vw,29px);line-height:1.2}
+.library-hub-kicker{font-size:11px;letter-spacing:1px;font-weight:800;color:var(--resource-accent)}
+.library-hub-subtitle{font-weight:800;font-size:15px;color:#fff}
+.library-hub-description{font-size:13px;color:#e4eae6;line-height:1.45}
+.library-hub-action{margin-top:auto;background:var(--resource-accent);color:#252b27;border:3px solid var(--resource-accent);padding:11px 16px;font-weight:800;font-size:13px}
+.library-hub-card:hover,.library-hub-card:focus-visible{transform:translateY(-2px);outline:none!important;box-shadow:inset 0 0 0 3px #151b17!important}
+.library-hub-card:hover .library-hub-action,.library-hub-card:focus-visible .library-hub-action{box-shadow:inset 0 0 0 2px #252b27}
+.library-hub-note{font-size:12px;color:#fff;background:#383d37;padding:9px 14px;margin:0;border-radius:5px}
+@media(min-width:900px) and (min-height:650px){
+ body.library-fixed{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+ body.library-fixed .hero,body.library-fixed .foot{display:none}
+ body.library-fixed main.content{flex:1;min-height:0;width:100%;padding:clamp(12px,2vh,22px) clamp(16px,2vw,40px)}
+ body.library-fixed #employeeView,body.library-fixed #libraryView{height:100%;min-height:0}
+ body.library-fixed #libraryView{display:flex;flex-direction:column;gap:clamp(10px,1.5vh,20px)}
+ body.library-fixed .library-intro{flex:0 0 auto;margin:0}
+ body.library-fixed .library-hub-grid{flex:1;min-height:0;grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vh,18px)}
+ body.library-fixed .library-hub-card{min-height:0;overflow:hidden;padding:clamp(13px,2vh,25px);gap:clamp(5px,1vh,12px)}
+ body.library-fixed .library-hub-note{flex:0 0 auto}
+}
+@media(max-width:700px){.library-hub-grid{grid-template-columns:1fr}.library-hub-card{min-height:190px}}
+
+/* Admin v2 analytics */
+.admin-v2{max-width:1180px;margin:auto}.admin-v2 .av2-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px}.admin-v2 h2{margin:5px 0;font-size:clamp(23px,3vw,34px)}.av2-tag{background:#c9e65c;padding:6px 11px;font-size:11px;font-weight:800}.av2-filters{display:flex;flex-wrap:wrap;gap:12px;background:#f3f7f3;padding:16px;margin:18px 0;border:1px solid #d9e1d9}.av2-filters label{font-size:12px;font-weight:700;display:grid;gap:5px;flex:1;min-width:165px}.av2-filters select{padding:10px;border:1px solid #879187;border-radius:3px;background:#fff;color:#383d37;font:inherit;max-width:100%}.av2-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.av2-stat{background:#383d37;color:white;padding:20px}.av2-stat strong{display:block;font-size:clamp(23px,3vw,34px);line-height:1.2}.av2-stat span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.7px}.av2-stat small{display:block;color:#c9e65c;font-size:11px;margin-top:7px}.av2-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:17px}.av2-card{border:1px solid #d4dbd3;background:white;padding:21px;min-width:0}.av2-card h3{font-size:20px;margin:5px 0 15px}.av2-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:1px solid transparent;background:#fff;padding:10px 5px;color:#383d37}.av2-row:hover,.av2-row:focus-visible,.av2-row.is-selected{border-color:#383d37;background:#eef8fc}.av2-row .av2-name{width:42%;font-size:12px;font-weight:700}.av2-track{flex:1;height:13px;background:#e8ece8}.av2-fill{height:100%;background:#17acdf}.av2-row .av2-val{width:52px;text-align:right;font-weight:800;font-size:12px}.av2-detail{background:#f3f7f3;padding:14px;margin-top:12px;border-left:4px solid #17acdf;font-size:13px}.av2-note{font-size:12px;color:#58645a;line-height:1.6}.av2-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.av2-action{border:1px solid #383d37;background:#ffe51c;color:#383d37;font-weight:800;padding:10px 13px}.av2-action:hover,.av2-action:focus-visible{box-shadow:inset 0 0 0 2px #383d37;outline:0}.av2-table{width:100%;border-collapse:collapse;font-size:12px}.av2-table th,.av2-table td{padding:10px 7px;border-bottom:1px solid #d9e1d9;text-align:left}.av2-empty{padding:24px;background:#f4f6f4}.av2-disclosure{margin-top:16px;padding:12px;border-left:4px solid #ff653c;background:#fff5e9;font-size:12px}.av2-sub{font-size:12px;color:#606a60}.av2-breadcrumb{font-size:12px;margin-bottom:9px}.av2-breadcrumb button{background:transparent;border:0;text-decoration:underline;color:#1265c7;padding:0;font-weight:700}.av2-qa{padding:11px;border-bottom:1px solid #d9e1d9}.av2-qa strong{font-size:13px}.av2-qa p{margin:3px 0;font-size:12px}@media(max-width:899px){.av2-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.av2-grid{grid-template-columns:1fr}.av2-card{padding:15px}.av2-filters{padding:12px}.av2-row{min-height:49px}}@media(max-width:390px){.av2-stats{grid-template-columns:1fr}}
+/* v2.3 previous result and master glossary module filter */
+.revisit-overview{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.revisit-metric{background:#383d37;color:#fff;border-radius:10px;padding:12px 17px;min-width:132px;display:flex;flex-direction:column;gap:4px}.revisit-metric span{font-size:11px;font-weight:750;color:#d9f3f2;text-transform:uppercase;letter-spacing:.35px}.revisit-metric strong{font-size:clamp(14px,1.7vw,20px);line-height:1.25;color:#fff;overflow-wrap:anywhere}.revisit-metric:nth-child(2){flex:1;min-width:min(235px,100%)}.master-glossary-filter{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 15px;font-weight:850;color:#fff}.master-glossary-filter select{min-width:200px;max-width:100%;padding:9px 12px;border:2px solid #a8e5e8;background:#fff;color:#202926;border-radius:6px;font:inherit;font-weight:700}.master-glossary-filter select:focus-visible{outline:3px solid #ffe51c;outline-offset:3px}
+#homeLevel{white-space:normal;text-align:center}
+/* v2.2 compact learner home progress and average completed-module score */
+.learner-overview{min-width:240px;max-width:320px;display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.learner-overview .pill{font-size:11px;padding:6px 10px}
+.learner-progress-track{height:7px;background:#e0e8e1;border-radius:9px;overflow:hidden;width:100%}
+.learner-progress-track>div{height:100%;width:0;background:var(--cyan);transition:width .2s}
+@media(max-width:700px){.learner-overview{width:100%;max-width:none}}
+
+header a.home-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border:1px solid #a8e5e8;border-radius:4px;background:#383d37;color:#fff;font:700 12px/1.4 Arial,sans-serif;text-decoration:none;white-space:nowrap}header a.home-link:hover,header a.home-link:focus-visible{background:#a8e5e8;color:#252b27;outline:2px solid #ffe51c;outline-offset:2px}
+</style><style>
+.portfolio-link{display:inline-flex;align-items:center;border:1px solid #8e938d;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700;color:#fff;text-decoration:none}
+.topnav button:hover,.topnav button:focus-visible,.portfolio-link:hover,.portfolio-link:focus-visible{background:#a8e5e8!important;color:#252b27!important;box-shadow:inset 0 0 0 2px #252b27}
+button.button,.module button,.resource-tools button,.library-item button,.mode-switch button{color:#252b27!important;background:var(--yellow)!important;opacity:1}
+button.button:hover,.module button:hover,.resource-tools button:hover{box-shadow:inset 0 0 0 2px #252b27}
+.progress-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.backup-actions{display:flex;gap:8px;flex-wrap:wrap}.backup-actions button{background:#383d37;color:#fff;padding:8px 12px;border:1px solid #383d37;font-size:12px;border-radius:3px}
+@media(max-width:899px){.topnav{gap:6px}.topnav button,.portfolio-link{padding:9px;font-size:11px}#lab .panel{max-height:none!important;height:auto!important;overflow:visible!important}body.lab-fixed{height:auto!important;overflow:auto!important}.shell{padding-left:16px;padding-right:16px}}
+</style><link rel="stylesheet" href="../../assets/topbar.css?v=4"><link rel="stylesheet" href="../../assets/accessibility.css?v=1"><script src="../../assets/accessibility.js?v=1" defer></script><link rel="stylesheet" href="../../assets/laptop.css?v=1"></head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-topbar course-topbar"><div class="course-topbar-inner"><div class="brand">Applied AI Lab<small>RESPONSIBLE AI FOUNDATIONS</small></div><nav class="topnav" aria-label="Course navigation"><a class="home-link" href="../">Home</a><button id="employeeTab" class="active" onclick="showView('employee');renderHome()">Modules</button><button id="libraryTab" onclick="showLibrary()">Resource library</button><button id="adminTab" onclick="showView('admin')">Reporting Demo</button><button id="resetTab" onclick="resetDemo()">Reset progress</button></nav></div></header>
+<div class="site-art" aria-hidden="true"><svg class="paint" preserveAspectRatio="none" viewBox="0 0 1400 900" aria-hidden="true"><rect width="1400" height="900" fill="#f4f3e9"/><g><path d="M-40 -25 L480 -40 350 110 160 160 -60 110Z" fill="#ff653c" opacity=".96"/><path d="M375 -50 L900 -20 720 410 475 370 570 80Z" fill="#ffe51c"/><path d="M1000 -70 L1430 0 1410 400 1090 300 1190 150Z" fill="#a8e5e8"/><path d="M1320 -60 L1440 -30 1410 210 1260 120Z" fill="#1265c7"/><path d="M-40 220 L210 170 120 430 -60 420Z" fill="#17acdf"/><path d="M1020 200 L1200 100 1190 400 1000 420Z" fill="#c9e65c"/><path d="M820 260 L1030 200 1010 410 760 410Z" fill="#f1a4b7"/><path d="M300 110 L360 75 340 300 275 340Z" fill="#fffdf7" opacity=".65"/><path d="M700 -40 L770 -30 660 220 630 230Z" fill="#17acdf" opacity=".7"/><path d="M1170 10 L1220 -30 1150 260 1120 270Z" fill="#ff653c" opacity=".65"/><path d="M-70 550 L210 470 280 720 -50 800Z" fill="#17acdf" opacity=".8"/><path d="M280 670 L600 530 700 850 330 940Z" fill="#f1a4b7" opacity=".88"/><path d="M750 610 L970 520 1090 850 820 940Z" fill="#ffe51c" opacity=".82"/><path d="M1140 470 L1450 560 1440 950 1200 800Z" fill="#c9e65c" opacity=".9"/><path d="M620 480 L680 440 570 900 520 930Z" fill="#ff653c" opacity=".75"/></g></svg></div><section class="hero"><div class="shell"><span class="label">Learn &#183; Practice &#183; Apply</span><p class="course-title">Make AI useful.<br>Keep judgment human.</p><p>A practical introduction to responsible AI at work.</p></div></section>
+<main class="shell content" id="main" tabindex="-1"><section id="employeeView"><div id="home"><div class="intro"><div><div class="eyebrow">Your learning pathway</div><h1>Seven modules. Real decisions.</h1><p class="muted">Start with a short interactive lab. Progress at your own pace.</p></div><div class="learner-overview"><div id="homeLevel" class="pill">0 of 7 labs completed &#183; Overall: &#8212;</div><div class="learner-progress-track" role="progressbar" aria-label="Completed modules" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div id="learnerProgressFill"></div></div></div></div><div class="cards" id="modules"></div><div class="notice progress-tools" style="margin-top:23px"><span id="saveStatus" role="status">Progress saves privately in this browser. Download a backup before clearing browser data or changing devices.</span><div class="backup-actions"><button onclick="exportProgress()">Download backup</button><button onclick="document.getElementById('progressImport').click()">Restore backup</button><input id="progressImport" type="file" accept=".json,application/json" hidden onchange="importProgress(this)"></div></div></div><div id="lab" class="hidden"></div><div id="libraryView" class="hidden"></div></section><section id="adminView" class="hidden"><div class="intro"><div><div class="eyebrow">Program manager view</div><h1>Learning & adoption insights</h1><p class="muted">Illustrative reporting to inform training decisions.</p></div><span class="badge">FICTIONAL SAMPLE DATA</span></div><div class="metrics"><div class="metric"><span>Participants</span><strong>120</strong></div><div class="metric"><span>Completion rate</span><strong>84%</strong></div><div class="metric"><span>Target proficiency reached</span><strong>71%</strong></div></div><div class="adminrow"><div class="panel"><div class="eyebrow">Competency patterns</div><h2>Where support is needed</h2><div id="adminBars"></div><p class="note">Administrator metrics are aggregate and illustrative. Employee-facing results use achievement levels, not percentages.</p></div><div class="panel"><div class="eyebrow">Decision support</div><h2>What would we do next?</h2><p><strong>Observation:</strong> Verification and data handling show the greatest opportunity for improvement.</p><p><strong>Proposed response:</strong> Introduce two short follow-up labs targeting those competencies, then re-evaluate with new scenarios.</p><p><strong>Governance:</strong> Confirm data handling, opt-in reporting, aggregation thresholds, and role-based access before a real deployment.</p><div class="notice">Demo only. No learner records are transmitted by this application. Progress is saved only in this browser.</div></div></div></section></main>
+<footer class="foot"><div class="shell">APPLIED AI LAB &#183; Independent work sample &#183; Not affiliated with or deployed by AWE &#183; No organizational policies are represented as verified</div></footer>
+<div id="resourceDrawer" class="resource-drawer" role="dialog" aria-modal="true" aria-label="Resource library" aria-hidden="true"><div class="drawer-backdrop" onclick="closeResourceDrawer()"></div><div class="drawer-sheet"><div class="drawer-header"><span>APPLIED AI LAB &#183; RESOURCES</span><button id="drawerClose" onclick="closeResourceDrawer()" aria-label="Close resources">&#10005; Close</button></div><div id="drawerBody" class="drawer-body"></div></div></div><script>
+const modules=[
+['Meet Your AI Teammate','Recognize useful applications, limitations, and human responsibility.'],
+['The Prompt Playground','Improve unclear instructions through context, constraints, and iteration.'],
+['The Data Boundary','Identify sensitive information, tool boundaries, and safe alternatives.'],
+['Trust, but Verify','Check claims, evidence, and sources before relying on AI outputs.'],
+['The Human in the Loop','Decide where review, approval, and accountability belong.'],
+['Build a Better Workflow','Redesign a repetitive process with practical safeguards.'],
+['Your AI Adoption Plan','Choose a low-risk opportunity and define what success means.']];
+const lessons=[
+{title:'What AI is good at\u2014and what it is not',intro:'Generative AI can produce drafts, summarize appropriate material, suggest alternatives, and help organize ideas. It does not guarantee truth, fairness, confidentiality, or good judgment.',points:['Start with an approved tool and a suitable task.','Check outputs before using them, especially specific facts and claims.','The person responsible for the work remains accountable.'],example:'Drafting a public event announcement is usually a reasonable assisted task. Automatically deciding an employee promotion is not.'},
+{title:'Make the task clear before you prompt',intro:'Useful prompts communicate the task, audience, context, constraints, and desired output. Iteration helps when the first response misses the mark.',points:['Define the outcome and who will use it.','Include relevant non-sensitive context and boundaries.','Specify a format and ask for clarification where needed.','Review and revise rather than accepting the first draft.'],example:'Instead of \u201Cwrite an email,\u201D specify the audience, purpose, tone, length, and any facts that must be included.'},
+{title:'Know your data boundary',intro:'The fact that an AI tool can accept information does not mean your organization permits you to enter it. Approval depends on the tool, the data classification, and the specific use.',points:['Identify whether information is public, internal, confidential, or personal.','Confirm the AI tool and use case are approved for that data.','Removing names may not fully de-identify a record.','When uncertain, stop and consult the relevant policy or authorized contact.'],example:'A personnel review with names removed can still contain identifiable details. Do not assume it is safe to upload.'},
+{title:'Verify before you amplify',intro:'AI-generated reports can combine accurate details, fabricated citations, and recommendations presented as facts. Evaluate each consequential claim against independent, authoritative evidence before sharing or acting.',points:['Separate checkable factual claims from interpretations and proposals.','Trace statistics, dates, and quotations to primary sources\u2014not another AI answer.','Treat missing or mismatched citations as unresolved evidence, not proof.','Correct or remove unsupported statements and identify what still requires approval.'],example:'A draft briefing cites a 32% improvement in service time, but the supplied source shows only a 12% change. Correct the figure and confirm the measurement period before publication.'}
+,{"title":"Put human judgment where it matters","intro":"Human oversight is not simply clicking approve. Match the review point to the consequence of an error, and give reviewers the evidence, authority, and time to intervene.","points":["Define which actions AI may draft or recommend, and which require approval.","Choose a reviewer who has the right expertise and authority.","Make uncertainty, exceptions, and source evidence visible.","Provide a clear escalation path and preserve accountability."],"example":"An assistant can draft a customer response, but a refund exception requires an authorized employee to assess the facts and approve the decision."},{"title":"Design a workflow, not just a prompt","intro":"A reliable AI-enabled workflow connects inputs, approvals, verification, exceptions, and feedback. Automating one step without understanding the process can move errors downstream faster.","points":["Map the current process and locate the actual bottleneck.","Choose a narrow, approved AI-assisted step with measurable value.","Define source inputs, verification, human checkpoints, and exceptions.","Pilot with representative cases and compare outcomes to a baseline."],"example":"Instead of auto-sending all support replies, pilot AI-generated draft replies for routine questions, reviewed by agents before sending."},{"title":"Turn an AI idea into a responsible pilot","intro":"Adoption starts with a specific problem, willing users, an approved tool, and an outcome that can be measured. A pilot should make it easy to learn, stop, revise, or scale.","points":["Describe the user need and current baseline before choosing a tool.","Set a small scope, owner, timeline, and guardrails.","Measure both value and quality, including unintended consequences.","Plan training, feedback, decision gates, and a stop condition."],"example":"Pilot AI-assisted meeting summaries with volunteers using approved, non-sensitive meetings; compare editing time and factual corrections before expanding."}];
+const resources=[{"id":"oversight","type":"Decision framework","title":"Human oversight decision map","modules":[4],"body":"Determine consequence, review authority, evidence and escalation before delegating a step."},
+{"id":"approval","type":"Checklist","title":"Approval and escalation checklist","modules":[4],"body":"Confirm reviewer authority, available evidence, uncertainty, exception path and recorded decision."},
+{"id":"workflow","type":"Template","title":"Workflow redesign canvas","modules":[5],"body":"Map input, task, output, owner, verification, exception and feedback."},
+{"id":"pilot","type":"Decision framework","title":"Pilot quality gates","modules":[5,6],"body":"Define baseline, limited scope, quality measures, review and stop conditions."},
+{"id":"adoption","type":"Template","title":"AI adoption plan canvas","modules":[6],"body":"Capture user problem, sponsor, guardrails, success measures, training and decision gate."},
+{"id":"metrics","type":"Checklist","title":"Balanced pilot scorecard","modules":[6],"body":"Track time saved, accuracy, rework, user trust, safety incidents and adoption."},
+
+{id:'suitability',type:'Decision framework',title:'AI task suitability matrix',modules:[0],body:'Ask four questions: (1) Is the tool approved? (2) Is the information appropriate to share? (3) Can a person verify the result? (4) Who remains accountable? Drafting and brainstorming may be suitable; high-impact decisions require stronger governance and human oversight.'},
+{id:'limits',type:'Guide & reference',title:'AI capabilities and limitations',modules:[0],body:'AI systems can generate plausible language without reliable evidence. Fluency is not accuracy. They can support drafting, summarizing and exploration, but should not be treated as authoritative sources or autonomous decision makers.'},
+{id:'prompt',type:'Template',title:'Prompt anatomy',modules:[1],body:'Use TASK + CONTEXT + AUDIENCE + CONSTRAINTS + OUTPUT FORMAT. Example: \u201CDraft a 120-word public event reminder for registered attendees, friendly but professional, including only these confirmed details, in two short paragraphs.\u201D Never include data that is not approved for the tool.'},
+{id:'iteration',type:'Guide & reference',title:'From vague to useful',modules:[1],body:'Vague: \u201CSummarize the report in five bullet points, using the report\u2019s terminology and key findings.\u201D Improved: \u201CSummarize the approved public report for a nontechnical audience in five bullets. Distinguish facts from recommendations. Flag any claim you cannot verify.\u201D Review the result and refine based on omissions or unsupported claims.'},
+{id:'classification',type:'Decision framework',title:'Share, sanitize, or stop?',modules:[2],body:'SHARE only if the tool and data use are approved. SANITIZE only when permitted and when re-identification risks have been considered. STOP when the data are sensitive, tool approval is unclear, or policy requires authorization. Do not treat a \u201Cdo not remember\u201D prompt as a security control.'},
+{id:'policy',type:'Guide & reference',title:'Illustrative organizational AI policy',modules:[2],body:'FICTIONAL TRAINING EXAMPLE\u2014not an actual employer policy. Employees may use approved AI tools for public information and approved internal content. Personnel records, customer identifiers, financial account details, and confidential business information require explicit authorization and approved handling controls. Suspected exposure must be reported through designated channels.'},
+{id:'verify',type:'Decision framework',title:'Claim verification workflow',modules:[3],body:'Identify each consequential claim, locate its primary source, check the exact measure and time period, classify as verified, unsupported or contradicted, then revise or escalate before release.'},
+{id:'evidence',type:'Guide & reference',title:'Evidence audit: briefing excerpt',modules:[3],body:'FICTIONAL EXERCISE: AI draft says service response time improved 32% in Q2. The supplied operations dashboard records 50 minutes in Q1 and 44 minutes in Q2: a 12% reduction. A purported customer survey citation is not present in the source packet. Separate the confirmed 12% change from the unsupported survey claim.'},
+{id:'release',type:'Checklist',title:'Pre-release verification checklist',modules:[3],body:'Check numbers and units; verify dates and comparisons; open cited primary sources; distinguish findings from recommendations; remove unsupported claims; obtain the required human approval. Record unresolved issues without inventing certainty.'},
+{id:'glossary',type:'Guide & reference',title:'Master AI glossary',modules:[0,1,2,3,4,5,6]}
+];
+const scenarios=[
+[
+{title:'The first draft',context:'Your team needs a public event announcement. No confidential information is involved. An approved AI assistant is available.',question:'What is the best approach?',options:['Generate a draft, then review and edit it before publishing.','Publish the first draft immediately because it is low risk.','Avoid AI for all workplace writing.'],checkOptions:['Generate a draft, then review and edit it before publishing.','Generate the announcement with the approved tool and review its tone and clarity before scheduling publication.','Draft the announcement manually, then use AI to polish the final wording before posting.'],correct:0,why:'An approved AI tool can help with a draft, but a person should verify and approve the final content.',hint:'Separate the work of generating a draft from responsibility for publishing it.',resource:'suitability'},
+{title:'A confident answer',context:'An AI assistant confidently reports the date of a policy change but cites no official source.',question:'What should you do?',options:['Accept the date because the answer is confident.','Verify against the official policy source before sharing.','Repeat the prompt and trust a matching answer.'],checkOptions:['Check whether the date appears in a recent AI-generated summary from another colleague.','Verify against the official policy source before sharing.','Ask the AI for the policy document title and use that reference in the message.'],correct:1,why:'Fluency and repetition are not evidence. Check the authoritative source.',hint:'What would count as evidence outside the model itself?',resource:'limits'},
+{title:'A sensitive shortcut',context:'You want to summarize employee performance notes. You are unsure whether the AI tool is approved for this information.',question:'Choose the safest next action.',options:['Paste the notes with a request not to retain them.','Remove employee names and assume it is safe.','Pause and confirm tool approval and data-handling requirements.'],checkOptions:['Remove names and identifying details, then summarize the notes using the available AI tool.','Check whether the tool is generally approved for workplace use before sharing the notes.','Pause and confirm tool approval and data-handling requirements.'],correct:2,why:'Approval and appropriate controls come before uploading personnel information. Removing names may be insufficient.',hint:'Does changing the wording of a prompt change the tool\u2019s actual data controls?',resource:'classification',critical:true},
+{title:'A consequential decision',context:'A manager proposes letting AI automatically select employees for development opportunities using historical records.',question:'What is the responsible approach?',options:['Allow automatic selection; consistency guarantees fairness.','Use AI only in an approved process with fairness checks and accountable human decisions.','Prohibit all AI-assisted trend analysis.'],checkOptions:['Use AI to rank candidates against published criteria and have a manager approve the final list.','Use AI only in an approved process with fairness checks and accountable human decisions.','Have AI summarize the historical records, then select candidates based primarily on the resulting patterns.'],correct:1,why:'Consequential personnel decisions require fairness review, governance, and human accountability.',hint:'Consider the difference between supporting analysis and making the final decision.',resource:'suitability'}
+],
+[
+{title:'An unclear request',context:'A colleague asks an AI assistant: \u201CWrite something about our event.\u201D The output is generic and misses the audience.',question:'Which revision is strongest?',options:['\u201CRewrite this as a friendly event reminder for everyone who might attend, keeping it brief.\u201D','\u201CDraft a 100-word reminder for registered attendees, friendly tone, using only these confirmed public event details.\u201D','\u201CDraft a 100-word event reminder for attendees in a friendly tone; add useful details where needed.\u201D'],correct:1,why:'The revised prompt specifies task, audience, constraints, and output.',hint:'Look for audience, purpose, and concrete boundaries.',resource:'prompt'},
+{title:'A useful structure',context:'You need a brief overview of a public report for colleagues who have no technical background.',question:'What prompt will produce the most usable result?',options:['\u201CSummarize this.\u201D','\u201CExplain the report for a general audience in plain language, including its main conclusions and implications.\u201D','\u201CSummarize the public report in five plain-language bullets; distinguish documented facts from recommendations and flag uncertain claims.\u201D'],correct:2,why:'Clear formatting, audience and uncertainty requirements make the output easier to evaluate.',hint:'The format and treatment of uncertainty both matter.',resource:'iteration'},
+{title:'An invented detail',context:'Your AI-generated event announcement includes a parking instruction that you never provided.',question:'What is the best next step?',options:['Check the official event information, remove unverified details, and revise the prompt to use only confirmed facts.','Keep the parking detail but soften it to \u201CParking may be available nearby\u201D so it is not stated as certain.','Ask the model to check the parking detail against what it knows and rewrite the announcement if necessary.'],correct:0,why:'Prompt quality does not eliminate factual errors; review against source material.',hint:'The model cannot verify a fact merely by stating it more forcefully.',resource:'limits'},
+{title:'A conflicting request',context:'Your manager wants a concise public FAQ. The only draft source contains private attendee contact information.',question:'How should you proceed?',options:['Paste the draft after removing email addresses, since the FAQ will be public and the prompt says not to include personal details.','Use only approved public information in an approved tool, or seek authorization for other data.','Use the draft in the approved tool, explicitly instructing it to exclude contact details from the FAQ.'],correct:1,why:'A well-structured prompt never overrides data protection requirements.',hint:'Prompting skill and data authorization are separate requirements.',resource:'classification',critical:true}
+],
+[
+{title:'Public or private?',context:'You have a public press release and want to create a three-sentence summary with an approved AI tool.',question:'What should you do?',options:['Use the approved tool and verify the summary.','Treat all text as confidential.','Use any unapproved service because the information is public.'],checkOptions:['Use the approved tool and verify the summary.','Use the approved tool and share the summary after checking its length and readability.','Use the public release in a convenient AI tool, then compare the summary to the original.'],correct:0,why:'Public material is generally suitable for approved tools, with normal review.',hint:'Tool approval still matters even for public information.',resource:'classification'},
+{title:'Names removed',context:'An employee evaluation contains job title, rare incidents, and detailed performance notes. Names have been removed.',question:'Is it safe to upload to a general-purpose AI tool?',options:['Yes; removing names always anonymizes data.','Yes, if the prompt says the document is anonymous.','Not necessarily; it may remain identifiable and requires approved handling.'],checkOptions:['Likely, if the remaining details are limited to job duties and performance themes.','Possibly, if a manager reviews the redactions before the upload.','Not necessarily; it may remain identifiable and requires approved handling.'],correct:2,why:'Indirect identifiers can expose a person even without their name.',hint:'Could someone identify the person from the remaining details?',resource:'policy',critical:true},
+{title:'An unfamiliar tool',context:'A coworker recommends a free AI service to analyze an internal operations spreadsheet. Its approval status is unknown.',question:'What is the appropriate action?',options:['Upload the sheet because the tool is popular.','Check the organization\u2019s approved tools and data-use policy before sharing the spreadsheet.','Rename the file before uploading.'],checkOptions:['Remove names and account numbers, then try the service on the sanitized spreadsheet.','Check the organization\u2019s approved tools and data-use policy before sharing the spreadsheet.','Confirm the service has strong security claims on its website before uploading.'],correct:1,why:'Popularity and filename changes are not security controls. Confirm approval first.',hint:'Distinguish convenience from authorization.',resource:'classification',critical:true},
+{title:'The accidental upload',context:'You realize you entered confidential material into an unapproved AI service.',question:'What should happen next?',options:['Delete your browser history and say nothing.','Ask the AI to forget the material and continue.','Stop, preserve relevant facts, and promptly report through the organization\u2019s designated incident process.'],checkOptions:['Delete the uploaded conversation and notify your manager after confirming the deletion.','Stop using the service and first ask its support team to remove the material.','Stop, preserve relevant facts, and promptly report through the organization\u2019s designated incident process.'],correct:2,why:'Prompt reporting enables appropriate assessment and response. A \u201Cforget\u201D request is not a substitute.',hint:'Think about who can assess and contain an information exposure.',resource:'policy',critical:true}
+]
+,
+[
+{title:'The impressive statistic',context:'FICTIONAL SOURCE PACKET \u2014 Operations dashboard: Q1 median response time = 50 minutes; Q2 median response time = 44 minutes. AI briefing: \u201CResponse times improved by 32% in Q2.\u201D',question:'What is the best assessment?',options:['The claim is verified because the direction is correct.','The improvement is 12%; correct the number and confirm the comparison period.','The improvement is 6%, because the difference is six minutes.'],checkOptions:['The reduction is six minutes, so report the absolute change without the percentage until the source is checked.','The improvement is 12%; correct the number and confirm the comparison period.','The 32% figure needs correction; report roughly a 14% reduction using the Q2 value as the denominator.'],correct:1,why:'The six-minute reduction divided by the 50-minute baseline is 12%. Directionally correct language does not excuse an incorrect percentage.',hint:'Percentage change uses the starting value as its denominator.',resource:'evidence'},
+{title:'The missing citation',context:'FICTIONAL SOURCE PACKET \u2014 The briefing claims \u201C87% of customers preferred the new service model\u201D and cites \u201CCustomer Pulse Survey, July.\u201D The provided source folder contains no such survey or survey results.',question:'What should happen to the claim?',options:['Remove or clearly hold the claim until the original survey can be obtained and checked.','Keep it because a specific citation sounds credible.','Ask the same AI model to confirm the statistic.'],checkOptions:['Remove or clearly hold the claim until the original survey can be obtained and checked.','Keep the claim provisionally, clearly labeling the survey as a source awaiting confirmation.','Use the 87% figure only in an internal draft while asking the AI to locate a corroborating source.'],correct:0,why:'A plausible citation is not independent evidence. Unavailable sources leave the claim unverified.',hint:'Can anyone open and inspect the cited primary document?',resource:'verify',critical:true},
+{title:'Evidence versus recommendation',context:'FICTIONAL SOURCE PACKET \u2014 Dashboard confirms a 12% reduction in median response time. AI draft adds: \u201CTherefore, all departments should adopt the new model immediately.\u201D No cost, staffing, or quality review has been conducted.',question:'Which revision best separates fact from judgment?',options:['\u201CThe model is proven superior and should be mandated.\u201D','\u201CThe dashboard shows a 12% reduction; broader adoption is a proposal that requires cost, quality, and operational review.\u201D','\u201CThere is no reason to mention the response-time result.\u201D'],checkOptions:['\u201CThe dashboard shows a 12% reduction, suggesting the new model is ready for a wider rollout.\u201D','\u201CThe dashboard shows a 12% reduction; broader adoption is a proposal that requires cost, quality, and operational review.\u201D','\u201CThe dashboard shows a 12% reduction; leadership should expand the model unless significant costs emerge.\u201D'],correct:1,why:'The measured result can be reported with its context. A universal rollout recommendation requires additional evidence and an accountable decision.',hint:'What is directly measured, and what is a proposed action?',resource:'release'},
+{title:'Ready to brief leadership?',context:'You have corrected the response-time figure, removed the unsupported survey statistic, and marked the rollout recommendation as conditional. The briefing will inform a leadership decision.',question:'What is the responsible final step?',options:['Publish without review because the AI draft has been edited.','Ask AI to generate a new citation list and send immediately.','Check the revised claims against the source packet, document remaining uncertainty, and obtain the designated human approval.'],checkOptions:['Send the corrected briefing with a note that leadership should validate the figures before acting.','Ask a colleague to proofread the revised briefing for clarity and consistency, then send it.','Check the revised claims against the source packet, document remaining uncertainty, and obtain the designated human approval.'],correct:2,why:'A consequential briefing requires traceable evidence and accountable human review before release.',hint:'Think about both evidence quality and who is authorized to approve release.',resource:'release',critical:true}
+]
+,[{"title":"The refund exception","context":"An AI assistant drafts replies to routine refund requests. A customer asks for an exception to the published policy.","question":"Where should the decision sit?","options":["Let the AI approve exceptions within a small dollar amount.","Have an authorized employee review the evidence and approve or deny the exception.","Ask the AI to draft a refusal without checking the circumstances."],"checkOptions":["Let the assistant recommend a decision and send it if the amount is below a supervisor-set threshold.","Have an authorized employee review the evidence and approve or deny the exception.","Have the assistant propose an exception and ask a general support agent to confirm the tone before sending."],"correct":1,"why":"An exception requires an accountable, authorized decision; a polished draft is not approval.","hint":"Who has the authority to make an exception?","resource":"oversight","critical":true},{"title":"A high-volume queue","context":"A team receives hundreds of routine questions each week. AI can suggest answers from an approved knowledge base.","question":"What is a reasonable first oversight design?","options":["Have staff review suggestions and log errors during a limited pilot.","Publish all answers automatically and audit a few each month.","Require executive approval for every suggested sentence."],"checkOptions":["Have staff review suggestions and log errors during a limited pilot.","Auto-send responses when the AI includes a citation, with staff reviewing flagged cases.","Let staff approve batches of responses based on a sample, rather than reading each draft."],"correct":0,"why":"Reviewing suggestions in a pilot builds evidence before autonomy expands.","hint":"Start with an oversight level proportionate to the evidence available.","resource":"approval"},{"title":"An uncertain recommendation","context":"An AI flags a possible safety issue, but its confidence and supporting records are incomplete.","question":"What should the operator do?","options":["Treat the flag as a confirmed incident and issue a final determination.","Discard the alert because the evidence is incomplete.","Escalate the flagged case with the available evidence and uncertainty clearly noted."],"checkOptions":["Route the flag as a confirmed issue so the response team can act quickly.","Wait for the AI to generate a higher-confidence answer before involving anyone.","Escalate the flagged case with the available evidence and uncertainty clearly noted."],"correct":2,"why":"The AI flag is a signal for review, not a verified conclusion; preserve uncertainty.","hint":"How can you communicate concern without inventing certainty?","resource":"oversight","critical":true},{"title":"Who owns the result?","context":"An AI-generated recommendation has been reviewed for factual accuracy. It could still affect a person\u2019s access to a service.","question":"What remains necessary?","options":["An authorized decision maker considers fairness, context, and applicable policy before action.","A reviewer signs off on grammar and citations, which completes oversight.","A second AI model agrees with the recommendation, replacing further human review."],"checkOptions":["An authorized decision maker considers fairness, context, and applicable policy before action.","A subject-matter reviewer verifies the cited records and lets the automated workflow execute.","A supervisor reviews a weekly sample after the recommendations have been implemented."],"correct":0,"why":"Factual accuracy alone does not establish legitimacy, fairness, or authority to act.","hint":"Consider the impact on the affected person.","resource":"approval","critical":true}],[{"title":"Find the bottleneck","context":"A team spends six hours monthly assembling a report. Two hours are data collection, three are manual formatting, and one is executive review.","question":"Where is a sensible first pilot?","options":["Automate the executive approval so the report is released sooner.","Use an approved tool to draft the formatting from verified inputs, retaining review.","Replace data collection with AI-generated estimates."],"checkOptions":["Use an approved tool to draft the formatting from verified inputs, retaining review.","Use AI to summarize the source data and release the report once the formatting is checked.","Automate both collection and formatting immediately, then inspect a monthly sample."],"correct":1,"why":"The largest repeatable bottleneck is formatting; source quality and approval still matter.","hint":"Which step is repetitive and easiest to verify?","resource":"workflow"},{"title":"A messy source","context":"A workflow takes data from three spreadsheets with inconsistent labels and occasional missing rows.","question":"What should happen before AI automation?","options":["Build a mapping and validation step for the input data.","Ask the model to infer missing rows from historical patterns.","Ignore inconsistent labels because AI understands context."],"checkOptions":["Build a mapping and validation step for the input data.","Give the AI examples of prior reports and let it reconcile the differences during drafting.","Automate the report first and have reviewers correct missing records in the final output."],"correct":0,"why":"Reliable inputs and explicit validation reduce downstream errors.","hint":"A faster workflow is not better if the data are unreliable.","resource":"workflow"},{"title":"The edge case","context":"During a pilot, AI drafts correct answers to routine requests but mishandles requests involving unusual account circumstances.","question":"What is the best redesign?","options":["Keep the workflow unchanged because the routine cases work.","Ask the model to be more careful, then remove human review.","Route exceptions to a trained reviewer and document the trigger."],"checkOptions":["Add more unusual examples to the prompt and continue the pilot with unchanged routing.","Have the system draft an answer to every request but add a general disclaimer for unusual cases.","Route exceptions to a trained reviewer and document the trigger."],"correct":2,"why":"Exception handling is part of the workflow, not an afterthought.","hint":"How does the process recognize when automation should stop?","resource":"pilot","critical":true},{"title":"Did it improve?","context":"A pilot reduces drafting time but increases corrections and complaints.","question":"How should the team evaluate it?","options":["Report time savings as success and expand the pilot.","Compare time savings with error rates, rework, and user impact before deciding.","Stop collecting quality data and focus on employee satisfaction."],"checkOptions":["Compare time savings with error rates, rework, and user impact before deciding.","Continue the pilot because faster drafts create capacity, while tracking complaints separately.","Expand to another team to see whether the time savings are reproducible before changing the workflow."],"correct":1,"why":"A workflow must be evaluated on quality and risk as well as speed.","hint":"What does faster mean if more work is required to correct errors?","resource":"pilot"}],[{"title":"Choose a pilot","context":"A department wants to \u201Cuse AI everywhere.\u201D Staff instead identify a repetitive, low-risk public-information summary task.","question":"Which proposal is strongest?","options":["Deploy AI broadly, then ask teams to identify their best uses.","Select the narrow summary task, define its owner and review process, and test it first.","Buy a premium AI tool and use the first month to discover applications."],"checkOptions":["Select the narrow summary task, define its owner and review process, and test it first.","Run the summary pilot across all departments to collect enough feedback quickly.","Begin with the summary task and measure employee enthusiasm before defining review criteria."],"correct":1,"why":"A bounded use case supports learning and manageable risk.","hint":"What can be measured safely before scaling?","resource":"adoption"},{"title":"Define success","context":"The pilot promises to save time producing meeting summaries. The team has no baseline and no accuracy target.","question":"What should be added?","options":["A before-and-after time measure, factual accuracy checks, and a correction threshold.","A target number of AI-generated summaries, regardless of edits.","A survey asking whether the AI sounds professional."],"checkOptions":["A before-and-after time measure, factual accuracy checks, and a correction threshold.","A time-saved target and user satisfaction survey, with spot checks if concerns arise.","An adoption target and average draft length, with quality assessed informally by managers."],"correct":0,"why":"Value must be balanced against accuracy, rework, and potential harm.","hint":"Which measures would show both efficiency and trustworthiness?","resource":"metrics"},{"title":"Staff are hesitant","context":"Employees worry that the new AI workflow will replace their expertise. Leadership asks you to improve adoption.","question":"What is the best first response?","options":["Make usage mandatory and rank employees by AI activity.","Explain that AI is always accurate if used correctly.","Invite staff to shape the pilot, clarify what decisions remain human, and provide hands-on support."],"checkOptions":["Invite staff to shape the pilot, clarify what decisions remain human, and provide hands-on support.","Offer optional training and share time-saving examples, while leadership sets the workflow independently.","Ask managers to nominate AI champions and postpone discussions about role changes until after launch."],"correct":2,"why":"Meaningful participation and explicit human roles support informed, sustainable adoption.","hint":"Adoption depends on trust and useful support, not just tool access.","resource":"adoption"},{"title":"Scale or pause?","context":"After four weeks, the pilot saves time but occasionally omits important action items. The error rate exceeds the team\u2019s agreed threshold.","question":"What is the responsible decision?","options":["Scale to a larger group to gather more examples of errors.","Pause expansion, investigate omissions, revise controls, and retest against the threshold.","Keep the rollout date but remind employees to review more carefully."],"checkOptions":["Pause expansion, investigate omissions, revise controls, and retest against the threshold.","Continue with volunteers only and add a warning about missing action items until the next review.","Expand gradually with manager approval and revisit the error threshold after a larger sample."],"correct":0,"why":"Pre-agreed quality gates matter especially when the result is inconvenient.","hint":"What is the purpose of a stop condition if it can be ignored?","resource":"pilot","critical":true}]
+];
+const defaultState=()=>({results:{},attempts:{},completedCounts:{},mode:'practice'});
+let state=defaultState();try{let saved=JSON.parse(localStorage.getItem('aailab_v2'));if(saved&&saved.results)state={...defaultState(),...saved}}catch(e){}
+let activeModule=0,activeIndex=0,choice=null,hints=0,resourceOpen=null,screen='home';
+function save(){try{state.savedAt=new Date().toISOString();localStorage.setItem('aailab_v2',JSON.stringify(state));return true;}catch(e){const el=document.getElementById('saveStatus');if(el)el.textContent='Browser saving is unavailable. Download a backup to keep your progress.';return false;}}
+function escapeHTML(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showView(view){if(view!=='employee')document.body.classList.remove('lab-fixed','home-fixed');document.getElementById('employeeView').classList.toggle('hidden',view!=='employee');document.getElementById('adminView').classList.toggle('hidden',view!=='admin');document.getElementById('employeeTab').classList.toggle('active',view==='employee');document.getElementById('adminTab').classList.toggle('active',view==='admin');document.getElementById('libraryTab').classList.remove('active');if(view==='employee'){if(screen==='library')renderHome()}window.scrollTo(0,0)}
+function moduleScore(index){const r=state.results[index];return r?.completed&&Number.isInteger(r.level)&&r.level>=1&&r.level<=4?r.level:null}
+function overallScore(){const scores=modules.map((_,i)=>moduleScore(i)).filter(n=>n!==null);return scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):null}
+function proficiencyLabel(level){const labels={1:"Foundational",2:"Developing",3:"Proficient",4:"Advanced"};return labels[level]?`Level ${level} - ${labels[level]}`:"Not yet scored"}
+function completedAttemptCount(index){const n=Number(state.completedCounts?.[index]);return Number.isInteger(n)&&n>0?n:(state.results[index]?.completed?1:0)}
+function priorScoreMarkup(index){const r=state.results[index],level=moduleScore(index);return r?.completed?`<div class="revisit-overview" role="status" aria-label="Previous module performance"><div class="revisit-metric"><span>Attempts completed</span><strong>${completedAttemptCount(index)}</strong></div><div class="revisit-metric"><span>Score</span><strong>${level===null?'Not yet scored':proficiencyLabel(level)}</strong></div></div>`:''}
+function renderHome(){document.body.classList.remove('lab-fixed','library-fixed','library-detail');document.body.classList.add('home-fixed');screen='home';document.getElementById('home').classList.remove('hidden');document.getElementById('lab').classList.add('hidden');document.getElementById('libraryView').classList.add('hidden');let complete=Object.keys(state.results).filter(k=>state.results[k]?.completed).length;document.getElementById('homeLevel').textContent=`${complete} of 7 labs completed \u00B7 Overall: ${overallScore()===null?'\u2014':({1:"Foundational",2:"Developing",3:"Proficient",4:"Advanced"}[overallScore()]+" ("+overallScore()+")")}`;document.getElementById('learnerProgressFill').style.width=(complete/7*100)+'%';document.querySelector('.learner-progress-track').setAttribute('aria-valuenow',String(complete));document.getElementById('modules').innerHTML=modules.map((m,i)=>`<article class="module ${'available'}"><div class="num">MODULE ${String(i+1).padStart(2,'0')}</div><h2>${escapeHTML(m[0])}</h2><p>${escapeHTML(m[1])}</p><div class="status">${(state.results[i]?.completed?`Completed \u00B7 ${moduleScore(i)===null?'Score unavailable':proficiencyLabel(moduleScore(i))}`:'Interactive lab available')}</div><button class="button" aria-label="${state.attempts[i]&&!state.attempts[i].finished?'Resume module':state.results[i]?.completed?'Revisit':'Start module'}: ${escapeHTML(m[0])}" onclick="openModule(${i})">${state.attempts[i]&&!state.attempts[i].finished?'Resume module':state.results[i]?.completed?'Revisit':'Start module'} \u2192</button></article>`).join('')+`<article class="module home-library-card"><div class="num">RESOURCE LIBRARY</div><h2>Tools for every module</h2><p>Browse the master glossary, decision frameworks, templates, checklists, and guides.</p><div class="status">On-demand learning support</div><button class="button" onclick="showLibrary()">Browse resources \u2192</button></article>`}
+function openModule(i){document.body.classList.remove('home-fixed','library-fixed','library-detail');activeModule=i;activeIndex=0;choice=null;hints=0;resourceOpen=null;screen='intro';document.getElementById('home').classList.add('hidden');document.getElementById('libraryView').classList.add('hidden');document.getElementById('lab').classList.remove('hidden');renderIntro();window.scrollTo(0,0)}
+const glossaryTerms=[
+[['Generative AI','AI that produces new text, images or other content from learned patterns.'],['AI model','The system generating a response from a prompt.'],['Prompt','The instructions and context provided to an AI model.'],['Hallucination','Plausible but unsupported or incorrect generated content.'],['Human oversight','Accountable review by a person authorized to decide or publish.'],['AI suitability','Whether a task is appropriate for AI assistance given its risks and controls.']],
+[['Prompt','Instructions and context given to an AI model.'],['Context','Relevant, approved background that helps tailor a response.'],['Audience','The people for whom an output is intended.'],['Constraint','A boundary on facts, length, tone, sources or permissible content.'],['Output format','The structure requested for the response, such as a checklist or email.'],['Iteration','Revising instructions after reviewing an initial result.'],['Hallucination','A plausible but unsupported statement the model generates.']],
+[['Data classification','A label or rule governing how information can be used and shared.'],['Approved tool','An AI service authorized for the relevant purpose and data.'],['Confidential information','Nonpublic information requiring restricted handling.'],['Personal information','Information that identifies or could identify a person.'],['De-identification','Removing or transforming identifiers; it may not eliminate re-identification risk.'],['Sanitization','Policy-permitted modification to reduce exposure of sensitive details.'],['Authorization','Permission to use a specific tool, dataset and workflow.']],
+[['Claim','A statement that can be checked against evidence.'],['Primary source','The original record or authoritative evidence supporting a claim.'],['Hallucination','Plausible but unsupported or invented AI-generated content.'],['Baseline','The starting measurement used to calculate a change.'],['Corroboration','Independent evidence that supports a finding.'],['Citation','A reference to a source that must actually exist and support the statement.'],['Verification','Checking a claim against authoritative evidence, including units and dates.'],['Human approval','Authorized sign-off before consequential use or release.']]
+,[["Human-in-the-loop","A design in which people review or decide at specified points in a workflow."],["Decision authority","The role empowered to make a consequential determination."],["Escalation","Routing an uncertain or exceptional case to a qualified person."],["Human oversight","Accountable review by a person authorized to decide or publish."],["Exception handling","A defined process for cases outside routine automated rules."]],[["Workflow","A sequence of inputs, activities, decisions and outputs."],["Bottleneck","A step that limits speed or capacity in a process."],["Quality gate","A check that must be passed before proceeding."],["Baseline","The starting measurement used to calculate a change."],["Exception handling","A defined process for cases outside routine automated rules."]],[["Pilot","A limited trial designed to evaluate a proposed process."],["Success metric","A defined measure of whether the trial delivers value."],["Adoption","Sustained, appropriate use of a tool or process by its intended users."],["Change management","Helping people understand, shape, learn and sustain a new way of working."],["Stop condition","A predefined result that triggers pause or reassessment."],["Quality gate","A check that must be passed before proceeding."]]];
+const masterGlossary=(()=>{const byTerm=new Map();glossaryTerms.forEach((entries,index)=>entries.forEach(([term,definition])=>{const key=term.toLowerCase();if(!byTerm.has(key))byTerm.set(key,{term,definition,modules:[]});byTerm.get(key).modules.push(index+1)}));return [...byTerm.values()].sort((a,b)=>a.term.localeCompare(b.term));})();
+function resourceClass(id){
+ const r=resolveResource(id);
+ const kind=r?.type||'Guide & reference';
+ const category=kind==='Decision framework'?'framework':kind==='Template'?'template':kind==='Checklist'?'checklist':'reference';
+ return 'resource-'+id+' resource-category-'+category;
+}
+function moduleGlossaryResource(index){return {id:'glossary-m'+(index+1),type:'Guide & reference',title:'Module '+(index+1)+' glossary',modules:[index]}}
+function glossaryMarkup(index=null){
+ const terms=index===null?masterGlossary:glossaryTerms[index].map(([term,definition])=>({term,definition,modules:[index+1]})).sort((a,b)=>a.term.localeCompare(b.term));
+ const entries=terms.map(t=>`<div data-glossary-modules="${t.modules.join(',')}"><dt>${escapeHTML(t.term)}</dt><dd>${escapeHTML(t.definition)}</dd><div class="glossary-modules">${t.modules.map(n=>`<span class="glossary-module-tag">Module ${n}</span>`).join('')}</div></div>`).join('');
+ return `${index===null?`<label class="master-glossary-filter">Filter by module<select aria-label="Filter master glossary by module" onchange="filterMasterGlossary(this)"><option value="all">All modules</option>${modules.map((m,i)=>`<option value="${i+1}">Module ${i+1}: ${escapeHTML(m[0])}</option>`).join('')}</select></label>`:''}<dl class="resource-glossary-list">${entries}</dl>${index===null?'<p class="glossary-empty hidden">No terms for this module.</p>':''}`;
+}
+function filterMasterGlossary(select){const panel=select.closest('.resource-content');if(!panel)return;let visible=0;panel.querySelectorAll('.resource-glossary-list > div').forEach(el=>{const show=select.value==='all'||el.dataset.glossaryModules.split(',').includes(select.value);el.classList.toggle('hidden',!show);if(show)visible++});const empty=panel.querySelector('.glossary-empty');if(empty)empty.classList.toggle('hidden',visible!==0)}
+function resolveResource(id){const match=/^glossary-m([1-7])$/.exec(id);return match?moduleGlossaryResource(Number(match[1])-1):resources.find(r=>r.id===id)}
+function resourceContent(r){
+ const subglossary=/^glossary-m([1-7])$/.exec(r.id);
+ if(subglossary)return `<div class="resource-content">${glossaryMarkup(Number(subglossary[1])-1)}</div>`;
+ const step=(a)=>`<ol class="resource-steps">${a.map(([h,t])=>`<li><span><strong>${h}</strong>${t}</span></li>`).join('')}</ol>`;
+ const bullets=(a)=>`<ul class="resource-bullets">${a.map(([h,t])=>`<li><strong>${h}</strong>${t}</li>`).join('')}</ul>`;
+ const note=(t)=>`<div class="resource-note">${t}</div>`;
+ const flow=(a)=>`<div class="resource-flow" aria-label="Decision flow">${a.map((x,i)=>`${i?'<div class="resource-flow-arrow" aria-hidden="true">\u2193</div>':''}<div class="resource-flow-node">${x}</div>`).join('')}</div>`;
+ const cards=(a)=>`<div class="resource-decision-grid">${a.map(([h,t])=>`<div class="resource-decision"><strong>${h}</strong><small>${t}</small></div>`).join('')}</div>`;
+ const compare=(a)=>`<div class="resource-comparison">${a.map(([h,t])=>`<div><strong>${h}</strong>${t}</div>`).join('')}</div>`;
+ const content={
+ suitability:`<div class="resource-kicker">Four-gate decision checklist</div>${step([['Approved tool?','Use only an AI system authorized for this task.'],['Safe information?','Check data classification and sharing permissions.'],['Verifiable output?','Identify a person and source that can check the result.'],['Clear accountability?','An authorized person owns the final decision.']])}<div class="resource-kicker">Typical suitability</div>${cards([['GOOD START','Drafting, brainstorming and organizing approved, low-risk material.'],['REVIEW FIRST','Research summaries and external-facing work that require verification.'],['STRONG GOVERNANCE','Employment, financial, legal or other high-impact decisions.']])}${note('<strong>Rule of thumb:</strong> If any gate fails or is unknown, pause and seek guidance.')}`,
+ limits:`<div class="resource-kicker">Useful for</div>${bullets([['Drafting','Create a first version that a person will edit.'],['Summarizing','Condense material you are authorized to provide.'],['Exploring','Generate alternatives, questions and outlines.']])}<div class="resource-kicker">Watch for</div>${cards([['Confident errors','Plausible statements may be incorrect or invented.'],['Missing context','The model may not know current rules or local conditions.'],['Unfair patterns','Outputs can reflect bias or incomplete examples.']])}${note('<strong>Always:</strong> Verify consequential claims against an authoritative source. Fluency is not evidence.')}`,
+ prompt:`<div class="resource-kicker">Build your prompt in five parts</div>${step([['Task','What should the AI do?'],['Context','What approved background does it need?'],['Audience','Who will read or use the output?'],['Constraints','What facts, tone, length or boundaries apply?'],['Format','How should the answer be structured?']])}${note('<strong>Example:</strong> Draft a 120-word public event reminder for registered attendees. Use a friendly, professional tone, include only these confirmed details, and write two short paragraphs.')}${note('<strong>Data check:</strong> Do not supply information that is not approved for the tool.')}`,
+ iteration:`<div class="resource-kicker">Before and after</div>${compare([['Vague prompt','\u201CSummarize this.\u201D'],['Useful prompt','\u201CSummarize the approved public report for a nontechnical audience in five bullets. Separate documented facts from recommendations and flag uncertain claims.\u201D']])}<div class="resource-kicker">Refinement loop</div>${flow(['<strong>Prompt</strong> with task, audience and format','<strong>Inspect</strong> for omissions and unsupported claims','<strong>Revise</strong> the instructions or provide approved context','<strong>Verify</strong> before sharing or acting'])}`,
+ classification:`<div class="resource-kicker">Data-handling decision flow</div>${flow(['<strong>Is the tool approved for this use and data type?</strong><div class="subtle">No / unsure \u2192 STOP and confirm authorization.</div>','<strong>Is the information allowed to be shared as-is?</strong><div class="subtle">Yes \u2192 SHARE through the approved workflow.</div>','<strong>Is sanitization expressly permitted and sufficient?</strong><div class="subtle">Yes \u2192 SANITIZE, recheck identifiability, then use the approved workflow.</div>','<strong>Otherwise \u2192 STOP</strong><div class="subtle">Seek guidance from the designated policy or security contact.</div>'])}${cards([['SHARE','Approved tool + approved information + approved purpose.'],['SANITIZE','Only when policy permits and re-identification risk is addressed.'],['STOP','Sensitive data, unclear approval, or required authorization missing.']])}${note('A \u201Cdo not remember this\u201D prompt is <strong>not</strong> a security control.')}`,
+ policy:`${note('<strong>FICTIONAL TRAINING EXAMPLE</strong> \u2014 not an actual employer policy.')}<div class="resource-kicker">Example handling rules</div>${cards([['Generally permitted','Public information in approved AI tools.'],['Check approval','Internal material only when tool and use are authorized.'],['Explicit authorization','Personnel records, customer identifiers, financial account details and confidential business information.']])}<div class="resource-kicker">If exposure is suspected</div>${flow(['Stop sharing the material','Preserve relevant details without spreading the data further','Report through the organization\u2019s designated channel'])}`,
+ verify:`<div class="resource-kicker">Verification path</div>${flow(['<strong>Isolate the claim</strong> \u2014 number, quote, date, causal assertion','<strong>Locate the original evidence</strong> \u2014 primary document or approved dashboard','<strong>Compare precisely</strong> \u2014 baseline, denominator, time period, units','<strong>Classify</strong> \u2014 verified / contradicted / unsupported','<strong>Resolve before release</strong> \u2014 correct, remove, qualify, or escalate'])}`,
+ evidence:`${note('<strong>FICTIONAL SOURCE PACKET</strong> \u2014 created for training; not a real organization.')}${compare([['AI-generated briefing','\u201CResponse times improved 32% in Q2.\u201D'],['Dashboard evidence','Q1: 50 minutes \u00B7 Q2: 44 minutes'],['Corrected finding','(50 \u2212 44) \u00F7 50 = <strong>12% improvement</strong>']])}<div class="resource-kicker">Unverified citation</div>${cards([['AI claim','87% of customers preferred the new model.'],['Source check','\u201CCustomer Pulse Survey, July\u201D is absent from the packet.'],['Decision','Hold or remove until the original survey is available.']])}`,
+ release:`<div class="resource-kicker">Pre-release gates</div>${step([['Numbers','Confirm baseline, units, calculation and dates.'],['Sources','Open and inspect each consequential primary citation.'],['Interpretation','Separate measured findings from proposed actions.'],['Uncertainty','Remove, qualify or flag claims that cannot be substantiated.'],['Approval','Obtain the accountable reviewer\u2019s sign-off.']])}`,
+ oversight:`<div class="resource-kicker">Oversight design</div>${flow(['<strong>What is the impact of an error?</strong>','<strong>Can the AI result be verified?</strong>','<strong>Who has decision authority?</strong>','<strong>Review or escalate</strong> before consequential action'])}${cards([['ROUTINE','Approved drafting with reviewer checks.'],['EXCEPTION','Route to an authorized subject-matter expert.'],['HIGH IMPACT','Require evidence, fairness review and accountable approval.']])}`,
+ approval:`<div class="resource-kicker">Five checkpoints</div>${step([['Authority','Is the reviewer empowered to approve?'],['Evidence','Can the reviewer inspect original records?'],['Uncertainty','Are limitations and missing facts visible?'],['Escalation','Is there a route for exceptions?'],['Record','Is the decision documented appropriately?']])}`,
+ workflow:`<div class="resource-kicker">Map the workflow</div>${flow(['<strong>Input</strong> \u2014 approved, validated source','<strong>AI-assisted step</strong> \u2014 bounded draft or transformation','<strong>Verification</strong> \u2014 quality and source checks','<strong>Human checkpoint</strong> \u2014 approve, edit or escalate','<strong>Output + feedback</strong> \u2014 measure rework and errors'])}${note('Start with the bottleneck, not the tool.')}`,
+ pilot:`<div class="resource-kicker">Pilot gates</div>${step([['Baseline','Record current time, errors and rework.'],['Scope','Choose a narrow group and approved task.'],['Controls','Set reviewer and exception routing.'],['Measurement','Track both benefit and quality.'],['Decision','Scale, revise or stop based on pre-agreed thresholds.']])}`,
+ adoption:`<div class="resource-kicker">One-page adoption plan</div>${cards([['PROBLEM','What user task needs improvement?'],['OWNER','Who sponsors and operates the pilot?'],['BOUNDARY','Which data, tools and decisions are allowed?'],['PEOPLE','Who participates and how will they learn?'],['MEASURES','What baseline, quality and value targets apply?'],['GATE','When will the team decide to scale, revise or stop?']])}`,
+ metrics:`<div class="resource-kicker">Balanced scorecard</div>${bullets([['Efficiency','Minutes saved after including review and rework.'],['Accuracy','Factually correct outputs against checked sources.'],['Rework','Corrections and exceptions per output.'],['Experience','User confidence and usefulness.'],['Safety','Incidents and breaches of agreed controls.'],['Adoption','Appropriate sustained use, not raw clicks.']])}`,
+ glossary:glossaryMarkup()
+ };
+ return `<div class="resource-content">${content[r.id]||`<p>${escapeHTML(r.body)}</p>`}</div>`;
+}
+function resourceMarkup(id){let r=resolveResource(id);return r?`<div class="resource-panel ${resourceClass(r.id)}" role="region" aria-label="${escapeHTML(r.title)}"><div class="eyebrow">${escapeHTML(r.type)}</div><h3>${escapeHTML(r.title)}</h3>${resourceContent(r)}</div>`:''}
+function resourceButtons(){return `<div class="resource-tools"><button class="resource-button resource-glossary" onclick="toggleResource('glossary-m${activeModule+1}')" aria-expanded="${resourceOpen==='glossary-m'+(activeModule+1)}">Module ${activeModule+1} glossary</button>${resources.filter(r=>r.modules.includes(activeModule)&&r.id!=='glossary').map(r=>`<button class="resource-button ${resourceClass(r.id)}" onclick="toggleResource('${r.id}')" aria-expanded="${resourceOpen===r.id}">${escapeHTML(r.title)}</button>`).join('')}<button onclick="openResourceDrawer()">Browse all resources \u2197</button></div>${resourceOpen?resourceMarkup(resourceOpen):''}`}
+function toggleResource(id){openResourceDrawer(id)}
+let drawerReturnFocus=null;
+function openResourceDrawer(id){
+ drawerReturnFocus=document.activeElement;
+ const drawer=document.getElementById('resourceDrawer');
+ drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');
+ document.body.classList.add('drawer-open');
+ renderDrawer(id||null);
+ document.getElementById('drawerClose').focus();
+}
+function renderDrawer(id){
+ const root=document.getElementById('drawerBody');
+ const filtered=id?[resolveResource(id)].filter(Boolean):resourcesByModule(resources);
+ root.innerHTML=`<div class="drawer-intro"><div class="eyebrow">Learning support \u00B7 stays in your lab</div><h2>${id?'Reference material':'Resource library'}</h2><p>Consult guides and frameworks without losing your place in the scenario.</p></div><div class="drawer-filter"><button class="button ${id?'ghost':'yellow'}" onclick="renderDrawer(null)">All resources</button>${id?'<span class="resource-tag">Selected reference</span>':''}</div>${filtered.map(r=>`<article class="drawer-resource ${resourceClass(r.id)}"><div class="eyebrow">${escapeHTML(r.type)}</div><h3>${escapeHTML(r.title)}</h3>${resourceContent(r)}<small>${r.modules.map(i=>'Module '+(i+1)).join(' \u00B7 ')}</small></article>`).join('')}<p class="drawer-disclaimer">Sample policies are fictional. Always consult your organization\u2019s actual policies and approved tools.</p>`;
+}
+function closeResourceDrawer(){
+ const drawer=document.getElementById('resourceDrawer');drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('drawer-open');if(drawerReturnFocus?.isConnected)drawerReturnFocus.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('resourceDrawer').classList.contains('open'))closeResourceDrawer();if(e.key==='Tab'&&document.getElementById('resourceDrawer').classList.contains('open')){const focusables=[...document.querySelectorAll('#resourceDrawer button:not([disabled])')];let first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+
+function renderIntro(){document.body.classList.remove('home-fixed');document.body.classList.add('lab-fixed');screen='intro';const l=lessons[activeModule];document.getElementById('lab').innerHTML=`<div class="panel"><div class="eyebrow">Module ${String(activeModule+1).padStart(2,'0')} \u00B7 Guided learning</div><h1>${escapeHTML(l.title)}</h1>${priorScoreMarkup(activeModule)}<div class="lesson"><h2>Before you begin</h2><p>${escapeHTML(l.intro)}</p><ul>${l.points.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul><p><strong>Example:</strong> ${escapeHTML(l.example)}</p></div><h2>Resources you can consult</h2><p class="subtle">Using reference materials is encouraged. Optional instructional hints are tracked separately from independent proficiency.</p>${resourceButtons()}<div class="mode-switch" aria-label="Learning mode"><button class="${state.mode==='practice'?'active':''}" onclick="setMode('practice')">Guided practice</button><button class="${state.mode==='check'?'active':''}" onclick="setMode('check')">Proficiency check</button></div><p class="subtle">Guided practice offers progressive hints and retries. Proficiency check allows reference materials but not answer-directed hints. Neither mode is a formal certification.</p><div class="actions"><button class="button yellow" onclick="beginScenarios()">${state.attempts[activeModule]&&!state.attempts[activeModule].finished&&state.attempts[activeModule].mode===state.mode?'Resume':'Begin'} ${state.mode==='practice'?'practice':'proficiency check'} \u2192</button><button class="button ghost" onclick="renderHome()">Back to modules</button></div></div>`}
+function setMode(mode){state.mode=mode;save();renderIntro()}
+function beginScenarios(){const a=state.attempts[activeModule];if(a&&!a.finished&&a.mode===state.mode){activeIndex=Math.min(a.index||0,scenarios[activeModule].length-1);hints=a.currentHints||0;}else{activeIndex=0;hints=0;state.attempts[activeModule]={answers:[],hintCounts:[],mode:state.mode,index:0,currentHints:0,finished:false};}choice=null;resourceOpen=null;save();renderLab();}
+function renderLab(){document.body.classList.add('lab-fixed');screen='lab';const s=scenarios[activeModule][activeIndex],attempt=state.attempts[activeModule],answered=attempt.answers[activeIndex]!==undefined;document.getElementById('lab').innerHTML=`<div class="panel lab-scenario-panel"><div class="eyebrow">Module ${String(activeModule+1).padStart(2,'0')} \u00B7 ${state.mode==='practice'?'Guided practice':'Proficiency check'}</div><h1>${escapeHTML(s.title)}</h1><div class="stage">Scenario ${activeIndex+1} of ${scenarios[activeModule].length}</div><div class="progress"><div style="width:${activeIndex/scenarios[activeModule].length*100}%"></div></div><div class="scenario">${escapeHTML(s.context)}</div><h2>${escapeHTML(s.question)}</h2><div class="options">${(state.mode==='check'&&s.checkOptions?s.checkOptions:s.options).map((o,i)=>`<button class="option ${answered&&attempt.answers[activeIndex]===i?'selected':''}" ${answered?'disabled':''} onclick="choose(${i})">${'ABC'[i]}. ${escapeHTML(o)}</button>`).join('')}</div><div class="resource-tag">On-demand resources \u00B7 always available</div>${resourceButtons()}${!answered&&state.mode==='practice'?`<button class="button ghost" onclick="revealHint()">${hints?'Show another hint':'Need a hint?'}</button>${hints?`<div class="hintbox"><strong>Hint ${hints}:</strong> ${escapeHTML(hints===1?s.hint:'Consult the \u201C'+resources.find(r=>r.id===s.resource).title+'\u201D resource and identify the governing principle.')}</div>`:''}`:''}${answered?`<div class="feedback ${attempt.answers[activeIndex]===s.correct?'good':''}" aria-live="polite"><strong>${attempt.answers[activeIndex]===s.correct?'Appropriate decision':'Learning opportunity'}</strong><p>${escapeHTML(s.why)}</p>${s.critical?'<p><strong>Safety-critical scenario:</strong> This decision is part of the security safeguard for proficiency.</p>':''}</div><button class="button yellow" onclick="nextScenario()">${activeIndex===scenarios[activeModule].length-1?'See module summary':'Continue'} \u2192</button>`:''}<div class="actions"><button class="button ghost" onclick="renderHome()">Exit to modules</button></div></div>`;window.scrollTo(0,0)}
+function revealHint(){hints=Math.min(2,hints+1);state.attempts[activeModule].currentHints=hints;save();renderLab()}
+function choose(i){let a=state.attempts[activeModule];if(a.answers[activeIndex]!==undefined)return;a.answers[activeIndex]=i;a.hintCounts[activeIndex]=hints;save();renderLab()}
+function nextScenario(){if(activeIndex===scenarios[activeModule].length-1){completeModule();return}activeIndex++;hints=0;state.attempts[activeModule].index=activeIndex;state.attempts[activeModule].currentHints=0;resourceOpen=null;save();renderLab()}
+function completeModule(){const a=state.attempts[activeModule],ss=scenarios[activeModule];a.finished=true;let right=a.answers.filter((x,i)=>x===ss[i].correct).length;let criticalOK=ss.every((x,i)=>!x.critical||a.answers[i]===x.correct);let hintsUsed=a.hintCounts.some(n=>n>0);let level=right===ss.length?4:right>=ss.length-1?3:right>=Math.ceil(ss.length/2)?2:1;if(!criticalOK)level=Math.min(level,2);if(hintsUsed&&a.mode==='practice')level=Math.min(level,2);const previousCount=completedAttemptCount(activeModule);state.results[activeModule]={completed:true,level,correct:right,criticalOK,mode:a.mode};state.completedCounts=state.completedCounts||{};state.completedCounts[activeModule]=previousCount+1;save();renderSummary()}
+function renderSummary(){document.body.classList.add('lab-fixed');screen='summary';let r=state.results[activeModule],names=['','Foundational','Developing','Proficient','Advanced'];document.getElementById('lab').innerHTML=`<div class="panel"><div class="eyebrow">Module ${String(activeModule+1).padStart(2,'0')} \u00B7 Learning summary</div><h1>${escapeHTML(modules[activeModule][0])}</h1><span class="chip">PROVISIONAL MODULE ACHIEVEMENT</span><div class="level">Level ${r.level} \u2014 ${names[r.level]}</div><p>${r.level>=3?'You demonstrated sound decisions in these sample workplace scenarios.':'You are developing the concepts. Review the resources and try new decisions.'}</p>${!r.criticalOK?'<div class="feedback"><strong>Required remediation:</strong> Review the security and data-handling guidance before attempting a higher proficiency level.</div>':''}${r.mode==='practice'?'<p class="note">Guided practice supports learning. For independent evidence, complete a proficiency check without instructional hints.</p>':''}<p class="note">This is a short prototype module, not a validated organizational competency assessment. A full proficiency decision requires more evidence across the curriculum.</p><h2>Review materials</h2>${resourceButtons()}<div class="actions"><button class="button yellow" onclick="openModule(${activeModule})">Review and retry</button><button class="button ghost" onclick="renderHome()">Back to modules</button>${activeModule<6?`<button class="button" onclick="openModule(${activeModule+1})">Next module \u2192</button>`:''}</div></div>`;window.scrollTo(0,0)}
+const libraryCategories=[
+ {key:'framework',title:'Decision frameworks',subtitle:'Choose an appropriate path',description:'Matrices, decision maps and quality gates.',color:'cyan'},
+ {key:'template',title:'Templates',subtitle:'Structure the work',description:'Reusable prompts, canvases and planning tools.',color:'yellow'},
+ {key:'checklist',title:'Checklists',subtitle:'Check before proceeding',description:'Practical review and measurement lists.',color:'lime'},
+ {key:'reference',title:'Guides & references',subtitle:'Build understanding',description:'Explanations, examples, policy guidance and the master glossary.',color:'aqua'}
+];
+function resourcesByModule(items){return [...items].sort((a,b)=>Math.min(...a.modules)-Math.min(...b.modules)||a.title.localeCompare(b.title))}
+function libraryCategory(r){return r.type==='Decision framework'?'framework':r.type==='Template'?'template':r.type==='Checklist'?'checklist':'reference'}
+function libraryHeader(title,description,back){return `<div class="intro library-intro"><div><div class="eyebrow">On-demand learning support</div><h1>${escapeHTML(title)}</h1><p class="muted">${escapeHTML(description)}</p></div><button class="button ghost" onclick="${back}">${back==='showLibrary()'?'\u2190 All categories':'\u2190 Back to modules'}</button></div>`}
+function showLibrary(){document.body.classList.remove('lab-fixed','home-fixed');document.body.classList.add('library-fixed');showView('employee');screen='library';document.getElementById('home').classList.add('hidden');document.getElementById('lab').classList.add('hidden');document.getElementById('libraryView').classList.remove('hidden');document.getElementById('libraryTab').classList.add('active');document.getElementById('libraryView').innerHTML=libraryHeader('Resource library','Choose a category to explore its resources.','renderHome()')+`<div class="library-hub-grid">${libraryCategories.map(c=>{const count=resources.filter(r=>libraryCategory(r)===c.key).length;return `<button class="library-hub-card resource-category-${c.key}" onclick="showLibraryCategory('${c.key}')"><span class="library-hub-kicker">${count} RESOURCES</span><strong>${escapeHTML(c.title)}</strong><span class="library-hub-subtitle">${escapeHTML(c.subtitle)}</span><span class="library-hub-description">${escapeHTML(c.description)}</span><span class="library-hub-action">Explore resources \u2192</span></button>`}).join('')}</div><p class="library-hub-note">Sample policies are fictional. Consult your organization's approved tools and current policies.</p>`;window.scrollTo(0,0)}
+function showLibraryCategory(key){const c=libraryCategories.find(x=>x.key===key);if(!c)return;document.body.classList.remove('library-fixed');document.body.classList.add('library-detail');screen='library';const items=resourcesByModule(resources.filter(r=>libraryCategory(r)===key));document.getElementById('libraryView').innerHTML=libraryHeader(c.title,c.description,'showLibrary()')+`<div class="library-grid">${items.map(r=>`<details class="library-item library-accordion ${resourceClass(r.id)}"><summary><span class="library-summary-copy"><span class="eyebrow">${escapeHTML(r.type)}</span><strong>${escapeHTML(r.title)}</strong><small>${r.modules.map(i=>'Module '+(i+1)).join(' \u00B7 ')}</small></span><span class="library-chevron" aria-hidden="true">\u2304</span></summary><div class="library-accordion-body">${resourceContent(r)}</div></details>`).join('')}</div>`;window.scrollTo(0,0)}
+
+function resetDemo(){if(!confirm('Clear all locally saved learning progress?'))return;state=defaultState();save();renderHome();showView('employee')}
+const bars=[['AI literacy',92],['Prompting',86],['Data security',73],['Evaluation',68],['Human judgment',81],['Workflow design',76]];document.getElementById('adminBars').innerHTML=bars.map(([n,v])=>`<div class="barrow"><div><span>${n}</span><span>${v}%</span></div><div class="bar"><div style="width:${v}%"></div></div></div>`).join('');renderHome();
+
+// Admin v2: deterministic, versioned synthetic snapshot, no network writes.
+const AV2_MODULES=['Meet Your AI Teammate','Prompt Playground','Data Boundary','Trust but Verify','Human in the Loop','Build a Better Workflow','Your AI Adoption Plan'];
+const AV2_DEPTS=['Technology','Finance / Strategy','People / Communications','Business / Ecosystems'];
+const AV2_THEMES=[['Capabilities','Limits','Appropriate use','Hallucination'],['Audience','Constraints','Verify additions','Data-safe prompting'],['Public vs private','Approved tools','Authorization','Data minimization'],['Source credibility','Corroboration','Uncertainty','Publication gate'],['Decision ownership','Escalation','Oversight level','Approval boundary'],['Workflow selection','Quality gates','Human handoff','Success measures'],['Pilot scope','Stakeholder support','Evaluation plan','Scale decision']];
+function av2Snapshot(){let seed=19437;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};const people=[],attempts=[],responses=[];let ai=0,ri=0;
+for(let e=0;e<40;e++){const eid='E'+String(e+1).padStart(3,'0'),dept=AV2_DEPTS[e%4];people.push({id:eid,department:dept,source:'Simulated'});
+for(let m=0;m<7;m++){if(rnd()<.11+(m>=5?.09:0))continue;const n=rnd()<.25?2:1;for(let a=1;a<=n;a++){const id='A'+String(++ai).padStart(4,'0'),day=1+((e*3+m*4+a*5)%28),date='2026-10-'+String(day).padStart(2,'0'),incomplete=rnd()<.06&&a===n;let correct=0;const local=[];
+for(let q=0;q<4;q++){const difficulty=[.78,.69,.63,.57,.59,.65,.7][m]+(dept===AV2_DEPTS[0]?.1:dept===AV2_DEPTS[1]&&m===3?-.17:dept===AV2_DEPTS[2]&&m===2?-.13:0)+(a===2?.14:0)-(q===3?.07:0),ok=rnd()<Math.max(.16,Math.min(.95,difficulty));if(ok)correct++;const pick=ok?'Best-supported response':['Plausible but incomplete','Unverified assumption','Missing safeguard'][Math.floor(rnd()*3)],reason=ok?'Meets all criteria':['Missing constraint','Verification gap','Authorization gap','Insufficient oversight'][Math.floor(rnd()*4)];local.push({id:'R'+String(++ri).padStart(5,'0'),attempt:id,employee:eid,department:dept,module:m,question:q,theme:AV2_THEMES[m][q],correct:ok,choice:pick,reason,source:'Simulated'});rnd();}
+attempts.push({id,employee:eid,department:dept,module:m,number:a,date,status:incomplete?'In progress':'Completed',correct:incomplete?null:correct,total:4,score:incomplete?null:correct*25,source:'Simulated'});rnd();responses.push(...(incomplete?local.slice(0,2):local));}}}
+return {people,attempts,responses,version:'SIM-2026-01'};}
+const av2Data=av2Snapshot();
+// Local-only pilot JSON adapter. No uploads, credentials, or remote requests.
+let av2ImportMessage='No pilot dataset loaded.';
+function av2LoadPilotFile(input){
+ const file=input.files&&input.files[0];if(!file)return;
+ if(file.size>2000000){av2ImportMessage='File exceeds the 2 MB limit.';av2Render();return;}
+ const reader=new FileReader();reader.onload=()=>{
+  try{
+   const payload=JSON.parse(String(reader.result));
+   if(!payload||!Array.isArray(payload.people)||!Array.isArray(payload.attempts)||!Array.isArray(payload.responses))throw Error('Expected people, attempts and responses arrays.');
+   if(payload.people.length>500||payload.attempts.length>5000||payload.responses.length>25000)throw Error('Dataset exceeds demonstration limits.');
+   const ids=new Set(),attemptIds=new Set();
+   const people=payload.people.map(p=>{if(!p||typeof p.id!=='string'||!/^P[A-Za-z0-9_-]{3,30}$/.test(p.id)||ids.has(p.id)||!AV2_DEPTS.includes(p.department))throw Error('Invalid or duplicate pseudonymous participant ID or department.');ids.add(p.id);return {id:p.id,department:p.department,source:'Pilot'};});
+   const attempts=payload.attempts.map(a=>{if(!a||typeof a.id!=='string'||!/^PA[A-Za-z0-9_-]{3,35}$/.test(a.id)||attemptIds.has(a.id)||!ids.has(a.employee)||!AV2_DEPTS.includes(a.department)||a.department!==people.find(p=>p.id===a.employee).department||!Number.isInteger(a.module)||a.module<0||a.module>6||!Number.isInteger(a.number)||a.number<1||a.number>100||!['Completed','In progress'].includes(a.status)||typeof a.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(a.date)||a.total!==4||(a.status==='Completed'&&(!Number.isInteger(a.correct)||a.correct<0||a.correct>4||a.score!==a.correct*25)))throw Error('Invalid attempt data or foreign key.');attemptIds.add(a.id);return {id:a.id,employee:a.employee,department:a.department,module:a.module,number:a.number,date:a.date,status:a.status,correct:a.status==='Completed'?a.correct:null,total:4,score:a.status==='Completed'?a.score:null,source:'Pilot'};});
+   const responseIds=new Set();const responses=payload.responses.map(r=>{const parent=attempts.find(a=>a.id===r.attempt);if(!r||typeof r.id!=='string'||responseIds.has(r.id)||!parent||r.employee!==parent.employee||r.module!==parent.module||!Number.isInteger(r.question)||r.question<0||r.question>3||typeof r.correct!=='boolean'||typeof r.reason!=='string'||r.reason.length>120)throw Error('Invalid question response or foreign key.');responseIds.add(r.id);return {id:r.id,attempt:r.attempt,employee:r.employee,department:parent.department,module:r.module,question:r.question,theme:AV2_THEMES[r.module][r.question],correct:r.correct,choice:'Imported pilot response',reason:r.reason,source:'Pilot'};});
+   for(const a of attempts.filter(a=>a.status==='Completed')){const rr=responses.filter(r=>r.attempt===a.id);if(rr.length!==4||rr.filter(r=>r.correct).length!==a.correct||new Set(rr.map(r=>r.question)).size!==4)throw Error('Completed attempt does not match its four question responses.');}
+   av2Data.people=av2Data.people.filter(x=>x.source!=='Pilot').concat(people);av2Data.attempts=av2Data.attempts.filter(x=>x.source!=='Pilot').concat(attempts);av2Data.responses=av2Data.responses.filter(x=>x.source!=='Pilot').concat(responses);
+   av2ImportMessage=`Loaded ${people.length} pseudonymous pilot learners, ${attempts.length} attempts, and ${responses.length} responses (local browser session only).`;av2Source='Pilot';av2Selected=null;
+  }catch(e){av2ImportMessage='Import rejected: '+String(e.message||e).slice(0,160)}
+  av2Render();
+ };reader.onerror=()=>{av2ImportMessage='Could not read file.';av2Render()};reader.readAsText(file);
+}
+function av2ClearPilot(){av2Data.people=av2Data.people.filter(x=>x.source!=='Pilot');av2Data.attempts=av2Data.attempts.filter(x=>x.source!=='Pilot');av2Data.responses=av2Data.responses.filter(x=>x.source!=='Pilot');av2Source='Simulated';av2Selected=null;av2ImportMessage='Pilot dataset cleared from this browser session.';av2Render()}
+let av2Source='Simulated',av2Department='All',av2Module='All',av2Selected=null;
+function av2El(){return document.getElementById('adminView')}
+function av2SourceLabel(){return av2Source==='Combined'?'Combined (synthetic + pilot)':av2Source==='Pilot'?'Pilot only':'Sample only'}
+function av2Filtered(){return av2Data.attempts.filter(a=>(av2Source==='Combined'||a.source===av2Source)&&(av2Department==='All'||a.department===av2Department)&&(av2Module==='All'||String(a.module)===av2Module))}
+function av2Latest(rows){const map=new Map();for(const a of rows.filter(x=>x.status==='Completed')){const k=a.employee+'|'+a.module,p=map.get(k);if(!p||a.number>p.number||(a.number===p.number&&a.date>p.date))map.set(k,a)}return [...map.values()]}
+function av2Rate(rows){return rows.length?Math.round(rows.filter(x=>x.score>=75).length/rows.length*100):null}
+function av2Fmt(v){return v===null?'\u2014':v+'%'}
+function av2Set(field,value){if(field==='source')av2Source=value;if(field==='department')av2Department=value;if(field==='module')av2Module=value;av2Selected=null;av2Render()}
+function av2Drill(kind,value){av2Selected={kind,value};av2Render()}
+function av2Render(){const root=av2El();if(!root)return;const filtered=av2Filtered(),complete=filtered.filter(a=>a.status==='Completed'),latest=av2Latest(filtered),participants=new Set(filtered.map(a=>a.employee)).size,rate=av2Rate(latest),allLearners=av2Data.people.filter(p=>av2Source==='Combined'||p.source===av2Source).filter(p=>av2Department==='All'||p.department===av2Department).length;
+const opts=(values,selected)=>values.map(([v,label])=>`<option value="${escapeHTML(v)}" ${v===selected?'selected':''}>${escapeHTML(label)}</option>`).join('');
+const mRows=AV2_MODULES.map((name,i)=>{const r=av2Latest(filtered.filter(a=>a.module===i));return {i,name,count:r.length,rate:av2Rate(r)}}).filter(x=>av2Module==='All'||String(x.i)===av2Module);
+const depRows=AV2_DEPTS.map((name,i)=>{const r=av2Latest(filtered.filter(a=>a.department===name));return {i,name,count:r.length,rate:av2Rate(r)}}).filter(x=>av2Department==='All'||x.name===av2Department);
+const bar=(item,kind)=>`<button class="av2-row ${av2Selected?.kind===kind&&av2Selected.value===item.i?'is-selected':''}" onclick="av2Drill('${kind}',${item.i})"><span class="av2-name">${escapeHTML(item.name)}</span><span class="av2-track"><span class="av2-fill" style="display:block;width:${item.rate??0}%"></span></span><span class="av2-val">${av2Fmt(item.rate)}</span></button>`;
+let drill='Select a module or department bar to examine its assessment results.';
+if(av2Selected){const isMod=av2Selected.kind==='module',idx=av2Selected.value,name=isMod?AV2_MODULES[idx]:AV2_DEPTS[idx],subset=filtered.filter(a=>isMod?a.module===idx:a.department===name),last=av2Latest(subset),ids=new Set(subset.map(a=>a.id)),items=av2Data.responses.filter(r=>ids.has(r.attempt));const q=AV2_THEMES.map((themes,m)=>themes.map((theme,i)=>{const arr=items.filter(r=>r.module===m&&r.question===i);return {name:`M${m+1} \u00B7 ${theme}`,n:arr.length,rate:arr.length?Math.round(arr.filter(x=>x.correct).length/arr.length*100):null,errors:arr.filter(x=>!x.correct)}})).flat().filter(x=>x.n>0).sort((a,b)=>(a.rate??101)-(b.rate??101)).slice(0,6);
+drill=`<div class="av2-breadcrumb"><button onclick="av2Selected=null;av2Render()">Overview</button> / ${escapeHTML(name)}</div><strong>${escapeHTML(name)}</strong><p class="av2-note">${last.length} latest completed learner-module assessments \u00B7 ${subset.length} total attempts \u00B7 ${av2Fmt(av2Rate(last))} proficient. Question response rates below include all available attempts, including partial attempts.</p><h4>Questions needing attention</h4>${q.length?q.map(x=>`<div class="av2-qa"><strong>${escapeHTML(x.name)}</strong><p>${av2Fmt(x.rate)} correct \u00B7 ${x.n} responses \u00B7 ${x.errors.length} incorrect</p><p class="av2-sub">Common incorrect rationale: ${escapeHTML(Object.entries(x.errors.reduce((o,e)=>(o[e.reason]=(o[e.reason]||0)+1,o),{})).sort((a,b)=>b[1]-a[1])[0]?.[0]||'None')}</p></div>`).join(''):'<p class="av2-note">No responses in this selection.</p>'}`;
+}
+root.innerHTML=`<div class="admin-v2"><div class="av2-head"><div><div class="eyebrow">Program manager view \u00B7 Analytics v2</div><h2>Learning & adoption insights</h2><p class="av2-sub">Explore participation, proficiency, and question-level learning gaps.</p></div><span class="av2-tag">${av2Source==='Pilot'?'PILOT IMPORT \u00B7 LOCAL':av2Source==='Combined'?'MIXED SOURCES \u00B7 DEMO':'SYNTHETIC DATA \u00B7 DEMO'}</span></div><div class="av2-filters"><label>Data source<select onchange="av2Set('source',this.value)">${opts([['Simulated','Sample only'],['Pilot','Pilot only (local import)'],['Combined','Combined (demo)']],av2Source)}</select></label><label>Department<select onchange="av2Set('department',this.value)">${opts([['All','All departments'],...AV2_DEPTS.map(x=>[x,x])],av2Department)}</select></label><label>Module<select onchange="av2Set('module',this.value)">${opts([['All','All modules'],...AV2_MODULES.map((x,i)=>[String(i),'M'+(i+1)+' \u00B7 '+x])],av2Module)}</select></label></div><div class="av2-import"><strong>Data connection \u00B7 pilot preview</strong><p class="av2-note">Import a validated pseudonymous JSON export for this browser session. No data is uploaded or saved; the Google Sheet is not connected yet.</p><input type="file" accept=".json,application/json" aria-label="Import pilot JSON dataset" onchange="av2LoadPilotFile(this)"><button class="av2-action" onclick="av2ClearPilot()">Clear pilot data</button><p class="av2-note" role="status">${escapeHTML(av2ImportMessage)}</p></div><div class="av2-stats"><div class="av2-stat"><span>Active participants</span><strong>${participants}</strong><small>Distinct learners with attempts</small></div><div class="av2-stat"><span>Completed attempts</span><strong>${complete.length}</strong><small>${filtered.length} attempts including in-progress</small></div><div class="av2-stat"><span>Latest-attempt proficiency</span><strong>${av2Fmt(rate)}</strong><small>${latest.filter(x=>x.score>=75).length} of ${latest.length} learner-module results</small></div><div class="av2-stat"><span>Participation coverage</span><strong>${allLearners?Math.round(participants/allLearners*100)+'%':'\u2014'}</strong><small>${participants} of ${allLearners} eligible learners</small></div></div><div class="av2-grid"><div class="av2-card"><div class="eyebrow">Click to investigate</div><h3>Proficiency by module</h3>${mRows.map(x=>bar(x,'module')).join('')}<p class="av2-note">Latest completed attempt per learner/module. Each bar's denominator is ${av2Module==='All'?'the number of learners who completed that module':'the selected module\u2019s completed learners'}.</p></div><div class="av2-card"><div class="eyebrow">Compare groups</div><h3>Department patterns</h3>${depRows.map(x=>bar(x,'department')).join('')}<p class="av2-note">Department values reflect learner-module assessments, not unique people.</p></div><div class="av2-card"><div class="eyebrow">Drill-down</div><h3>Diagnostic exploration</h3><div class="av2-detail">${drill}</div></div><div class="av2-card"><div class="eyebrow">Decision support</div><h3>Where to intervene</h3><p class="av2-note">Focus on low-performing modules, then inspect incorrect-response patterns. Confirm whether issues reflect unclear instruction, insufficient practice, or assessment design before prescribing interventions.</p><div class="av2-detail"><strong>Suggested review:</strong> ${escapeHTML(mRows.filter(x=>x.rate!==null).sort((a,b)=>a.rate-b.rate)[0]?.name||'Awaiting pilot data')}. Compare assessment items, revisit examples, and retest after targeted practice.</div><div class="av2-actions"><button class="av2-action" onclick="av2Source='Simulated';av2Department='All';av2Module='All';av2Selected=null;av2Render()">Reset filters</button></div></div></div><div class="av2-disclosure"><strong>Reporting boundary:</strong> ${av2SourceLabel()}. Sample records are simulated. Pilot records, if present, were imported locally and are not verified as genuine. Authenticated ingestion and live Google Sheets refresh are not connected. Combined is a demonstration mode, not a real organizational performance report. This dashboard does not transmit imported data.</div></div>`;
+}
+const av2OldShowView=showView;showView=function(view){av2OldShowView(view);if(view==='admin')av2Render()};
+
+</script>
+
+
+<script>
+function exportProgress(){
+ const data={schema:'applied-ai-foundations-backup-1',exportedAt:new Date().toISOString(),state};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='foundations-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function validateProgress(data){
+ if(!data||data.schema!=='applied-ai-foundations-backup-1'||!data.state)throw Error('Not a Foundations progress backup.');
+ const raw=data.state,out=defaultState();out.mode=raw.mode==='check'?'check':'practice';
+ for(let i=0;i<7;i++){
+  const r=raw.results?.[i];if(r){if(r.completed!==true||!Number.isInteger(r.level)||r.level<1||r.level>4)throw Error('Invalid module result.');out.results[i]={completed:true,level:r.level,correct:Number(r.correct)||0,criticalOK:!!r.criticalOK,mode:r.mode==='check'?'check':'practice'};}
+  const a=raw.attempts?.[i];if(a){if(!Array.isArray(a.answers)||a.answers.length>scenarios[i].length||!a.answers.every((x,j)=>Number.isInteger(x)&&x>=0&&x<scenarios[i][j].options.length))throw Error('Invalid saved answers.');
+   out.attempts[i]={answers:a.answers,hintCounts:Array.isArray(a.hintCounts)?a.hintCounts.map(x=>Math.min(2,Math.max(0,Number(x)||0))):[],mode:a.mode==='check'?'check':'practice',index:Math.min(scenarios[i].length-1,Math.max(0,Math.floor(Number(a.index)||0))),currentHints:Math.min(2,Math.max(0,Number(a.currentHints)||0)),finished:!!a.finished};}
+  const n=raw.completedCounts?.[i];if(Number.isInteger(n)&&n>=0)out.completedCounts[i]=n;
+ }return out;
+}
+function importProgress(input){
+ const file=input.files?.[0];if(!file)return;if(file.size>500000){alert('Backup is too large.');input.value='';return;}
+ const reader=new FileReader();reader.onload=()=>{try{const next=validateProgress(JSON.parse(reader.result));if(!confirm('Replace this browser’s Foundations progress with this backup?'))return;state=next;save();showView('employee');renderHome();}catch(e){alert('Could not restore progress: '+e.message);}finally{input.value='';}};reader.readAsText(file);
+}
+</script>
+</body></html>

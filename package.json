@@ -1,5 +1,5 @@
 {
-  "name": "applied-ai-lab",
+  "name": "applied-ai",
   "private": true,
   "scripts": {
     "test": "node tests/studio.cjs",
